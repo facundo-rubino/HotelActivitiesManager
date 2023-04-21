@@ -11,7 +11,7 @@ namespace Obligatorio1
 		{
 		}
 
-		public Tercerizada(Proveedor proveedor, bool confirmada, DateTime fechaConfirmacion, string nombre, string descripcion, DateTime fecha, int edadMinima, int costo) : base(nombre, descripcion, fecha, edadMinima, costo)
+		public Tercerizada(Proveedor proveedor, bool confirmada, DateTime fechaConfirmacion, string nombre, string descripcion, DateTime fecha, int edadMinima, int costo, int cantMax) : base(nombre, descripcion, fecha, edadMinima, costo, cantMax)
         {
 			Proveedor = proveedor;
 			Confirmada = confirmada;

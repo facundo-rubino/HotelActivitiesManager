@@ -7,16 +7,18 @@ namespace Obligatorio1
 		public string Nombre { get; set; }
 		public string Numero { get; set; }
 		public string Direccion { get; set; }
+        public decimal Descuento { get; set; }
 
-		public Proveedor()
+        public Proveedor()
 		{
 		}
-		public Proveedor(string nombre, string numero, string direccion)
+		public Proveedor(string nombre, string numero, string direccion, decimal descuento)
 		{
 			Nombre = nombre;
 			Numero = numero;
 			Direccion = direccion;
-		}
+            Descuento = descuento;
+        }
 
 		public void Validar()
 		{

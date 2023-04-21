@@ -11,7 +11,7 @@ namespace Obligatorio1
 		{
 		}
 
-        public Interna(string persona, string lugar, bool aireLibre, string nombre, string descripcion, DateTime fecha, int edadMinima, int costo) : base(nombre, descripcion, fecha, edadMinima, costo)
+        public Interna(string persona, string lugar, bool aireLibre, string nombre, string descripcion, DateTime fecha, int edadMinima, int costo, int cantMax) : base(nombre, descripcion, fecha, edadMinima, costo, cantMax)
         {
 			Persona = persona;
 			Lugar = lugar;

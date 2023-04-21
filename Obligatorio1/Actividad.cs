@@ -10,13 +10,14 @@ namespace Obligatorio1
 		public DateTime Fecha { get; set; }
 		public int EdadMinima { get; set; }
 		public int Costo { get; set; }
+        public int cantMax { get; set; }
 
 		public Actividad()
 		{
 			Id = UltimoId++;
 		}
 
-        public Actividad(string nombre, string descripcion, DateTime fecha, int edadMinima, int costo)
+        public Actividad(string nombre, string descripcion, DateTime fecha, int edadMinima, int costo, int cantMax)
         {
             Id = UltimoId++;
 			Nombre = nombre;
