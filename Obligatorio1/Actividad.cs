@@ -66,8 +66,6 @@ namespace Obligatorio1
 
         public override string ToString()
         {
-
-
             string respuesta = base.ToString();
             respuesta += $"Identificador: {Id} \n";
             respuesta += $"Actividad: {Nombre} \n";
@@ -75,8 +73,6 @@ namespace Obligatorio1
             respuesta += $"Fecha: {Fecha} \n";
             respuesta += $"Cantidad Máxima: {CantMax} \n";
             respuesta += $"Edad Mínima: {EdadMinima} \n";
-            respuesta += $"Fecha: {Fecha} \n";
-
 
             return respuesta;
         }

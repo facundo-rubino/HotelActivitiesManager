@@ -47,6 +47,19 @@ namespace Obligatorio1
             {
                 throw new Exception("La dirección no puede ser vacía");
             }
+
+        }
+
+             public override string ToString()
+        {
+
+            string respuesta = base.ToString();
+            respuesta += $"Nombre: {Nombre} \n";
+            respuesta += $"Número: {Numero} \n";
+            respuesta += $"Direccion:{Direccion}  \n";
+            respuesta += $"Descuento: {Descuento} \n";
+         
+            return respuesta;
         }
     }
 
