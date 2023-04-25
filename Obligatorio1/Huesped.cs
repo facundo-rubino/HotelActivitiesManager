@@ -23,9 +23,10 @@ namespace Obligatorio1
 			Fidelizacion = fidelizacion;
         }
 
-		public void Validar()
+		public override void Validar()
 		{
-			HabitacionValida();
+            base.Validar();
+            HabitacionValida();
 			FidelizacionValida();
 			ValidarNombre();
 			ValidarApellido();

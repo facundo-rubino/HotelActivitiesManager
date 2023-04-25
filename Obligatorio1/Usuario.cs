@@ -16,7 +16,7 @@ namespace Obligatorio1
 			Contrasenia = contrasenia;
         }
 
-        public void Validar()
+        public virtual void Validar()
         {
             ValidarEmail();
             ValidarContrasenia();

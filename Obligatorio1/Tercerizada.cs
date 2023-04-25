@@ -18,6 +18,8 @@ namespace Obligatorio1
 			FechaConfirmacion = fechaConfirmacion;
 		}
 
-	}
+
+     
+    }
 }
 

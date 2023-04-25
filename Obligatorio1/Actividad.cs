@@ -10,7 +10,7 @@ namespace Obligatorio1
 		public DateTime Fecha { get; set; }
 		public int EdadMinima { get; set; }
 		public int Costo { get; set; }
-        public int cantMax { get; set; }
+        public int CantMax { get; set; }
 
 		public Actividad()
 		{
@@ -25,9 +25,10 @@ namespace Obligatorio1
 			Fecha = fecha;
 			EdadMinima = edadMinima;
 			Costo = costo;
+            CantMax = cantMax;
         }
 
-        public void Validar()
+        public virtual void Validar()
         {
 			ValidarNombre();
 			ValidarDescripcion();
@@ -61,6 +62,23 @@ namespace Obligatorio1
             {
                 throw new Exception("La fecha no puede ser menor a la estipulada");
             }
+        }
+
+        public override string ToString()
+        {
+
+
+            string respuesta = base.ToString();
+            respuesta += $"Identificador: {Id} \n";
+            respuesta += $"Actividad: {Nombre} \n";
+            respuesta += $"Actividad: {Descripcion} \n";
+            respuesta += $"Fecha: {Fecha} \n";
+            respuesta += $"Cantidad Máxima: {CantMax} \n";
+            respuesta += $"Edad Mínima: {EdadMinima} \n";
+            respuesta += $"Fecha: {Fecha} \n";
+
+
+            return respuesta;
         }
 
     }

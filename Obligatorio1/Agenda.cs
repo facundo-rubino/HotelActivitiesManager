@@ -18,6 +18,28 @@ namespace Obligatorio1
 			Estado = estado;
 			CostoFinal = costoFinal;
         }
+
+
+		public void calcularCosto()
+		{
+
+
+		}
+
+        public override string ToString()
+        {
+			 
+            string respuesta = base.ToString();
+            respuesta += $"Nombre:  \n";
+            respuesta += $"Actividad: {Actividad.Nombre} \n";
+            respuesta += $"Fecha: {Actividad.Fecha} \n";
+            respuesta += $"Lugar:  \n";
+            respuesta += $"(todo chequeo si es gratis)Costo: {CostoFinal} \n";
+            respuesta += $"Estado {Estado} \n";
+            respuesta += $"Actividad {Actividad.Nombre} \n";
+
+            return respuesta;
+        }
     }
 }
 
