@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Obligatorio1
+namespace Dominio
 {
 	public class Tercerizada : Actividad
 	{

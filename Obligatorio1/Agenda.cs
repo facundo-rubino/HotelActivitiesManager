@@ -1,22 +1,22 @@
 ﻿using System;
-namespace Obligatorio1
+namespace Dominio
 {
 	public class Agenda
 	{
 		public Actividad Actividad { get; set; }
-		public Usuario Usuario { get; set; }
+		public Huesped Huesped { get; set; }
 		public bool Estado { get; set; }
 		public int CostoFinal { get; set; }
 
 		public Agenda()
 		{
 		}
-        public Agenda(Actividad actividad, Usuario usuario, bool estado, int costoFinal)
+        public Agenda(Actividad actividad, Huesped huesped, bool estado)
         {
 			Actividad = actividad;
-			Usuario = usuario;
+			Huesped = huesped;
 			Estado = estado;
-			CostoFinal = costoFinal;
+			CostoFinal = CostoFinal;
         }
 
 
@@ -30,7 +30,7 @@ namespace Obligatorio1
         {
 			 
             string respuesta = base.ToString();
-            respuesta += $"Nombre:  \n";
+            respuesta += $"Nombre: {Huesped.Nombre} \n";
             respuesta += $"Actividad: {Actividad.Nombre} \n";
             respuesta += $"Fecha: {Actividad.Fecha} \n";
             respuesta += $"Lugar:  \n";

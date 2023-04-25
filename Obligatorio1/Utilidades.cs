@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Obligatorio1
+namespace Dominio
 {
 	public static class Utilidades
 	{

@@ -1,5 +1,10 @@
 ﻿using System;
-namespace Obligatorio1
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Dominio
 {
 	public class Sistema
 	{
@@ -7,10 +12,22 @@ namespace Obligatorio1
         public List<Usuario> Usuarios { get; }
         public List<Agenda> Agendas { get;  }
 
+        //singleton
+        private static Sistema _instancia = null;
 
-		public Sistema()
-		{
-		}
+        public static Sistema Instancia
+        {
+            get
+            {
+                if (_instancia == null)
+                {
+                    _instancia = new Sistema();
+                }
+                return _instancia;
+            }
+        }
+
+
 
         public void Precargar()
         {
