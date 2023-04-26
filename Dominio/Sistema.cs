@@ -80,6 +80,11 @@ namespace Dominio
 
         }
 
+        public void PrecargaHuesped()
+        {
+
+        }
+
         public void AgregarActividadInterna(Interna interna)
         {
             if (interna == null)

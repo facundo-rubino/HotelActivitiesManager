@@ -34,38 +34,23 @@ namespace Dominio
 
         private void HabitacionValida()
 		{
-            if (!Utilidades.StringValido(Habitacion))
-            {
-                throw new Exception("La habitación no puede ser vacía");
-            }
+            if (!Utilidades.StringValido(Habitacion)) throw new Exception("La habitación no puede ser vacía");    
         }
 
         private void FidelizacionValida()
 		{
-			if (Fidelizacion < 1 || Fidelizacion > 4)
-			{
-                throw new Exception("El número debe ser entre 1 y 4");
-            }
+			if (Fidelizacion < 1 || Fidelizacion > 4) throw new Exception("El número debe ser entre 1 y 4");
 		}
 
         private void ValidarNombre()
 		{
-            if (!Utilidades.StringValido(Nombre))
-            {
-                throw new Exception("El nombre no puede ser vacío");
-            }
+            if (!Utilidades.StringValido(Nombre)) throw new Exception("El nombre no puede ser vacío");
         }
 
         private void ValidarApellido()
         {
-            if (!Utilidades.StringValido(Apellido))
-            {
-                throw new Exception("El apellido no puede ser vacío");
-            }
+            if (!Utilidades.StringValido(Apellido)) throw new Exception("El apellido no puede ser vacío"); 
         }
-
-
-
 
     }
 }

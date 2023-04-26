@@ -24,18 +24,12 @@ namespace Dominio
 
 		private void ValidarEmail()
 		{
-			if (Email.IndexOf("@") == 0 || Email.LastIndexOf("@") == Email.Length - 1)
-			{
-                throw new Exception("El email ingresado no es válido");
-            }
+			if (Email.IndexOf("@") == 0 || Email.LastIndexOf("@") == Email.Length - 1) throw new Exception("El email ingresado no es válido");
         }
 
         private void ValidarContrasenia()
         {
-            if (Contrasenia.Length < 8)
-            {
-                throw new Exception("La contraseña debe tener un mínimo de 8 caracteres");
-            }
+            if (Contrasenia.Length < 8) throw new Exception("La contraseña debe tener un mínimo de 8 caracteres");
         }
     }
 }

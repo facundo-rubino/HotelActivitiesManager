@@ -50,18 +50,12 @@ namespace Dominio
 
         private void ValidarDescripcion()
         {
-            if (!Utilidades.StringValido(Descripcion))
-            {
-                throw new Exception("La descripción no puede ser vacía");
-            }
+            if (!Utilidades.StringValido(Descripcion)) throw new Exception("La descripción no puede ser vacía");
         }
 
         private void ValidarFecha()
 		{
-			if(Fecha < DateTime.Now)
-            {
-                throw new Exception("La fecha no puede ser menor a la estipulada");
-            }
+			if(Fecha < DateTime.Now) throw new Exception("La fecha no puede ser menor a la estipulada");
         }
 
         public override string ToString()

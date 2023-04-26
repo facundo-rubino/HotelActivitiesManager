@@ -29,25 +29,15 @@ namespace Dominio
 
 		private void ValidarNombre()
 		{
-			if (!Utilidades.StringValido(Nombre))
-			{
-				throw new Exception("El nombre no puede ser vacío");
-			}
+			if (!Utilidades.StringValido(Nombre)) throw new Exception("El nombre no puede ser vacío");
 		}
         private void ValidarNumero()
         {
-            if (!Utilidades.StringValido(Numero))
-            {
-                throw new Exception("El número no puede ser vacío");
-            }
+            if (!Utilidades.StringValido(Numero)) throw new Exception("El número no puede ser vacío");
         }
         private void ValidarDireccion()
         {
-            if (!Utilidades.StringValido(Direccion))
-            {
-                throw new Exception("La dirección no puede ser vacía");
-            }
-
+            if (!Utilidades.StringValido(Direccion)) throw new Exception("La dirección no puede ser vacía");
         }
 
              public override string ToString()
