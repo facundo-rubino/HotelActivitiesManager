@@ -26,6 +26,7 @@ namespace Dominio
 		public override void Validar()
 		{
             base.Validar();
+			ValidarCedula();
             HabitacionValida();
 			FidelizacionValida();
 			ValidarNombre();
@@ -51,6 +52,11 @@ namespace Dominio
         {
             if (!Utilidades.StringValido(Apellido)) throw new Exception("El apellido no puede ser vacío"); 
         }
+        public void ValidarCedula()
+        {
+            if (!CIValidacion.Validate(Documento.NumDocumento)) throw new Exception($"La cédula '{Documento.NumDocumento}' no es válida");
+        }
+
 
     }
 }

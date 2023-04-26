@@ -124,7 +124,7 @@ namespace Dominio
             Tercerizada Tercerizada9 = new Tercerizada(Proveedor3, false, new DateTime(2024, 09, 12), "ActTercerizada9", "Descripcion tercerizada 9", new DateTime(2024, 09, 12), 18, 0, 15);
             AgregarActividadTercerizada(Tercerizada9);
 
-            Proveedor Proveedor10 = new Proveedor("Bacci Tours", "22001189", "Michigan 2100", 9);
+            Proveedor Proveedor10 = new Proveedor("MiloLines", "22001189", "Michigan 2100", 9);
             ValidarProveedorRepetido(Proveedor10);
 
             Tercerizada Tercerizada10 = new Tercerizada(Proveedor4, false, new DateTime(2024, 10, 12), "ActTercerizada10", "Descripcion tercerizada 10", new DateTime(2024, 10, 12), 18, 45, 15);

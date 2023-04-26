@@ -7,16 +7,18 @@ namespace Dominio
 		public Huesped? Huesped { get; set; }
 		public bool? Estado { get; set; }
 		public int? CostoFinal { get; set; }
+		public DateTime? FechaCreacion { get; set; }
 
 		public Agenda()
 		{
 		}
-        public Agenda(Actividad actividad, Huesped huesped, bool estado)
+        public Agenda(Actividad actividad, Huesped huesped, bool estado, DateTime fecha)
         {
 			Actividad = actividad;
 			Huesped = huesped;
 			Estado = estado;
 			CostoFinal = CostoFinal;
+			FechaCreacion = fecha;
         }
 
 

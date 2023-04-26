@@ -16,10 +16,6 @@ namespace Dominio
 			NumDocumento = numero;
 		}
 
-		public void ValidarCedula()
-		{
-			if (!CIValidacion.Validate(NumDocumento)) throw new Exception("Cédula inválida");
-		}
 		
 
 	}
