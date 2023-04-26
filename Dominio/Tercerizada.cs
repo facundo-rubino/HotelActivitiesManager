@@ -1,11 +1,11 @@
 ﻿using System;
 namespace Dominio
 {
-	public class Tercerizada : Actividad
-	{
-		public Proveedor Proveedor { get; set; }
-		public bool Confirmada { get; set; }
-		public DateTime FechaConfirmacion { get; set; }
+	public class Tercerizada : Actividad, IValidable
+    {
+		public Proveedor? Proveedor { get; set; }
+		public bool? Confirmada { get; set; }
+		public DateTime? FechaConfirmacion { get; set; }
 
 		public Tercerizada()
 		{

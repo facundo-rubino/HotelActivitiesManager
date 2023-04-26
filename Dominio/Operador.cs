@@ -1,8 +1,8 @@
 ﻿using System;
 namespace Dominio
 {
-	public class Operador : Usuario
-	{
+	public class Operador : Usuario, IValidable
+    {
 		public Operador()
 		{
 		}

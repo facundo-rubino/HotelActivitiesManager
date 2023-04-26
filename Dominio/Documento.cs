@@ -3,8 +3,8 @@ namespace Dominio
 {
 	public class Documento
 	{
-        public string TipoDocumento { get; set; }
-        public int NumDocumento { get; set; }
+        public string? TipoDocumento { get; set; }
+        public int? NumDocumento { get; set; }
 
         public Documento()
 		{

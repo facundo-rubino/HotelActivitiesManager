@@ -1,14 +1,14 @@
 ﻿using System;
 namespace Dominio
 {
-	public class Huesped : Usuario
+	public class Huesped : Usuario, IValidable
 	{
-		public Documento Documento { get; set; }
-		public string Nombre { get; set; }
-		public string Apellido { get; set; }
-		public string Habitacion { get; set; }
-		public DateTime FechaNac { get; set; }
-		public int Fidelizacion { get; set; }
+		public Documento? Documento { get; set; }
+		public string? Nombre { get; set; }
+		public string? Apellido { get; set; }
+		public string? Habitacion { get; set; }
+		public DateTime? FechaNac { get; set; }
+		public int? Fidelizacion { get; set; }
 
 		public Huesped()
 		{

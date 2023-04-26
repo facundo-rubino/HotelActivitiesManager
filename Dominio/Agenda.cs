@@ -3,10 +3,10 @@ namespace Dominio
 {
 	public class Agenda
 	{
-		public Actividad Actividad { get; set; }
-		public Huesped Huesped { get; set; }
-		public bool Estado { get; set; }
-		public int CostoFinal { get; set; }
+		public Actividad? Actividad { get; set; }
+		public Huesped? Huesped { get; set; }
+		public bool? Estado { get; set; }
+		public int? CostoFinal { get; set; }
 
 		public Agenda()
 		{

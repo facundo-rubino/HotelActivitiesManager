@@ -26,8 +26,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "/Users/facundorubino/_dev/projects/C#/Obligatorio1/Obligatorio1/Dominio.csproj": {
-                "projectPath": "/Users/facundorubino/_dev/projects/C#/Obligatorio1/Obligatorio1/Dominio.csproj"
+              "/Users/facundorubino/_dev/projects/C#/Obligatorio1/Dominio/Dominio.csproj": {
+                "projectPath": "/Users/facundorubino/_dev/projects/C#/Obligatorio1/Dominio/Dominio.csproj"
               }
             }
           }
@@ -61,14 +61,14 @@
         }
       }
     },
-    "/Users/facundorubino/_dev/projects/C#/Obligatorio1/Obligatorio1/Dominio.csproj": {
+    "/Users/facundorubino/_dev/projects/C#/Obligatorio1/Dominio/Dominio.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/facundorubino/_dev/projects/C#/Obligatorio1/Obligatorio1/Dominio.csproj",
+        "projectUniqueName": "/Users/facundorubino/_dev/projects/C#/Obligatorio1/Dominio/Dominio.csproj",
         "projectName": "Dominio",
-        "projectPath": "/Users/facundorubino/_dev/projects/C#/Obligatorio1/Obligatorio1/Dominio.csproj",
+        "projectPath": "/Users/facundorubino/_dev/projects/C#/Obligatorio1/Dominio/Dominio.csproj",
         "packagesPath": "/Users/facundorubino/.nuget/packages/",
-        "outputPath": "/Users/facundorubino/_dev/projects/C#/Obligatorio1/Obligatorio1/obj/",
+        "outputPath": "/Users/facundorubino/_dev/projects/C#/Obligatorio1/Dominio/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/facundorubino/.nuget/NuGet/NuGet.Config"

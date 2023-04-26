@@ -1,10 +1,10 @@
 ﻿using System;
 namespace Dominio
 {
-	public abstract class Usuario
-	{
-		public string Email { get; set; }
-		public string Contrasenia { get; set; }
+	public abstract class Usuario : IValidable
+    {
+		public string? Email { get; set; }
+		public string? Contrasenia { get; set; }
 
 		public Usuario()
 		{

@@ -1,11 +1,11 @@
 ﻿using System;
 namespace Dominio
 {
-	public class Interna : Actividad
+	public class Interna : Actividad, IValidable
 	{
-		public string Persona { get; set; }
-		public string Lugar { get; set; }
-		public bool AireLibre { get; set; }
+		public string? Persona { get; set; }
+		public string? Lugar { get; set; }
+		public bool? AireLibre { get; set; }
 
 		public Interna()
 		{

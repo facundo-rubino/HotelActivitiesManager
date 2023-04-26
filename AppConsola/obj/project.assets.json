@@ -17,8 +17,8 @@
   "libraries": {
     "Dominio/1.0.0": {
       "type": "project",
-      "path": "../Obligatorio1/Dominio.csproj",
-      "msbuildProject": "../Obligatorio1/Dominio.csproj"
+      "path": "../Dominio/Dominio.csproj",
+      "msbuildProject": "../Dominio/Dominio.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -51,8 +51,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "/Users/facundorubino/_dev/projects/C#/Obligatorio1/Obligatorio1/Dominio.csproj": {
-              "projectPath": "/Users/facundorubino/_dev/projects/C#/Obligatorio1/Obligatorio1/Dominio.csproj"
+            "/Users/facundorubino/_dev/projects/C#/Obligatorio1/Dominio/Dominio.csproj": {
+              "projectPath": "/Users/facundorubino/_dev/projects/C#/Obligatorio1/Dominio/Dominio.csproj"
             }
           }
         }

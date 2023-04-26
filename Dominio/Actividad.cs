@@ -1,16 +1,16 @@
 ﻿using System;
 namespace Dominio
 {
-	public abstract class Actividad
+	public abstract class Actividad : IValidable
 	{
-		public int Id { get;}
-		public static int UltimoId { get; set; }
-        public string Nombre { get; set; }
-        public string Descripcion { get; set; }
-		public DateTime Fecha { get; set; }
-		public int EdadMinima { get; set; }
-		public int Costo { get; set; }
-        public int CantMax { get; set; }
+		public int? Id { get;}
+		public static int? UltimoId { get; set; }
+        public string? Nombre { get; set; }
+        public string? Descripcion { get; set; }
+		public DateTime? Fecha { get; set; }
+		public int? EdadMinima { get; set; }
+		public int? Costo { get; set; }
+        public int? CantMax { get; set; }
 
 		public Actividad()
 		{
