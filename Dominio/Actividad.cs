@@ -4,7 +4,7 @@ namespace Dominio
 	public abstract class Actividad : IValidable
 	{
 		public int? Id { get;}
-		public static int? UltimoId { get; set; }
+        public static int? UltimoId { get; set; } = 1;
         public string? Nombre { get; set; }
         public string? Descripcion { get; set; }
 		public DateTime? Fecha { get; set; }
@@ -38,14 +38,9 @@ namespace Dominio
 
 		private void ValidarNombre()
 		{
-            if (!Utilidades.StringValido(Nombre))
-            {
-                throw new Exception("El nombre no puede ser vacío");
-            }
-			if (Nombre.Length > 25)
-			{
-                throw new Exception("El nombre no puede ser de más de 25 caracteres");
-            }
+            if (!Utilidades.StringValido(Nombre)) throw new Exception("El nombre no puede ser vacío");
+            
+			if (Nombre.Length > 25) throw new Exception("El nombre no puede ser de más de 25 caracteres");
         }
 
         private void ValidarDescripcion()
@@ -55,7 +50,12 @@ namespace Dominio
 
         private void ValidarFecha()
 		{
-			if(Fecha < DateTime.Now) throw new Exception("La fecha no puede ser menor a la estipulada");
+			if(Fecha < DateTime.Now) throw new Exception("La fecha no puede ser menor a la de hoy");
+        }
+
+        private void ValidarCosto()
+        {
+            if (Costo == null) Costo = 0;
         }
 
         public override string ToString()

@@ -13,7 +13,7 @@ namespace Dominio
 		public Huesped()
 		{
 		}
-        public Huesped(Documento documento, int numDoc, string nombre, string apellido, string habitacion, DateTime fechaNac, int fidelizacion, string email, string contrasenia) : base(email, contrasenia)
+        public Huesped(Documento documento, string nombre, string apellido, string habitacion, DateTime fechaNac, int fidelizacion, string email, string contrasenia) : base(email, contrasenia)
         {
 			Documento = documento;
 			Nombre = nombre;

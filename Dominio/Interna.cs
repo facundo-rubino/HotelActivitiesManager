@@ -17,6 +17,17 @@ namespace Dominio
 			Lugar = lugar;
 			AireLibre = aireLibre;
         }
+
+		public override void Validar()
+		{
+			base.Validar();
+			ValidarNombre();
+		}
+
+        private void ValidarNombre()
+        {
+            if (!Utilidades.StringValido(Nombre)) throw new Exception("El nombre no puede ser vacío");
+        }
     }
 }
 

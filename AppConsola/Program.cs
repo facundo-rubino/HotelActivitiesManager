@@ -3,15 +3,22 @@
 namespace AppConsola
 {
 
-    public class Program
-
+    internal class Program
     {
+        static private Sistema _sistema = Sistema.Instancia;
 
-         static void Main(string[] args)
+
+        static void Main(string[] args)
         {
             try
             {
-                Console.WriteLine("Compila");
+                _sistema.Precargar();
+                Console.WriteLine("Precarga confirmada");
+
+                foreach (Actividad actividad in _sistema.Actividades)
+                {
+                    Console.WriteLine(actividad);
+                }
 
             }
 
