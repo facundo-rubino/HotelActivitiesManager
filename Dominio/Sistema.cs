@@ -189,6 +189,7 @@ namespace Dominio
                 }
             }
         }
+
         public void ValidarDocumentoRepetido(Huesped huespedIngresado)
         {
             foreach (Usuario item in Usuarios)
@@ -204,6 +205,42 @@ namespace Dominio
                 }
             }
         }
+
+        public Proveedor? ObtenerProveedorPorNombre(string nombre)
+        {
+            foreach (Actividad item in Actividades)
+            {
+                if (item is Tercerizada)
+                {
+                    Tercerizada unaTercerizada = item as Tercerizada;
+
+                    if (unaTercerizada.Proveedor.Nombre == nombre)
+                    {
+                        return unaTercerizada.Proveedor;
+                    }
+                } 
+            }
+            return null;
+        }
+
+        public void ModificarPromocionProveedor(string nombre, int promocion)
+        {
+            if (string.IsNullOrEmpty(nombre))
+            {
+                throw new Exception($"El nombre no es válido");
+            }
+           
+            Proveedor unProveedor = ObtenerProveedorPorNombre(nombre);
+
+            if (unProveedor == null)
+            {
+                throw new Exception($"No se encontro el proveedor de nombre: {nombre}");
+            }
+            unProveedor.Descuento = promocion;
+        }
+
+
+
     }
 }
 

@@ -44,9 +44,9 @@ namespace Dominio
         {
 
             string respuesta = base.ToString();
-            respuesta += $"Nombre: {Nombre} \n";
+            respuesta += $"\nNombre: {Nombre} \n";
             respuesta += $"Número: {Numero} \n";
-            respuesta += $"Direccion:{Direccion}  \n";
+            respuesta += $"Direccion: {Direccion}  \n";
             respuesta += $"Descuento: {Descuento} \n";
          
             return respuesta;

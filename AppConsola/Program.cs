@@ -15,11 +15,13 @@ namespace AppConsola
                 _sistema.Precargar();
                 Console.WriteLine("Precarga confirmada");
 
-                foreach (Actividad actividad in _sistema.Actividades)
-                {
-                    Console.WriteLine(actividad);
-                }
+                // foreach (Actividad actividad in _sistema.Actividades)
+                // {
+                //       Console.WriteLine(actividad);
+                //}
 
+                _sistema.ModificarPromocionProveedor("Bacci Tours", 9000);
+                Console.WriteLine(_sistema.ObtenerProveedorPorNombre("Bacci Tours"));    
             }
 
             catch (Exception e)
