@@ -148,7 +148,7 @@ namespace Dominio
 
         public void PrecargarHuespedes()
         {
-            Huesped Huesped1 = new Huesped(new Documento("CI", "51243902"), "Facundo", "Rubino", "24", new DateTime(2000, 04, 21), 4, "facundorubino21@gmail.com", "password");
+            Huesped Huesped1 = new Huesped(new Documento(TipoDocumento.CI, "51243902"), "Facundo", "Rubino", "24", new DateTime(2000, 04, 21), 4, "facundorubino21@gmail.com", "password");
             AgregarHuesped(Huesped1);
         }
 
@@ -173,6 +173,7 @@ namespace Dominio
             if (huesped == null) throw new Exception("El huesped no es válido");
 
             huesped.Validar();
+            ValidarDocumentoRepetido(huesped);
             Usuarios.Add(huesped);
         }
 
@@ -182,17 +183,27 @@ namespace Dominio
             {
                 if (item is Tercerizada)
                 {
-                    Tercerizada unaT = item as Tercerizada;
+                    Tercerizada unaTercerizada = item as Tercerizada;
 
-                    if (unaT.Proveedor.Nombre == proveedor.Nombre) throw new Exception($"El nombre:'{proveedor.Nombre}' de proveedor ya existe");
+                    if (unaTercerizada.Proveedor.Nombre == proveedor.Nombre) throw new Exception($"El nombre:'{proveedor.Nombre}' de proveedor ya existe");
                 }
-
-
-                
             }
-
         }
-
+        public void ValidarDocumentoRepetido(Huesped huespedIngresado)
+        {
+            foreach (Usuario item in Usuarios)
+            {
+                //Hago la consulta aunque sean todos tipo huespedes, para que funcione igual de bien en el segundo obligatorio
+                if (item is Huesped)
+                {
+                    Huesped unHuesped = item as Huesped;
+                    if (unHuesped.Documento.NumDocumento == huespedIngresado.Documento.NumDocumento || unHuesped.Documento.TipoDocumento == huespedIngresado.Documento.TipoDocumento)
+                    {
+                        throw new Exception($"Ya existe '{huespedIngresado.Documento.TipoDocumento}' con el número {huespedIngresado.Documento.NumDocumento}");
+                    }
+                }
+            }
+        }
     }
 }
 
