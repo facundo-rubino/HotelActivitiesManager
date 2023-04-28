@@ -112,12 +112,10 @@ namespace AppConsola
 
             List<Actividad> ListaActividadesPorCosto = (List<Actividad>)_sistema.ListaActividadesPorCosto(new DateTime(2024, 03, 01), new DateTime(2024, 05, 01), 50);
 
-
             foreach (Actividad item in ListaActividadesPorCosto)
             {
                 Console.WriteLine(item);
             }
-
         }
 
         private static void ModificarPromocion()
@@ -127,6 +125,7 @@ namespace AppConsola
 
             _sistema.ModificarPromocionProveedor("Bacci Tours", 9000);
             Console.WriteLine(_sistema.ObtenerProveedorPorNombre("Bacci Tours"));
+
         }
 
         private static void AltaHuespedes()

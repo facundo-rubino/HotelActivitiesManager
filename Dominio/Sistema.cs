@@ -79,7 +79,7 @@ namespace Dominio
             Proveedor Proveedor1 = new Proveedor("DreamWorks S.R.L.", "23048549", "Suarez 3380 Apto 304", 1);
             ValidarProveedorRepetido(Proveedor1);
 
-            Tercerizada Tercerizada1 = new Tercerizada(Proveedor1, false, new DateTime(2024, 01, 12), "ActTercerizada1", "Descripcion tercerizada 1", new DateTime(2024, 01, 12), 10, 0, 10);
+            Tercerizada Tercerizada1 = new Tercerizada(Proveedor1, true, new DateTime(2024, 01, 12), "ActTercerizada1", "Descripcion tercerizada 1", new DateTime(2024, 01, 12), 10, 0, 10);
             AgregarActividadTercerizada(Tercerizada1);
 
             Proveedor Proveedor2 = new Proveedor("Estela Umpierrez S.A.", "33459678", "Lima 2456", 7);
@@ -97,19 +97,19 @@ namespace Dominio
             Proveedor Proveedor4 = new Proveedor("Rekreation S.A.", "29162019", "Bacacay 1211", 11);
             ValidarProveedorRepetido(Proveedor4);
 
-            Tercerizada Tercerizada4 = new Tercerizada(Proveedor2, false, new DateTime(2024, 04, 12), "ActTercerizada4", "Descripcion tercerizada 4", new DateTime(2024, 04, 12), 10, 22, 10);
+            Tercerizada Tercerizada4 = new Tercerizada(Proveedor2, true, new DateTime(2024, 04, 12), "ActTercerizada4", "Descripcion tercerizada 4", new DateTime(2024, 04, 12), 10, 22, 10);
             AgregarActividadTercerizada(Tercerizada4);
 
             Proveedor Proveedor5 = new Proveedor("Alonso & Umpierrez", "24051920", "18 de Julio 1956 Apto 4", 10);
             ValidarProveedorRepetido(Proveedor5);
 
-            Tercerizada Tercerizada5 = new Tercerizada(Proveedor2, false, new DateTime(2024, 05, 12), "ActTercerizada5", "Descripcion tercerizada 5", new DateTime(2024, 05, 12), 8, 0, 15);
+            Tercerizada Tercerizada5 = new Tercerizada(Proveedor2, true, new DateTime(2024, 05, 12), "ActTercerizada5", "Descripcion tercerizada 5", new DateTime(2024, 05, 12), 8, 0, 15);
             AgregarActividadTercerizada(Tercerizada5);
 
             Proveedor Proveedor6 = new Proveedor("Electric Blue", "26018945", "Cooper 678", 5);
             ValidarProveedorRepetido(Proveedor6);
 
-            Tercerizada Tercerizada6 = new Tercerizada(Proveedor5, false, new DateTime(2024, 06, 12), "ActTercerizada6", "Descripcion tercerizada 6", new DateTime(2024, 06, 12), 8, 0, 10);
+            Tercerizada Tercerizada6 = new Tercerizada(Proveedor5, true, new DateTime(2024, 06, 12), "ActTercerizada6", "Descripcion tercerizada 6", new DateTime(2024, 06, 12), 8, 0, 10);
             AgregarActividadTercerizada(Tercerizada6);
 
             Proveedor Proveedor7 = new Proveedor("Lúdica S.A.", "26142967", "Dublin 560", 4);
@@ -121,25 +121,25 @@ namespace Dominio
             Proveedor Proveedor8 = new Proveedor("Gimenez S.R.L.", "29001010", "Andes 1190", 7);
             ValidarProveedorRepetido(Proveedor8);
 
-            Tercerizada Tercerizada8 = new Tercerizada(Proveedor5, false, new DateTime(2024, 08, 12), "ActTercerizada8", "Descripcion tercerizada 8", new DateTime(2024, 08, 12), 12, 65, 10);
+            Tercerizada Tercerizada8 = new Tercerizada(Proveedor5, true, new DateTime(2024, 08, 12), "ActTercerizada8", "Descripcion tercerizada 8", new DateTime(2024, 08, 12), 12, 65, 10);
             AgregarActividadTercerizada(Tercerizada8);
 
             Proveedor Proveedor9 = new Proveedor("Perez Marquez", "22041120", "Agraciada 2512 Apto. 1", 8);
             ValidarProveedorRepetido(Proveedor9);
 
-            Tercerizada Tercerizada9 = new Tercerizada(Proveedor3, false, new DateTime(2024, 09, 12), "ActTercerizada9", "Descripcion tercerizada 9", new DateTime(2024, 09, 12), 18, 0, 15);
+            Tercerizada Tercerizada9 = new Tercerizada(Proveedor3, true, new DateTime(2024, 09, 12), "ActTercerizada9", "Descripcion tercerizada 9", new DateTime(2024, 09, 12), 18, 0, 15);
             AgregarActividadTercerizada(Tercerizada9);
 
             Proveedor Proveedor10 = new Proveedor("MiloLines", "22001189", "Michigan 2100", 9);
             ValidarProveedorRepetido(Proveedor10);
 
-            Tercerizada Tercerizada10 = new Tercerizada(Proveedor4, false, new DateTime(2024, 10, 12), "ActTercerizada10", "Descripcion tercerizada 10", new DateTime(2024, 10, 12), 18, 45, 15);
+            Tercerizada Tercerizada10 = new Tercerizada(Proveedor4, true, new DateTime(2024, 10, 12), "ActTercerizada10", "Descripcion tercerizada 10", new DateTime(2024, 10, 12), 18, 45, 15);
             AgregarActividadTercerizada(Tercerizada10);
 
             Tercerizada Tercerizada11 = new Tercerizada(Proveedor6, false, new DateTime(2024, 11, 12), "ActTercerizada11", "Descripcion tercerizada 11", new DateTime(2024, 11, 12), 10, 55, 10);
             AgregarActividadTercerizada(Tercerizada11);
 
-            Tercerizada Tercerizada12 = new Tercerizada(Proveedor7, false, new DateTime(2024, 12, 12), "ActTercerizada12", "Descripcion tercerizada 12", new DateTime(2024, 12, 12), 10, 0, 20);
+            Tercerizada Tercerizada12 = new Tercerizada(Proveedor7, true, new DateTime(2024, 12, 12), "ActTercerizada12", "Descripcion tercerizada 12", new DateTime(2024, 12, 12), 10, 0, 20);
             AgregarActividadTercerizada(Tercerizada12);
 
             Tercerizada Tercerizada13 = new Tercerizada(Proveedor8, false, new DateTime(2024, 01, 12), "ActTercerizada13", "Descripcion tercerizada 13", new DateTime(2024, 01, 12), 12, 0, 20);

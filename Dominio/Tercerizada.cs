@@ -4,7 +4,7 @@ namespace Dominio
 	public class Tercerizada : Actividad, IValidable
     {
 		public Proveedor? Proveedor { get; set; }
-		public bool? Confirmada { get; set; }
+		public bool Confirmada { get; set; }
 		public DateTime? FechaConfirmacion { get; set; }
 
 		public Tercerizada()
@@ -21,7 +21,7 @@ namespace Dominio
         public override string ToString()
         {
             string actividadConfirmada;
-            if ((bool)Confirmada)
+            if (Confirmada)
             {
                 actividadConfirmada = "Si";
             }

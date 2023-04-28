@@ -73,7 +73,7 @@ namespace Dominio
 
         public override string ToString()
         {
-            string respuesta = base.ToString();
+            string respuesta = "-------\n";
             respuesta += $"Identificador: {Id} \n";
             respuesta += $"Actividad: {Nombre} \n";
             respuesta += $"Actividad: {Descripcion} \n";
