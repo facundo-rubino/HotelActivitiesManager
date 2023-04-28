@@ -156,11 +156,20 @@ namespace Dominio
         {
             Huesped Huesped1 = new Huesped(new Documento(TipoDocumento.CI, "51243902"), "Facundo", "Rubino", "24", new DateTime(2000, 04, 21), 4, "facundorubino21@gmail.com", "password");
             AgregarHuesped(Huesped1);
+
+            Huesped Huesped2 = new Huesped(new Documento(TipoDocumento.CI, "51656529"), "Federico", "Rubino", "24", new DateTime(2000, 04, 21), 4, "federubino@gmail.com", "password");
+            AgregarHuesped(Huesped2);
+
         }
 
         public void AgregarActividadInterna(Interna interna)
         {
             if (interna == null) throw new Exception("Actividad interna no válida");
+
+            if (Actividades.Contains(interna))
+            {
+                throw new Exception($"El nombre de la actividad {interna.Nombre} ya esta registradO.");
+            }
 
             interna.Validar();
             Actividades.Add(interna);
@@ -170,6 +179,11 @@ namespace Dominio
         {
             if (tercerizada == null) throw new Exception("Actividad tercerizada no válida");
 
+            if (Actividades.Contains(tercerizada))
+            {
+                throw new Exception($"El nombre de la actividad {tercerizada.Nombre} ya esta registrada.");
+            }
+
             tercerizada.Validar();
             Actividades.Add(tercerizada);
         }
@@ -177,6 +191,11 @@ namespace Dominio
         public void AgregarHuesped(Huesped huesped)
         {
             if (huesped == null) throw new Exception("El huesped no es válido");
+
+            if (Usuarios.Contains(huesped))
+            {
+                throw new Exception($"El email {huesped.Email} ya esta registrado.");
+            }
 
             huesped.Validar();
             ValidarDocumentoRepetido(huesped);

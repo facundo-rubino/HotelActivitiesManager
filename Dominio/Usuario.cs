@@ -1,7 +1,9 @@
 ﻿using System;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+
 namespace Dominio
 {
-	public abstract class Usuario : IValidable
+	public abstract class Usuario : IValidable, IEquatable<Usuario>
     {
 		public string? Email { get; set; }
 		public string? Contrasenia { get; set; }
@@ -31,6 +33,12 @@ namespace Dominio
         {
             if (Contrasenia.Length < 8) throw new Exception("La contraseña debe tener un mínimo de 8 caracteres");
         }
+
+        public bool Equals(Usuario? other)
+        {
+            return other != null && Email == other.Email;
+        }
+
     }
 }
 

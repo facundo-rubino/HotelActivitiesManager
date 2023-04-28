@@ -1,7 +1,7 @@
 ﻿using System;
 namespace Dominio
 {
-	public abstract class Actividad : IValidable, IComparable<Actividad>
+	public abstract class Actividad : IValidable, IComparable<Actividad>, IEquatable<Actividad>
     {
 		public int? Id { get;}
         public static int? UltimoId { get; set; } = 1;
@@ -66,6 +66,11 @@ namespace Dominio
 
         }
 
+        public bool Equals(Actividad? other)
+        {
+            return other != null && Nombre == other.Nombre;
+        }
+
         public override string ToString()
         {
             string respuesta = base.ToString();
@@ -79,6 +84,8 @@ namespace Dominio
 
             return respuesta;
         }
+
+
 
     }
 }

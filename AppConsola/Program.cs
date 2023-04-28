@@ -10,9 +10,12 @@ namespace AppConsola
         static private Sistema _sistema = Sistema.Instancia;
 
 
+
         static void Main(string[] args)
         {
-            
+            try
+            {
+
                 _sistema.Precargar();
                 Console.WriteLine("Precarga confirmada");
 
@@ -23,53 +26,57 @@ namespace AppConsola
                     Console.WriteLine("1 - Registro de huespedes");
                     Console.WriteLine();
 
-
-
-                        try
+                    try
                     {
-                    opcion = Int32.Parse(Console.ReadLine());
-                    
-                    
-                     }
-                         catch (Exception)
-                {
-                    Console.WriteLine("Ingrese una opción válida");
-                    Console.ReadKey();
-                }
+                        opcion = Int32.Parse(Console.ReadLine());
 
-                Console.Clear();
 
-                switch (opcion)
-                {
-                    case 1:
-                        ListadoActividades();
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.Message);
+                        Console.ReadKey();
+                    }
+
+                    Console.Clear();
+
+                    switch (opcion)
+                    {
+                        case 1:
+                            ListadoActividades();
                             break;
-                    case 2:
-                        ListadoProveedores();
-                        break;
-                    case 3:
-                        ActividadesPorCosto();
-                        break;
-                    case 4:
-                        ModificarPromocion();
-                        break;
+                        case 2:
+                            ListadoProveedores();
+                            break;
+                        case 3:
+                            ActividadesPorCosto();
+                            break;
+                        case 4:
+                            ModificarPromocion();
+                            break;
 
-                    default:
-                        break;
+                        default:
+                            break;
+                    }
+
+
+                    Console.WriteLine("Registro de huespedes");
+                    Console.WriteLine("-------");
+                    Console.WriteLine("Ingrese email");
+                    string email = Console.ReadLine();
+                    Console.WriteLine("Ingrese contrasenia");
+                    string contrasenia = Console.ReadLine();
+
+
                 }
-
-
-                Console.WriteLine("Registro de huespedes");
-                Console.WriteLine("-------");
-                Console.WriteLine("Ingrese email");
-                string email = Console.ReadLine();
-                Console.WriteLine("Ingrese contrasenia");
-                string contrasenia = Console.ReadLine();
-
-
-
 
             }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Console.ReadKey();
+            }
+
 
         }
 
