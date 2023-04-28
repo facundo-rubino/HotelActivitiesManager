@@ -92,11 +92,13 @@ namespace AppConsola
             {
                 Console.WriteLine(actividad);
             }
+            Console.ReadKey();
+            Console.Clear();
         }
 
         private static void ListadoProveedores()
         {
-            Console.WriteLine("Listado actividades");
+            Console.WriteLine("Listado de Proveedores ordenados por nombre:");
 
             List<Proveedor> ListaProveedores = (List<Proveedor>)_sistema.ListaProveedoresOrdenada();
 
@@ -104,18 +106,44 @@ namespace AppConsola
             {
                 Console.WriteLine(item);
             }
+            Console.ReadKey();
+            Console.Clear();
         }
 
         private static void ActividadesPorCosto()
         {
-            Console.WriteLine("Listado actividades");
+            Console.WriteLine("Listado de actividades mayores al costo ingresado comprendido en un rango de fechas");
+            Console.WriteLine("------");
 
-            List<Actividad> ListaActividadesPorCosto = (List<Actividad>)_sistema.ListaActividadesPorCosto(new DateTime(2024, 03, 01), new DateTime(2024, 05, 01), 50);
+            Console.WriteLine("Ingrese un costo");
+            int costo = Int32.Parse(Console.ReadLine());
+            Console.Clear();
 
-            foreach (Actividad item in ListaActividadesPorCosto)
+            Console.WriteLine("Ingrese una fecha (ej: 2024-12-28)");
+            string fechaIngresada1 = Console.ReadLine();
+            DateTime fechaUno = DateTime.Parse(fechaIngresada1);
+            Console.Clear();
+
+            Console.WriteLine("Ingrese otra fecha (ej: 2024-01-28)");
+            string fechaIngresada2 = Console.ReadLine();
+            DateTime fechaDos = DateTime.Parse(fechaIngresada2);
+            Console.Clear();
+
+            List<Actividad> ListaActividadesPorCosto = (List<Actividad>)_sistema.ListaActividadesPorCosto(fechaUno, fechaDos, costo);
+
+            Console.WriteLine($"Actividades comprendidas en el rango elegido y con costo mayor a ${costo}");
+            if (ListaActividadesPorCosto.Count > 0)
             {
-                Console.WriteLine(item);
+                foreach (Actividad item in ListaActividadesPorCosto)
+                {
+                    Console.WriteLine(item);
+                }
             }
+            else
+            {
+                Console.WriteLine("No hay actividades en las condiciones indicadas");
+            }
+           
         }
 
         private static void ModificarPromocion()
@@ -178,10 +206,6 @@ namespace AppConsola
             Console.WriteLine("-------");
             Console.WriteLine("Ingrese fecha de nacimiento (ej: 2000-04-28)");
             string fechaCruda = Console.ReadLine();
-            Console.Clear();
-
-            Console.WriteLine("Registro de huespedes");
-            Console.WriteLine("-------");
             DateTime fechaNacimiento = DateTime.Parse(fechaCruda);
             Console.Clear();
 
