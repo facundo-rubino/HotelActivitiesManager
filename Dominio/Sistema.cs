@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Dominio
 {
@@ -25,6 +26,11 @@ namespace Dominio
                 }
                 return _instancia;
             }
+        }
+
+        private Sistema()
+        {
+
         }
 
         public void Precargar()
@@ -69,7 +75,6 @@ namespace Dominio
 
         private void PrecargarDatosTercerizadas()
         {
-            
             Proveedor Proveedor1 = new Proveedor("DreamWorks S.R.L.", "23048549", "Suarez 3380 Apto 304", 1);
             ValidarProveedorRepetido(Proveedor1);
 
@@ -198,7 +203,7 @@ namespace Dominio
                 if (item is Huesped)
                 {
                     Huesped unHuesped = item as Huesped;
-                    if (unHuesped.Documento.NumDocumento == huespedIngresado.Documento.NumDocumento || unHuesped.Documento.TipoDocumento == huespedIngresado.Documento.TipoDocumento)
+                    if (unHuesped.Documento.NumDocumento == huespedIngresado.Documento.NumDocumento && unHuesped.Documento.TipoDocumento == huespedIngresado.Documento.TipoDocumento)
                     {
                         throw new Exception($"Ya existe '{huespedIngresado.Documento.TipoDocumento}' con el número {huespedIngresado.Documento.NumDocumento}");
                     }
@@ -240,7 +245,26 @@ namespace Dominio
         }
 
 
+        public List<Proveedor> ListaProveedoresOrdenada()
+        {
+            List<Proveedor> aux = new List<Proveedor>();
 
+            foreach (Actividad item in Actividades)
+            {
+                if (item is Tercerizada)
+                {
+                    Tercerizada unaTercerizada = item as Tercerizada;
+
+                    if (!aux.Contains(unaTercerizada.Proveedor))
+                    {
+                        aux.Add(unaTercerizada.Proveedor);
+                    }
+                }
+            }
+
+            aux.Sort();
+            return aux;
+        }
     }
 }
 

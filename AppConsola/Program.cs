@@ -1,4 +1,5 @@
-﻿using Dominio;
+﻿using System.Runtime.Intrinsics.X86;
+using Dominio;
 
 namespace AppConsola
 {
@@ -20,8 +21,17 @@ namespace AppConsola
                 //       Console.WriteLine(actividad);
                 //}
 
-                _sistema.ModificarPromocionProveedor("Bacci Tours", 9000);
-                Console.WriteLine(_sistema.ObtenerProveedorPorNombre("Bacci Tours"));    
+                //  _sistema.ModificarPromocionProveedor("Bacci Tours", 9000);
+                // Console.WriteLine(_sistema.ObtenerProveedorPorNombre("Bacci Tours"));
+
+
+               List<Proveedor> ListaProveedores =  _sistema.ListaProveedoresOrdenada();
+
+                foreach (Proveedor item in ListaProveedores)
+                {
+                    Console.WriteLine(item);
+                }
+
             }
 
             catch (Exception e)
