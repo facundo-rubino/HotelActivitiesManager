@@ -1,46 +1,46 @@
 ﻿using System;
 namespace Dominio
 {
-	public abstract class Actividad : IValidable, IComparable<Actividad>, IEquatable<Actividad>
+    public abstract class Actividad : IValidable, IComparable<Actividad>, IEquatable<Actividad>
     {
-		public int? Id { get;}
+        public int? Id { get; }
         public static int? UltimoId { get; set; } = 1;
         public string? Nombre { get; set; }
         public string? Descripcion { get; set; }
-		public DateTime? Fecha { get; set; }
-		public int? EdadMinima { get; set; }
-		public int? Costo { get; set; }
+        public DateTime? Fecha { get; set; }
+        public int? EdadMinima { get; set; }
+        public int? Costo { get; set; }
         public int? CantMax { get; set; }
 
-		public Actividad()
-		{
-			Id = UltimoId++;
-		}
+        public Actividad()
+        {
+            Id = UltimoId++;
+        }
 
         public Actividad(string nombre, string descripcion, DateTime fecha, int edadMinima, int costo, int cantMax)
         {
             Id = UltimoId++;
-			Nombre = nombre;
-			Descripcion = descripcion;
-			Fecha = fecha;
-			EdadMinima = edadMinima;
-			Costo = costo;
+            Nombre = nombre;
+            Descripcion = descripcion;
+            Fecha = fecha;
+            EdadMinima = edadMinima;
+            Costo = costo;
             CantMax = cantMax;
         }
 
         public virtual void Validar()
         {
-			ValidarNombre();
-			ValidarDescripcion();
+            ValidarNombre();
+            ValidarDescripcion();
             ValidarFecha();
 
         }
 
-		private void ValidarNombre()
-		{
+        private void ValidarNombre()
+        {
             if (!Utilidades.StringValido(Nombre)) throw new Exception("El nombre no puede ser vacío");
-            
-			if (Nombre.Length > 25) throw new Exception("El nombre no puede ser de más de 25 caracteres");
+
+            if (Nombre.Length > 25) throw new Exception("El nombre no puede ser de más de 25 caracteres");
         }
 
         private void ValidarDescripcion()
@@ -49,8 +49,8 @@ namespace Dominio
         }
 
         private void ValidarFecha()
-		{
-			if(Fecha < DateTime.Now) throw new Exception("La fecha no puede ser menor a la de hoy");
+        {
+            if (Fecha < DateTime.Now) throw new Exception("La fecha no puede ser menor a la de hoy");
         }
 
         private void ValidarCosto()
@@ -81,7 +81,6 @@ namespace Dominio
             respuesta += $"Costo: {Costo} \n";
             respuesta += $"Cantidad Máxima: {CantMax} \n";
             respuesta += $"Edad Mínima: {EdadMinima} \n";
-
             return respuesta;
         }
 

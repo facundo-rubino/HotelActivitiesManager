@@ -1,56 +1,56 @@
 ﻿using System;
 namespace Dominio
 {
-	public class Huesped : Usuario, IValidable
-	{
-		public Documento? Documento { get; set; }
-		public string? Nombre { get; set; }
-		public string? Apellido { get; set; }
-		public string? Habitacion { get; set; }
-		public DateTime? FechaNac { get; set; }
-		public int? Fidelizacion { get; set; }
+    public class Huesped : Usuario, IValidable
+    {
+        public Documento? Documento { get; set; }
+        public string? Nombre { get; set; }
+        public string? Apellido { get; set; }
+        public string? Habitacion { get; set; }
+        public DateTime? FechaNac { get; set; }
+        public int? Fidelizacion { get; set; }
 
-		public Huesped()
-		{
-		}
+        public Huesped()
+        {
+        }
         public Huesped(Documento documento, string nombre, string apellido, string habitacion, DateTime fechaNac, string email, string contrasenia) : base(email, contrasenia)
         {
-			Documento = documento;
-			Nombre = nombre;
-			Apellido = apellido;
-			Habitacion = habitacion;
-			FechaNac = fechaNac;
-			Fidelizacion = 4;
+            Documento = documento;
+            Nombre = nombre;
+            Apellido = apellido;
+            Habitacion = habitacion;
+            FechaNac = fechaNac;
+            Fidelizacion = 4;
         }
 
-		public override void Validar()
-		{
+        public override void Validar()
+        {
             base.Validar();
-			ValidarCedula();
+            ValidarCedula();
             HabitacionValida();
-			FidelizacionValida();
-			ValidarNombre();
-			ValidarApellido();
+            FidelizacionValida();
+            ValidarNombre();
+            ValidarApellido();
         }
 
         private void HabitacionValida()
-		{
-            if (!Utilidades.StringValido(Habitacion)) throw new Exception("La habitación no puede ser vacía");    
+        {
+            if (!Utilidades.StringValido(Habitacion)) throw new Exception("La habitación no puede ser vacía");
         }
 
         private void FidelizacionValida()
-		{
-			if (Fidelizacion < 1 || Fidelizacion > 4) throw new Exception("El número debe ser entre 1 y 4");
-		}
+        {
+            if (Fidelizacion < 1 || Fidelizacion > 4) throw new Exception("El número debe ser entre 1 y 4");
+        }
 
         private void ValidarNombre()
-		{
+        {
             if (!Utilidades.StringValido(Nombre)) throw new Exception("El nombre no puede ser vacío");
         }
 
         private void ValidarApellido()
         {
-            if (!Utilidades.StringValido(Apellido)) throw new Exception("El apellido no puede ser vacío"); 
+            if (!Utilidades.StringValido(Apellido)) throw new Exception("El apellido no puede ser vacío");
         }
         public void ValidarCedula()
         {
@@ -60,13 +60,8 @@ namespace Dominio
             }
         }
 
-
-       // public Huesped(Documento documento, string nombre, string apellido, string habitacion, DateTime fechaNac, string email, string contrasenia) : base(email, contrasenia)
-
-
-
         public string AsignarTipoDocumento(int tipoIngresado)
-		{
+        {
             switch (tipoIngresado)
             {
                 case 1:

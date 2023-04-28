@@ -5,34 +5,26 @@ using Dominio;
 
 namespace AppConsola
 {
-
     internal class Program
     {
         static private Sistema _sistema = Sistema.Instancia;
-
-
 
         static void Main(string[] args)
         {
             try
             {
-
                 _sistema.Precargar();
 
                 int opcion = 0;
-
                 while (opcion != 6)
                 {
+                    Console.WriteLine("Seleccione una opción");
                     Console.WriteLine("1 - Listado de Actividades");
                     Console.WriteLine("2 - Listado de Proveedores");
                     Console.WriteLine("3 - Listado de Actividades por costo");
                     Console.WriteLine("4 - Modificar promoción de proveedor");
                     Console.WriteLine("5 - Alta de un huesped");
                     Console.WriteLine("6 - Salir");
-
-                    Console.WriteLine("Seleccione una opción");
-
-
                     try
                     {
                         opcion = Int32.Parse(Console.ReadLine());
@@ -73,11 +65,8 @@ namespace AppConsola
                     Console.ReadKey();
                     Console.Clear();
                 }
-
                 Console.WriteLine("Programa finalizado");
-
             }
-
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
@@ -143,17 +132,40 @@ namespace AppConsola
             {
                 Console.WriteLine("No hay actividades en las condiciones indicadas");
             }
-           
         }
 
         private static void ModificarPromocion()
         {
-            Console.WriteLine("Listado actividades");
+            Console.WriteLine("Modificar promoción a un proveedor");
+            Console.WriteLine("------");
 
+            Console.WriteLine("Ingrese nombre de proveedor");
+            string nombre = Console.ReadLine();
+            Console.Clear();
 
-            _sistema.ModificarPromocionProveedor("Bacci Tours", 9000);
-            Console.WriteLine(_sistema.ObtenerProveedorPorNombre("Bacci Tours"));
+            Console.WriteLine("Datos del proveedor seleccionado:");
+            if (_sistema.ObtenerProveedorPorNombre(nombre) != null)
+            {
+                Console.WriteLine(_sistema.ObtenerProveedorPorNombre(nombre));
 
+                Console.WriteLine("------");
+                Console.WriteLine("Ingresa el nuevo costo");
+                int nuevoCosto = Int32.Parse(Console.ReadLine());
+                _sistema.ModificarPromocionProveedor(nombre, nuevoCosto);
+
+                Console.Clear();
+
+                Console.WriteLine("Nuevos datos del proveedor seleccionado:");
+                Console.WriteLine(_sistema.ObtenerProveedorPorNombre(nombre));
+            }
+            else
+            {
+                Console.Clear();
+                throw new Exception("Nombre de proveedor incorrecto");
+            }
+
+            Console.ReadKey();
+            Console.Clear();
         }
 
         private static void AltaHuespedes()
@@ -213,8 +225,7 @@ namespace AppConsola
             Huesped nuevoHuesped = new Huesped(new Documento(tipoDocumento, numDocumento), nombre, apellido, habitacion, fechaNacimiento, email, contrasenia);
             _sistema.AgregarHuesped(nuevoHuesped);
 
-
-            Console.WriteLine("Datos del nuevo huesped creado:");
+            Console.WriteLine("Datos del nuevo huesped creado:\n");
             Console.WriteLine("");
             Console.WriteLine(nuevoHuesped);
 

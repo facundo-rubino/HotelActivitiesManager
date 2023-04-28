@@ -31,7 +31,6 @@ namespace Dominio
 
         private Sistema()
         {
-
         }
 
         public void Precargar()
@@ -159,7 +158,6 @@ namespace Dominio
 
             Huesped Huesped2 = new Huesped(new Documento(1, "51656529"), "Federico", "Rubino", "24", new DateTime(2000, 04, 21), "federubino@gmail.com", "password");
             AgregarHuesped(Huesped2);
-
         }
 
         public void AgregarActividadInterna(Interna interna)
@@ -238,7 +236,6 @@ namespace Dominio
                 if (item is Tercerizada)
                 {
                     Tercerizada unaTercerizada = item as Tercerizada;
-
                     if (unaTercerizada.Proveedor.Nombre == nombre)
                     {
                         return unaTercerizada.Proveedor;
@@ -250,20 +247,15 @@ namespace Dominio
 
         public void ModificarPromocionProveedor(string nombre, int promocion)
         {
-            if (string.IsNullOrEmpty(nombre))
-            {
-                throw new Exception($"El nombre no es válido");
-            }
+            if (string.IsNullOrEmpty(nombre)) throw new Exception($"El nombre no es válido");
+
 
             Proveedor unProveedor = ObtenerProveedorPorNombre(nombre);
 
-            if (unProveedor == null)
-            {
-                throw new Exception($"No se encontro el proveedor de nombre: {nombre}");
-            }
+            if (unProveedor == null) throw new Exception($"No se encontro el proveedor de nombre: {nombre}");
+
             unProveedor.Descuento = promocion;
         }
-
 
         public IEnumerable<Proveedor> ListaProveedoresOrdenada()
         {
@@ -281,27 +273,22 @@ namespace Dominio
                     }
                 }
             }
-
             aux.Sort();
             return aux;
         }
 
-
         public IEnumerable<Actividad> ListaActividadesPorCosto(DateTime fechaUno, DateTime fechaDos, int costoIngresado)
         {
-
             int fechasComparadas = DateTime.Compare(fechaUno, fechaDos);
 
             if (fechasComparadas > 0)
             {
                 //fecha1 más grande que la fecha2;
-
                 DateTime fechaAux = fechaUno;
                 fechaUno = fechaDos;
                 fechaDos = fechaAux;
-            
             }
-            
+
             List<Actividad> aux = new List<Actividad>();
 
             foreach (Actividad item in Actividades)
@@ -311,10 +298,9 @@ namespace Dominio
                     aux.Add(item);
                 }
             }
-
             aux.Sort();
             return aux;
-        } 
+        }
     }
 }
 
