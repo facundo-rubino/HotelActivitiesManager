@@ -13,14 +13,14 @@ namespace Dominio
 		public Huesped()
 		{
 		}
-        public Huesped(Documento documento, string nombre, string apellido, string habitacion, DateTime fechaNac, int fidelizacion, string email, string contrasenia) : base(email, contrasenia)
+        public Huesped(Documento documento, string nombre, string apellido, string habitacion, DateTime fechaNac, string email, string contrasenia) : base(email, contrasenia)
         {
 			Documento = documento;
 			Nombre = nombre;
 			Apellido = apellido;
 			Habitacion = habitacion;
 			FechaNac = fechaNac;
-			Fidelizacion = fidelizacion;
+			Fidelizacion = 4;
         }
 
 		public override void Validar()
@@ -54,10 +54,46 @@ namespace Dominio
         }
         public void ValidarCedula()
         {
-            if (!CIValidacion.Validate(Documento.NumDocumento)) throw new Exception($"La cédula '{Documento.NumDocumento}' no es válida");
+            if (Documento.TipoDocumento == 1)
+            {
+                if (!CIValidacion.Validate(Documento.NumDocumento)) throw new Exception($"La cédula '{Documento.NumDocumento}' no es válida");
+            }
         }
 
 
+       // public Huesped(Documento documento, string nombre, string apellido, string habitacion, DateTime fechaNac, string email, string contrasenia) : base(email, contrasenia)
+
+
+
+        public string AsignarTipoDocumento(int tipoIngresado)
+		{
+            switch (tipoIngresado)
+            {
+                case 1:
+                    return "CI";
+                    break;
+                case 2:
+                    return "PASAPORTE";
+                    break;
+                case 3:
+                    return "OTROS";
+                    break;
+                default:
+                    throw new Exception("Tipo de documento no válido");
+            }
+        }
+
+        public override string ToString()
+        {
+            string respuesta = "";
+            respuesta += $"Nombre completo: {Nombre} {Apellido} \n";
+            respuesta += $"Documento: {AsignarTipoDocumento(Documento.TipoDocumento)}: {Documento.NumDocumento} \n";
+            respuesta += $"Email: {Email} \n";
+            respuesta += $"Contraseña: {Contrasenia} \n";
+            respuesta += $"Fecha de nacimiento: {FechaNac}  \n";
+            respuesta += $"Habitacion: {Habitacion} \n";
+            return respuesta;
+        }
     }
 }
 

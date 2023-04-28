@@ -154,10 +154,10 @@ namespace Dominio
 
         public void PrecargarHuespedes()
         {
-            Huesped Huesped1 = new Huesped(new Documento(TipoDocumento.CI, "51243902"), "Facundo", "Rubino", "24", new DateTime(2000, 04, 21), 4, "facundorubino21@gmail.com", "password");
+            Huesped Huesped1 = new Huesped(new Documento(1, "51243902"), "Facundo", "Rubino", "24", new DateTime(2000, 04, 21), "facundorubino21@gmail.com", "password");
             AgregarHuesped(Huesped1);
 
-            Huesped Huesped2 = new Huesped(new Documento(TipoDocumento.CI, "51656529"), "Federico", "Rubino", "24", new DateTime(2000, 04, 21), 4, "federubino@gmail.com", "password");
+            Huesped Huesped2 = new Huesped(new Documento(1, "51656529"), "Federico", "Rubino", "24", new DateTime(2000, 04, 21), "federubino@gmail.com", "password");
             AgregarHuesped(Huesped2);
 
         }
@@ -225,7 +225,7 @@ namespace Dominio
                     Huesped unHuesped = item as Huesped;
                     if (unHuesped.Documento.NumDocumento == huespedIngresado.Documento.NumDocumento && unHuesped.Documento.TipoDocumento == huespedIngresado.Documento.TipoDocumento)
                     {
-                        throw new Exception($"Ya existe '{huespedIngresado.Documento.TipoDocumento}' con el número {huespedIngresado.Documento.NumDocumento}");
+                        throw new Exception($"Ya existe la cédula con el número {huespedIngresado.Documento.NumDocumento}");
                     }
                 }
             }

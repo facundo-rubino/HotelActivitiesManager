@@ -28,7 +28,6 @@ namespace Dominio
         {
             if (!Utilidades.StringValido(Nombre)) throw new Exception("El nombre no puede ser vacío");
         }
-
     }
 
 }

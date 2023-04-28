@@ -1,4 +1,5 @@
-﻿using System.Reflection.Emit;
+﻿using System.Globalization;
+using System.Reflection.Emit;
 using System.Runtime.Intrinsics.X86;
 using Dominio;
 
@@ -17,28 +18,30 @@ namespace AppConsola
             {
 
                 _sistema.Precargar();
-                Console.WriteLine("Precarga confirmada");
 
                 int opcion = 0;
 
                 while (opcion != 6)
                 {
-                    Console.WriteLine("1 - Registro de huespedes");
-                    Console.WriteLine();
+                    Console.WriteLine("1 - Listado de Actividades");
+                    Console.WriteLine("2 - Listado de Proveedores");
+                    Console.WriteLine("3 - Listado de Actividades por costo");
+                    Console.WriteLine("4 - Modificar promoción de proveedor");
+                    Console.WriteLine("5 - Alta de un huesped");
+                    Console.WriteLine("6 - Salir");
+
+                    Console.WriteLine("Seleccione una opción");
+
 
                     try
                     {
                         opcion = Int32.Parse(Console.ReadLine());
-
-
                     }
                     catch (Exception e)
                     {
                         Console.WriteLine(e.Message);
                         Console.ReadKey();
                     }
-
-                    Console.Clear();
 
                     switch (opcion)
                     {
@@ -55,29 +58,31 @@ namespace AppConsola
                             ModificarPromocion();
                             break;
 
+                        case 5:
+                            AltaHuespedes();
+                            break;
+
+                        case 6:
+                            break;
+
                         default:
+                            Console.WriteLine("Opción incorrecta");
                             break;
                     }
 
-
-                    Console.WriteLine("Registro de huespedes");
-                    Console.WriteLine("-------");
-                    Console.WriteLine("Ingrese email");
-                    string email = Console.ReadLine();
-                    Console.WriteLine("Ingrese contrasenia");
-                    string contrasenia = Console.ReadLine();
-
-
+                    Console.ReadKey();
+                    Console.Clear();
                 }
 
+                Console.WriteLine("Programa finalizado");
+
             }
+
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
                 Console.ReadKey();
             }
-
-
         }
 
         private static void ListadoActividades()
@@ -99,7 +104,6 @@ namespace AppConsola
             {
                 Console.WriteLine(item);
             }
-
         }
 
         private static void ActividadesPorCosto()
@@ -124,6 +128,76 @@ namespace AppConsola
             _sistema.ModificarPromocionProveedor("Bacci Tours", 9000);
             Console.WriteLine(_sistema.ObtenerProveedorPorNombre("Bacci Tours"));
         }
+
+        private static void AltaHuespedes()
+        {
+            Console.Clear();
+
+            Console.WriteLine("Registro de huespedes");
+            Console.WriteLine("-------");
+            Console.WriteLine("Ingrese su nombre");
+            string nombre = Console.ReadLine();
+            Console.Clear();
+
+            Console.WriteLine("Registro de huespedes");
+            Console.WriteLine("-------");
+            Console.WriteLine("Ingrese su apellido");
+            string apellido = Console.ReadLine();
+            Console.Clear();
+
+            Console.WriteLine("Registro de huespedes");
+            Console.WriteLine("-------");
+            Console.WriteLine("Ingrese email");
+            string email = Console.ReadLine();
+            Console.Clear();
+
+            Console.WriteLine("Registro de huespedes");
+            Console.WriteLine("-------");
+            Console.WriteLine("Ingrese contraseña");
+            string contrasenia = Console.ReadLine();
+            Console.Clear();
+
+            Console.WriteLine("Registro de huespedes");
+            Console.WriteLine("-------");
+            Console.WriteLine("Ingrese el tipo de documento (1: CI, 2: PASAPORTE, 3: OTROS):");
+            int tipoDocumento = Int32.Parse(Console.ReadLine());
+            Console.Clear();
+
+            Console.WriteLine("Registro de huespedes");
+            Console.WriteLine("-------");
+            Console.WriteLine("Ingrese el número de documento sin puntos ni guiones");
+            string numDocumento = Console.ReadLine();
+            Console.Clear();
+
+            Console.WriteLine("Registro de huespedes");
+            Console.WriteLine("-------");
+            Console.WriteLine("Ingrese habitación deseada (Número)");
+            string habitacion = Console.ReadLine();
+            Console.Clear();
+
+            Console.WriteLine("Registro de huespedes");
+            Console.WriteLine("-------");
+            Console.WriteLine("Ingrese fecha de nacimiento (ej: 2000-04-28)");
+            string fechaCruda = Console.ReadLine();
+            Console.Clear();
+
+            Console.WriteLine("Registro de huespedes");
+            Console.WriteLine("-------");
+            DateTime fechaNacimiento = DateTime.Parse(fechaCruda);
+            Console.Clear();
+
+
+            Huesped nuevoHuesped = new Huesped(new Documento(tipoDocumento, numDocumento), nombre, apellido, habitacion, fechaNacimiento, email, contrasenia);
+            _sistema.AgregarHuesped(nuevoHuesped);
+
+
+            Console.WriteLine("Datos del nuevo huesped creado:");
+            Console.WriteLine("");
+            Console.WriteLine(nuevoHuesped);
+
+            Console.ReadKey();
+        }
+
     }
 }
 

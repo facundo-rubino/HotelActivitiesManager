@@ -18,7 +18,25 @@ namespace Dominio
 			FechaConfirmacion = fechaConfirmacion;
 		}
 
+        public override string ToString()
+        {
+            string actividadConfirmada;
+            if ((bool)Confirmada)
+            {
+                actividadConfirmada = "Si";
+            }
+            else
+            {
+                actividadConfirmada = "No";
+            }
 
+            string respuesta = base.ToString();
+            respuesta += $"Proveedor: {Proveedor} \n";
+            respuesta += $"Confirmada: {actividadConfirmada} \n";
+            respuesta += $"Fecha de confirmación: {FechaConfirmacion} \n";
+
+            return respuesta;
+        }
 
 
 
