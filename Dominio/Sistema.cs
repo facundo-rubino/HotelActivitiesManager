@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Intrinsics.X86;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Dominio
 {
-	public class Sistema
-	{
+    public class Sistema
+    {
         public List<Actividad> Actividades { get; } = new List<Actividad>();
         public List<Usuario> Usuarios { get; } = new List<Usuario>();
         public List<Agenda> Agendas { get; } = new List<Agenda>();
@@ -160,7 +161,7 @@ namespace Dominio
         public void AgregarActividadInterna(Interna interna)
         {
             if (interna == null) throw new Exception("Actividad interna no válida");
-            
+
             interna.Validar();
             Actividades.Add(interna);
         }
@@ -223,7 +224,7 @@ namespace Dominio
                     {
                         return unaTercerizada.Proveedor;
                     }
-                } 
+                }
             }
             return null;
         }
@@ -234,7 +235,7 @@ namespace Dominio
             {
                 throw new Exception($"El nombre no es válido");
             }
-           
+
             Proveedor unProveedor = ObtenerProveedorPorNombre(nombre);
 
             if (unProveedor == null)
@@ -245,7 +246,7 @@ namespace Dominio
         }
 
 
-        public List<Proveedor> ListaProveedoresOrdenada()
+        public IEnumerable<Proveedor> ListaProveedoresOrdenada()
         {
             List<Proveedor> aux = new List<Proveedor>();
 
@@ -265,6 +266,36 @@ namespace Dominio
             aux.Sort();
             return aux;
         }
+
+
+        public IEnumerable<Actividad> ListaActividadesPorCosto(DateTime fechaUno, DateTime fechaDos, int costoIngresado)
+        {
+
+            int fechasComparadas = DateTime.Compare(fechaUno, fechaDos);
+
+            if (fechasComparadas > 0)
+            {
+                //fecha1 más grande que la fecha2;
+
+                DateTime fechaAux = fechaUno;
+                fechaUno = fechaDos;
+                fechaDos = fechaAux;
+            
+            }
+            
+            List<Actividad> aux = new List<Actividad>();
+
+            foreach (Actividad item in Actividades)
+            {
+                if (item.Costo > costoIngresado && item.Fecha >= fechaUno && item.Fecha <= fechaDos)
+                {
+                    aux.Add(item);
+                }
+            }
+
+            aux.Sort();
+            return aux;
+        } 
     }
 }
 

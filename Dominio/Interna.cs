@@ -1,8 +1,8 @@
 ﻿using System;
 namespace Dominio
 {
-	public class Interna : Actividad, IValidable
-	{
+	public class Interna : Actividad, IValidable, IEquatable<Interna>
+    {
 		public string? Persona { get; set; }
 		public string? Lugar { get; set; }
 		public bool? AireLibre { get; set; }
@@ -28,6 +28,13 @@ namespace Dominio
         {
             if (!Utilidades.StringValido(Nombre)) throw new Exception("El nombre no puede ser vacío");
         }
+
+        public bool Equals(Interna? other)
+        {
+            return other != null && Nombre == other.Nombre;
+        }
+
     }
+
 }
 

@@ -1,8 +1,8 @@
 ﻿using System;
 namespace Dominio
 {
-	public abstract class Actividad : IValidable
-	{
+	public abstract class Actividad : IValidable, IComparable<Actividad>
+    {
 		public int? Id { get;}
         public static int? UltimoId { get; set; } = 1;
         public string? Nombre { get; set; }
@@ -58,6 +58,14 @@ namespace Dominio
             if (Costo == null) Costo = 0;
         }
 
+        public int CompareTo(Actividad? other)
+        {
+            if (other == null)
+                return 0;
+            return (int)(other.Costo - Costo);
+
+        }
+
         public override string ToString()
         {
             string respuesta = base.ToString();
@@ -65,6 +73,7 @@ namespace Dominio
             respuesta += $"Actividad: {Nombre} \n";
             respuesta += $"Actividad: {Descripcion} \n";
             respuesta += $"Fecha: {Fecha} \n";
+            respuesta += $"Costo: {Costo} \n";
             respuesta += $"Cantidad Máxima: {CantMax} \n";
             respuesta += $"Edad Mínima: {EdadMinima} \n";
 
