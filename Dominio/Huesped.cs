@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 namespace Dominio
 {
     public class Huesped : Usuario, IValidable
@@ -52,7 +53,7 @@ namespace Dominio
         {
             if (!Utilidades.StringValido(Apellido)) throw new Exception("El apellido no puede ser vacío");
         }
-        public void ValidarCedula()
+        private void ValidarCedula()
         {
             if (Documento.TipoDocumento == 1)
             {

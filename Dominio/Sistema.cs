@@ -87,7 +87,7 @@ namespace Dominio
             Tercerizada Tercerizada2 = new Tercerizada(Proveedor1, false, new DateTime(2024, 02, 12), "ActTercerizada2", "Descripcion tercerizada 2", new DateTime(2024, 02, 12), 12, 30, 2);
             AgregarActividadTercerizada(Tercerizada2);
 
-            Proveedor Proveedor3 = new Proveedor("Bacci Tours", "29152020", "Misiones 1140", 9);
+            Proveedor Proveedor3 = new Proveedor("TravelFun", "29152020", "Misiones 1140", 9);
             ValidarProveedorRepetido(Proveedor3);
 
             Tercerizada Tercerizada3 = new Tercerizada(Proveedor1, false, new DateTime(2024, 03, 12), "ActTercerizada3", "Descripcion tercerizada 3", new DateTime(2024, 03, 12), 12, 0, 20);
@@ -123,13 +123,13 @@ namespace Dominio
             Tercerizada Tercerizada8 = new Tercerizada(Proveedor5, true, new DateTime(2024, 08, 12), "ActTercerizada8", "Descripcion tercerizada 8", new DateTime(2024, 08, 12), 12, 65, 10);
             AgregarActividadTercerizada(Tercerizada8);
 
-            Proveedor Proveedor9 = new Proveedor("Perez Marquez", "22041120", "Agraciada 2512 Apto. 1", 8);
+            Proveedor Proveedor9 = new Proveedor("", "22041120", "Agraciada 2512 Apto. 1", 8);
             ValidarProveedorRepetido(Proveedor9);
 
             Tercerizada Tercerizada9 = new Tercerizada(Proveedor3, true, new DateTime(2024, 09, 12), "ActTercerizada9", "Descripcion tercerizada 9", new DateTime(2024, 09, 12), 18, 0, 15);
             AgregarActividadTercerizada(Tercerizada9);
 
-            Proveedor Proveedor10 = new Proveedor("MiloLines", "22001189", "Michigan 2100", 9);
+            Proveedor Proveedor10 = new Proveedor("Norberto Molina", "22001189", "Michigan 2100", 9);
             ValidarProveedorRepetido(Proveedor10);
 
             Tercerizada Tercerizada10 = new Tercerizada(Proveedor4, true, new DateTime(2024, 10, 12), "ActTercerizada10", "Descripcion tercerizada 10", new DateTime(2024, 10, 12), 18, 45, 15);
@@ -151,7 +151,7 @@ namespace Dominio
             AgregarActividadTercerizada(Tercerizada15);
         }
 
-        public void PrecargarHuespedes()
+        private void PrecargarHuespedes()
         {
             Huesped Huesped1 = new Huesped(new Documento(1, "51243902"), "Facundo", "Rubino", "24", new DateTime(2000, 04, 21), "facundorubino21@gmail.com", "password");
             AgregarHuesped(Huesped1);
@@ -247,8 +247,9 @@ namespace Dominio
 
         public void ModificarPromocionProveedor(string nombre, int promocion)
         {
-            if (string.IsNullOrEmpty(nombre)) throw new Exception($"El nombre no es válido");
+            if ((promocion < 0 || promocion > 100)) throw new Exception("La promoción ofrecida por el proveedor puede ser de 0 a 100");
 
+            if (string.IsNullOrEmpty(nombre)) throw new Exception($"El nombre no es válido");
 
             Proveedor unProveedor = ObtenerProveedorPorNombre(nombre);
 

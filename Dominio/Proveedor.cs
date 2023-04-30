@@ -25,6 +25,7 @@ namespace Dominio
             ValidarNombre();
             ValidarNumero();
             ValidarDireccion();
+            ValidarPromocion();
         }
 
         private void ValidarNombre()
@@ -38,6 +39,11 @@ namespace Dominio
         private void ValidarDireccion()
         {
             if (!Utilidades.StringValido(Direccion)) throw new Exception("La dirección no puede ser vacía");
+        }
+
+        private void ValidarPromocion()
+        {
+            if (Descuento < 0 || Descuento > 100) throw new Exception("La promoción ofrecida por el proveedor puede ser de 0 a 100");
         }
 
         public bool Equals(Proveedor? other)

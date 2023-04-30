@@ -53,11 +53,6 @@ namespace Dominio
             if (Fecha < DateTime.Now) throw new Exception("La fecha no puede ser menor a la de hoy");
         }
 
-        private void ValidarCosto()
-        {
-            if (Costo == null) Costo = 0;
-        }
-
         public int CompareTo(Actividad? other)
         {
             if (other == null)
@@ -76,7 +71,7 @@ namespace Dominio
             string respuesta = "-------\n";
             respuesta += $"Identificador: {Id} \n";
             respuesta += $"Actividad: {Nombre} \n";
-            respuesta += $"Actividad: {Descripcion} \n";
+            respuesta += $"Descripción: {Descripcion} \n";
             respuesta += $"Fecha: {Fecha} \n";
             respuesta += $"Costo: {Costo} \n";
             respuesta += $"Cantidad Máxima: {CantMax} \n";

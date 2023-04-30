@@ -34,7 +34,6 @@ namespace AppConsola
                         Console.WriteLine(e.Message);
                         Console.ReadKey();
                     }
-
                     switch (opcion)
                     {
                         case 1:
@@ -161,7 +160,7 @@ namespace AppConsola
             else
             {
                 Console.Clear();
-                throw new Exception("Nombre de proveedor incorrecto");
+                Console.WriteLine("Nombre del proveedor incorrecto");
             }
 
             Console.ReadKey();
