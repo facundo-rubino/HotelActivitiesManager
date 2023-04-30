@@ -64,6 +64,7 @@ namespace AppConsola
                     Console.ReadKey();
                     Console.Clear();
                 }
+
                 Console.WriteLine("Programa finalizado");
             }
             catch (Exception e)
@@ -86,7 +87,7 @@ namespace AppConsola
 
         private static void ListadoProveedores()
         {
-            Console.WriteLine("Listado de Proveedores ordenados por nombre:");
+            Console.WriteLine("\nListado de Proveedores ordenados por nombre:");
 
             List<Proveedor> ListaProveedores = (List<Proveedor>)_sistema.ListaProveedoresOrdenada();
 
@@ -100,7 +101,7 @@ namespace AppConsola
 
         private static void ActividadesPorCosto()
         {
-            Console.WriteLine("Listado de actividades mayores al costo ingresado comprendido en un rango de fechas");
+            Console.WriteLine("\nListado de actividades mayores al costo ingresado comprendido en un rango de fechas");
             Console.WriteLine("------");
 
             Console.WriteLine("Ingrese un costo");
@@ -152,9 +153,9 @@ namespace AppConsola
                 int nuevoCosto = Int32.Parse(Console.ReadLine());
                 _sistema.ModificarPromocionProveedor(nombre, nuevoCosto);
 
-                Console.Clear();
 
-                Console.WriteLine("Nuevos datos del proveedor seleccionado:");
+
+                Console.WriteLine("\nNuevos datos del proveedor seleccionado:");
                 Console.WriteLine(_sistema.ObtenerProveedorPorNombre(nombre));
             }
             else
@@ -224,7 +225,7 @@ namespace AppConsola
             Huesped nuevoHuesped = new Huesped(new Documento(tipoDocumento, numDocumento), nombre, apellido, habitacion, fechaNacimiento, email, contrasenia);
             _sistema.AgregarHuesped(nuevoHuesped);
 
-            Console.WriteLine("Datos del nuevo huesped creado:\n");
+            Console.WriteLine("\nDatos del nuevo huesped creado:");
             Console.WriteLine("");
             Console.WriteLine(nuevoHuesped);
 

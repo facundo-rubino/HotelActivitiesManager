@@ -166,7 +166,7 @@ namespace Dominio
 
             if (Actividades.Contains(interna))
             {
-                throw new Exception($"El nombre de la actividad {interna.Nombre} ya esta registradO.");
+                throw new Exception($"El nombre de la actividad {interna.Nombre} ya esta registrado.");
             }
 
             interna.Validar();
@@ -196,6 +196,7 @@ namespace Dominio
             }
 
             huesped.Validar();
+            huesped.Documento.ValidarCedula();
             ValidarDocumentoRepetido(huesped);
             Usuarios.Add(huesped);
         }
