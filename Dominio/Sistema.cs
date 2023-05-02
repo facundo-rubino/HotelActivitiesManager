@@ -155,9 +155,6 @@ namespace Dominio
         {
             Huesped Huesped1 = new Huesped(new Documento(1, "51243902"), "Facundo", "Rubino", "24", new DateTime(2000, 04, 21), "facundorubino21@gmail.com", "password");
             AgregarHuesped(Huesped1);
-
-            Huesped Huesped2 = new Huesped(new Documento(1, "51656529"), "Federico", "Rubino", "24", new DateTime(2000, 04, 21), "federubino@gmail.com", "password");
-            AgregarHuesped(Huesped2);
         }
 
         public void AgregarActividadInterna(Interna interna)

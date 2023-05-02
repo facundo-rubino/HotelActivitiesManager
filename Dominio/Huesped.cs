@@ -54,7 +54,7 @@ namespace Dominio
         }
 
 
-        public string AsignarTipoDocumento(int tipoIngresado)
+        private string AsignarTipoDocumento(int tipoIngresado)
         {
             switch (tipoIngresado)
             {
