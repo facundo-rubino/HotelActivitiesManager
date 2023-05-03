@@ -3,19 +3,19 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Dominio
 {
-	public abstract class Usuario : IValidable, IEquatable<Usuario>
+    public abstract class Usuario : IValidable, IEquatable<Usuario>
     {
-		public string? Email { get; set; }
-		public string? Contrasenia { get; set; }
+        public string? Email { get; set; }
+        public string? Contrasenia { get; set; }
 
-		public Usuario()
-		{
-		}
+        public Usuario()
+        {
+        }
 
         public Usuario(string email, string contrasenia)
         {
-			Email = email;
-			Contrasenia = contrasenia;
+            Email = email;
+            Contrasenia = contrasenia;
         }
 
         public virtual void Validar()
@@ -24,9 +24,9 @@ namespace Dominio
             ValidarContrasenia();
         }
 
-		private void ValidarEmail()
-		{
-			if (Email.IndexOf("@") == 0 || Email.LastIndexOf("@") == Email.Length - 1) throw new Exception("El email ingresado no es válido");
+        private void ValidarEmail()
+        {
+            if (Email.IndexOf("@") == 0 || Email.LastIndexOf("@") == Email.Length - 1 || !Email.Contains('@')) throw new Exception("El email ingresado no es válido");
         }
 
         private void ValidarContrasenia()

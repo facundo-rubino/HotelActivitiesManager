@@ -170,62 +170,62 @@ namespace AppConsola
 
         private static void AltaHuespedes()
         {
-            Console.Clear();
-
-            Console.WriteLine("Registro de huespedes");
-            Console.WriteLine("-------");
-            Console.WriteLine("Ingrese su nombre");
-            string nombre = Console.ReadLine();
-            Console.Clear();
-
-            Console.WriteLine("Registro de huespedes");
-            Console.WriteLine("-------");
-            Console.WriteLine("Ingrese su apellido");
-            string apellido = Console.ReadLine();
-            Console.Clear();
-
-            Console.WriteLine("Registro de huespedes");
-            Console.WriteLine("-------");
-            Console.WriteLine("Ingrese email");
-            string email = Console.ReadLine();
-            Console.Clear();
-
-            Console.WriteLine("Registro de huespedes");
-            Console.WriteLine("-------");
-            Console.WriteLine("Ingrese contraseña");
-            string contrasenia = Console.ReadLine();
-            Console.Clear();
-
-            Console.WriteLine("Registro de huespedes");
-            Console.WriteLine("-------");
-            Console.WriteLine("Ingrese el tipo de documento (1: CI, 2: PASAPORTE, 3: OTROS):");
-            int tipoDocumento = Int32.Parse(Console.ReadLine());
-            Console.Clear();
-
-            Console.WriteLine("Registro de huespedes");
-            Console.WriteLine("-------");
-            Console.WriteLine("Ingrese el número de documento sin puntos ni guiones");
-            string numDocumento = Console.ReadLine();
-            Console.Clear();
-
-            Console.WriteLine("Registro de huespedes");
-            Console.WriteLine("-------");
-            Console.WriteLine("Ingrese habitación deseada (Número)");
-            string habitacion = Console.ReadLine();
-            Console.Clear();
-
-            Console.WriteLine("Registro de huespedes");
-            Console.WriteLine("-------");
-            Console.WriteLine("Ingrese fecha de nacimiento (ej: 2000-04-28)");
-            string fechaCruda = Console.ReadLine();
-            DateTime fechaNacimiento = DateTime.Parse(fechaCruda);
-            Console.Clear();
-
-
 
             try
             {
+                Console.Clear();
+
+                Console.WriteLine("Registro de huespedes");
+                Console.WriteLine("-------");
+                Console.WriteLine("Ingrese su nombre");
+                string nombre = Console.ReadLine();
+                Console.Clear();
+
+                Console.WriteLine("Registro de huespedes");
+                Console.WriteLine("-------");
+                Console.WriteLine("Ingrese su apellido");
+                string apellido = Console.ReadLine();
+                Console.Clear();
+
+                Console.WriteLine("Registro de huespedes");
+                Console.WriteLine("-------");
+                Console.WriteLine("Ingrese email");
+                string email = Console.ReadLine();
+                Console.Clear();
+
+                Console.WriteLine("Registro de huespedes");
+                Console.WriteLine("-------");
+                Console.WriteLine("Ingrese contraseña");
+                string contrasenia = Console.ReadLine();
+                Console.Clear();
+
+                Console.WriteLine("Registro de huespedes");
+                Console.WriteLine("-------");
+                Console.WriteLine("Ingrese el tipo de documento (1: CI, 2: PASAPORTE, 3: OTROS):");
+                int tipoDocumento = Int32.Parse(Console.ReadLine());
+                Console.Clear();
+
+                Console.WriteLine("Registro de huespedes");
+                Console.WriteLine("-------");
+                Console.WriteLine("Ingrese el número de documento sin puntos ni guiones");
+                string numDocumento = Console.ReadLine();
+                Console.Clear();
+
+                Console.WriteLine("Registro de huespedes");
+                Console.WriteLine("-------");
+                Console.WriteLine("Ingrese habitación deseada (Número)");
+                string habitacion = Console.ReadLine();
+                Console.Clear();
+
+                Console.WriteLine("Registro de huespedes");
+                Console.WriteLine("-------");
+                Console.WriteLine("Ingrese fecha de nacimiento (ej: 2000-04-28)");
+                string fechaCruda = Console.ReadLine();
+                DateTime fechaNacimiento = DateTime.Parse(fechaCruda);
+                Console.Clear();
+
                 Huesped nuevoHuesped = new Huesped(new Documento(tipoDocumento, numDocumento), nombre, apellido, habitacion, fechaNacimiento, email, contrasenia);
+
                 _sistema.AgregarHuesped(nuevoHuesped);
 
                 Console.WriteLine("\nDatos del nuevo huesped creado:");
