@@ -43,7 +43,7 @@ namespace Dominio
 
         private void ValidarPromocion()
         {
-            if (Descuento < 0 || Descuento > 100) throw new Exception("La promoción ofrecida por el proveedor puede ser de 0 a 100");
+            if (Descuento < 0 || Descuento > 100) throw new Exception("La promoción ofrecida por el proveedor debe ser entre 0 y 100");
         }
 
         public bool Equals(Proveedor? other)

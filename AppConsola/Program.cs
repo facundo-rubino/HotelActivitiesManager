@@ -222,14 +222,24 @@ namespace AppConsola
             Console.Clear();
 
 
-            Huesped nuevoHuesped = new Huesped(new Documento(tipoDocumento, numDocumento), nombre, apellido, habitacion, fechaNacimiento, email, contrasenia);
-            _sistema.AgregarHuesped(nuevoHuesped);
 
-            Console.WriteLine("\nDatos del nuevo huesped creado:");
-            Console.WriteLine("");
-            Console.WriteLine(nuevoHuesped);
+            try
+            {
+                Huesped nuevoHuesped = new Huesped(new Documento(tipoDocumento, numDocumento), nombre, apellido, habitacion, fechaNacimiento, email, contrasenia);
+                _sistema.AgregarHuesped(nuevoHuesped);
 
-            Console.ReadKey();
+                Console.WriteLine("\nDatos del nuevo huesped creado:");
+                Console.WriteLine("");
+                Console.WriteLine(nuevoHuesped);
+
+                Console.ReadKey();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Console.ReadKey();
+            }
+
         }
 
     }
