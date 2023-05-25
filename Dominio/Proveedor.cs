@@ -60,7 +60,7 @@ namespace Dominio
 
         public override string ToString()
         {
-            string respuesta = "-------";
+            string respuesta = "";
             respuesta += $"\nNombre: {Nombre} \n";
             respuesta += $"Número: {Numero} \n";
             respuesta += $"Direccion: {Direccion}  \n";

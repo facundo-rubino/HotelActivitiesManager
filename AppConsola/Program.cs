@@ -81,8 +81,6 @@ namespace AppConsola
             {
                 Console.WriteLine(actividad);
             }
-            Console.ReadKey();
-            Console.Clear();
         }
 
         private static void ListadoProveedores()
@@ -95,8 +93,6 @@ namespace AppConsola
             {
                 Console.WriteLine(item);
             }
-            Console.ReadKey();
-            Console.Clear();
         }
 
         private static void ActividadesPorCosto()
@@ -164,8 +160,6 @@ namespace AppConsola
                 Console.WriteLine("Nombre del proveedor incorrecto");
             }
 
-            Console.ReadKey();
-            Console.Clear();
         }
 
         private static void AltaHuespedes()
@@ -231,8 +225,6 @@ namespace AppConsola
                 Console.WriteLine("\nDatos del nuevo huesped creado:");
                 Console.WriteLine("");
                 Console.WriteLine(nuevoHuesped);
-
-                Console.ReadKey();
             }
             catch (Exception e)
             {
