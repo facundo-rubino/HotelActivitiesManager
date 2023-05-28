@@ -1,0 +1,17 @@
+﻿@using Dominio;
+
+<link rel="stylesheet" href="~/AppWeb.styles.css" asp-append-version="true" />
+
+
+<h1>Listado de Actividades del día de hoy</h1>
+Hacer cards sumar img
+
+<form action="Actividad/ActividadesPorFecha">
+    <input type="date" name="fecha" />
+    <button type="submit" />
+</form>
+
+@foreach (Actividad item in ViewBag.Actividad)
+{
+<p>@item</p>
+}

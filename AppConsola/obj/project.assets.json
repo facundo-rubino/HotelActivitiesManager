@@ -32,11 +32,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/facundorubino/_dev/projects/C#/Obligatorio1/AppConsola/AppConsola.csproj",
+      "projectUniqueName": "/Users/facundorubino/_dev/projects/C#/Obligatorio1/Obligatorio1/AppConsola/AppConsola.csproj",
       "projectName": "AppConsola",
-      "projectPath": "/Users/facundorubino/_dev/projects/C#/Obligatorio1/AppConsola/AppConsola.csproj",
+      "projectPath": "/Users/facundorubino/_dev/projects/C#/Obligatorio1/Obligatorio1/AppConsola/AppConsola.csproj",
       "packagesPath": "/Users/facundorubino/.nuget/packages/",
-      "outputPath": "/Users/facundorubino/_dev/projects/C#/Obligatorio1/AppConsola/obj/",
+      "outputPath": "/Users/facundorubino/_dev/projects/C#/Obligatorio1/Obligatorio1/AppConsola/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/facundorubino/.nuget/NuGet/NuGet.Config"
@@ -51,8 +51,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "/Users/facundorubino/_dev/projects/C#/Obligatorio1/Dominio/Dominio.csproj": {
-              "projectPath": "/Users/facundorubino/_dev/projects/C#/Obligatorio1/Dominio/Dominio.csproj"
+            "/Users/facundorubino/_dev/projects/C#/Obligatorio1/Obligatorio1/Dominio/Dominio.csproj": {
+              "projectPath": "/Users/facundorubino/_dev/projects/C#/Obligatorio1/Obligatorio1/Dominio/Dominio.csproj"
             }
           }
         }
@@ -82,7 +82,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.203/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.302/RuntimeIdentifierGraph.json"
       }
     }
   }
