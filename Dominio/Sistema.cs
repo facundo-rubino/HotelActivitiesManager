@@ -108,7 +108,7 @@ namespace Dominio
             ValidarProveedorRepetido(Proveedor3);
             Proveedor3.Validar();
 
-            Tercerizada Tercerizada3 = new Tercerizada(Proveedor1, false, new DateTime(2024, 03, 12), "Clase de pintura", "Libera tu creatividad y descubre el artista que llevas dentro en nuestra clase de pintura dirigida.", new DateTime(2024, 03, 12), 12, 0, 20);
+            Tercerizada Tercerizada3 = new Tercerizada(Proveedor1, false, new DateTime(2024, 03, 12), "Clase de pintura", "Libera tu creatividad y descubre el artista que llevas dentro en nuestra clase de pintura dirigida.", DateTime.Today, 12, 0, 20);
             AgregarActividadTercerizada(Tercerizada3);
 
             Proveedor Proveedor4 = new Proveedor("Rekreation S.A.", "29162019", "Bacacay 1211", 11);
@@ -122,7 +122,7 @@ namespace Dominio
             ValidarProveedorRepetido(Proveedor5);
             Proveedor5.Validar();
 
-            Tercerizada Tercerizada5 = new Tercerizada(Proveedor2, true, new DateTime(2024, 05, 12), "Torneo de Basquetbol", "Torneo de basquetbol 3x3 para poder competir con tus amigos o conocer gente nueva", new DateTime(2024, 05, 12), 8, 0, 15);
+            Tercerizada Tercerizada5 = new Tercerizada(Proveedor2, true, new DateTime(2024, 05, 12), "Torneo de Basquetbol", "Torneo de basquetbol 3x3 para poder competir con tus amigos o conocer gente nueva", DateTime.Today, 8, 0, 15);
             AgregarActividadTercerizada(Tercerizada5);
 
             Proveedor Proveedor6 = new Proveedor("Electric Blue", "26018945", "Cooper 678", 5);
@@ -136,7 +136,7 @@ namespace Dominio
             ValidarProveedorRepetido(Proveedor7);
             Proveedor7.Validar();
 
-            Tercerizada Tercerizada7 = new Tercerizada(Proveedor3, false, new DateTime(2024, 07, 12), "Paseo en velero", "Disfruta de la brisa marina y las vistas panorámicas en un relajante paseo en velero por la costa.", new DateTime(2024, 07, 12), 18, 33, 5);
+            Tercerizada Tercerizada7 = new Tercerizada(Proveedor3, false, new DateTime(2024, 07, 12), "Paseo en velero", "Disfruta de la brisa marina y las vistas panorámicas en un relajante paseo en velero por la costa.", DateTime.Today, 18, 33, 5);
             AgregarActividadTercerizada(Tercerizada7);
 
             Proveedor Proveedor8 = new Proveedor("Gimenez S.R.L.", "29001010", "Andes 1190", 7);
@@ -150,7 +150,7 @@ namespace Dominio
             ValidarProveedorRepetido(Proveedor9);
             Proveedor9.Validar();
 
-            Tercerizada Tercerizada9 = new Tercerizada(Proveedor9, true, new DateTime(2024, 09, 12), "Noche de karaoke", "Muestra tu talento vocal y diviértete con amigos en nuestra noche de karaoke llena de risas y música.", new DateTime(2024, 09, 12), 18, 0, 15);
+            Tercerizada Tercerizada9 = new Tercerizada(Proveedor9, true, new DateTime(2024, 09, 12), "Noche de karaoke", "Muestra tu talento vocal y diviértete con amigos en nuestra noche de karaoke llena de risas y música.", DateTime.Today, 18, 0, 15);
             AgregarActividadTercerizada(Tercerizada9);
 
             Proveedor Proveedor10 = new Proveedor("Norberto Molina", "22001189", "Michigan 2100", 9);

@@ -40,7 +40,7 @@ namespace Dominio
         {
             if (!Utilidades.StringValido(Nombre)) throw new Exception("El nombre no puede ser vacío");
 
-            if (Nombre.Length > 25) throw new Exception("El nombre no puede ser de más de 25 caracteres");
+            if (Nombre.Length > 60) throw new Exception("El nombre no puede ser de más de 60 caracteres");
         }
 
         private void ValidarDescripcion()
@@ -50,7 +50,7 @@ namespace Dominio
 
         private void ValidarFecha()
         {
-            if (Fecha < DateTime.Now) throw new Exception("La fecha no puede ser menor a la de hoy");
+            if (Fecha < DateTime.Today) throw new Exception("La fecha no puede ser menor a la de hoy");
         }
 
         public int CompareTo(Actividad? other)
