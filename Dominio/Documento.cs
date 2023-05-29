@@ -23,6 +23,11 @@ namespace Dominio
                 if (!CIValidacion.Validate(NumDocumento)) throw new Exception($"La cédula '{NumDocumento}' no es válida");
             }
         }
+
+        public bool Equals(Documento? other)
+        {
+            return other != null && TipoDocumento == other.TipoDocumento && NumDocumento == other.NumDocumento;
+        }
     }
 }
 

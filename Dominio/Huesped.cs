@@ -53,7 +53,6 @@ namespace Dominio
             if (!Utilidades.StringValido(Apellido)) throw new Exception("El apellido no puede ser vacío");
         }
 
-
         private string AsignarTipoDocumento(int tipoIngresado)
         {
             switch (tipoIngresado)
@@ -71,6 +70,17 @@ namespace Dominio
                     throw new Exception("Tipo de documento no válido");
             }
         }
+
+        public bool HuespedEsApto()
+        {
+            bool esApto = false;
+
+
+
+            return esApto;
+        }
+
+
 
         public override string ToString()
         {

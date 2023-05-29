@@ -21,6 +21,36 @@ namespace Dominio
             FechaCreacion = fecha;
         }
 
+        public bool AgendaTieneHuesped(Documento documentoIngresado)
+        {
+            bool tiene = false;
+            if (Huesped.Documento == documentoIngresado) tiene = true;
+            return tiene;
+        }
+
+
+        public bool AgendaEntreFechas(DateTime fechaUno, DateTime fechaDos)
+        {
+            bool esta = false;
+
+            int fechasComparadas = DateTime.Compare(fechaUno, fechaDos);
+
+            if (fechasComparadas > 0)
+            {
+                //fecha1 más grande que la fecha2;
+                DateTime fechaAux = fechaUno;
+                fechaUno = fechaDos;
+                fechaDos = fechaAux;
+            }
+
+            if (FechaCreacion >= fechaUno && FechaCreacion <= fechaDos)
+            {
+                esta = true;
+            }
+
+            return esta;
+        }
+
         public override string ToString()
         {
             string respuesta = base.ToString();
@@ -33,6 +63,7 @@ namespace Dominio
             respuesta += $"Actividad {Actividad.Nombre} \n";
             return respuesta;
         }
+
     }
 }
 
