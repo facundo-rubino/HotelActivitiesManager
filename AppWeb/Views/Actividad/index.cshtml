@@ -1,8 +1,5 @@
 ﻿@using Dominio;
 
-<link rel="stylesheet" href="~/AppWeb.styles.css" asp-append-version="true" />
-
-
 <h1>Listado de Actividades del día de hoy</h1>
 
 <form action="Actividad/ActividadesPorFecha">
@@ -11,7 +8,7 @@
 </form>
 
 
-<div class="d-flex flex-wrap">
+<div class="d-flex flex-wrap ">
 
     @foreach (Actividad item in ViewBag.Actividad)
     {
@@ -22,7 +19,8 @@
             <div class="card-body mx-2 my-2 p-3">
                 <h5 class="card-title">@item.Nombre</h5>
                 <p class="card-text">@item.Descripcion</p>
-                <a href="#" class="btn btn-primary">Adelante</a>
+
+                <a href="#" class="btn btn-success">Agendar</a>
             </div>
         </div>
     }

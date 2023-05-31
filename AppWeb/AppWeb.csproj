@@ -15,10 +15,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Controllers\" />
+    <None Remove="Views\Agenda\" />
+    <None Remove="Views\Home\" />
+    <None Remove="Views\Proveedor\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
     <Folder Include="wwwroot\img\" />
+    <Folder Include="Views\Agenda\" />
+    <Folder Include="Views\Home\" />
+    <Folder Include="Views\Proveedor\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\img\" />

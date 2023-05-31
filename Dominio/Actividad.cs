@@ -9,15 +9,15 @@ namespace Dominio
         public string? Descripcion { get; set; }
         public DateTime? Fecha { get; set; }
         public int? EdadMinima { get; set; }
-        public int? Costo { get; set; }
-        public int? CantMax { get; set; }
+        public decimal Costo { get; set; }
+        public int? Cupos { get; set; }
 
         public Actividad()
         {
             Id = UltimoId++;
         }
 
-        public Actividad(string nombre, string descripcion, DateTime fecha, int edadMinima, int costo, int cantMax)
+        public Actividad(string nombre, string descripcion, DateTime fecha, int edadMinima, decimal costo, int cupos)
         {
             Id = UltimoId++;
             Nombre = nombre;
@@ -25,7 +25,7 @@ namespace Dominio
             Fecha = fecha;
             EdadMinima = edadMinima;
             Costo = costo;
-            CantMax = cantMax;
+            Cupos = cupos;
         }
 
         public virtual void Validar()
@@ -33,7 +33,6 @@ namespace Dominio
             ValidarNombre();
             ValidarDescripcion();
             ValidarFecha();
-
         }
 
         private void ValidarNombre()
@@ -66,6 +65,8 @@ namespace Dominio
             return other != null && Nombre == other.Nombre;
         }
 
+        public abstract decimal CalcularCosto(int? fidelizacion);
+
         public override string ToString()
         {
             string respuesta = "-------\n";
@@ -74,11 +75,10 @@ namespace Dominio
             respuesta += $"Descripción: {Descripcion} \n";
             respuesta += $"Fecha: {Fecha} \n";
             respuesta += $"Costo: {Costo} \n";
-            respuesta += $"Cantidad Máxima: {CantMax} \n";
+            respuesta += $"Cupos: {Cupos} \n";
             respuesta += $"Edad Mínima: {EdadMinima} \n";
             return respuesta;
         }
-
 
 
     }

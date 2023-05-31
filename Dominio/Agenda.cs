@@ -3,31 +3,51 @@ namespace Dominio
 {
     public class Agenda
     {
-        public Actividad? Actividad { get; set; }
-        public Huesped? Huesped { get; set; }
-        public bool? Estado { get; set; }
-        public int? CostoFinal { get; set; }
+        public int? Id { get; }
+        public static int? UltimoId { get; set; } = 1;
+        public Actividad Actividad { get; set; }
+        public Huesped Huesped { get; set; }
+        public string? Estado { get; set; }
+        public decimal? CostoFinal { get; set; }
         public DateTime? FechaCreacion { get; set; }
 
         public Agenda()
         {
+            Id = UltimoId++;
         }
-        public Agenda(Actividad actividad, Huesped huesped, bool estado, DateTime fecha)
+        public Agenda(Actividad actividad, Huesped huesped, string estado, decimal costo, DateTime fecha)
         {
+            Id = UltimoId++;
             Actividad = actividad;
             Huesped = huesped;
             Estado = estado;
-            CostoFinal = CostoFinal;
+            CostoFinal = costo;
             FechaCreacion = fecha;
         }
 
-        public bool AgendaTieneHuesped(Documento documentoIngresado)
+        //public bool AgendaTieneHuesped(Documento documentoIngresado)
+        //{
+        //    bool tiene = false;
+        //    if (Huesped.Documento == documentoIngresado) tiene = true;
+        //    return tiene;
+        //}
+
+        public void Validar()
         {
-            bool tiene = false;
-            if (Huesped.Documento == documentoIngresado) tiene = true;
-            return tiene;
+            ValidarEdad();
+            ValidarCupos();
         }
 
+        private void ValidarEdad()
+        {
+            if (Huesped.Edad() < Actividad.EdadMinima)
+                throw new Exception("No tienes la edad requerida para realizar esta actividad");
+        }
+        private void ValidarCupos()
+        {
+            if (Actividad.Cupos < 0)
+                throw new Exception("No quedan cupos para esta actividad");
+        }
 
         public bool AgendaEntreFechas(DateTime fechaUno, DateTime fechaDos)
         {
@@ -49,6 +69,14 @@ namespace Dominio
             }
 
             return esta;
+        }
+
+        public string EstadoAgenda(decimal costoAgenda)
+        {
+            string estado = "PENDIENTE_PAGO";
+            if (costoAgenda == 0) estado = "CONFIRMADA";
+
+            return estado;
         }
 
         public override string ToString()

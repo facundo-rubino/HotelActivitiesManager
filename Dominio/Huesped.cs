@@ -8,8 +8,8 @@ namespace Dominio
         public string? Nombre { get; set; }
         public string? Apellido { get; set; }
         public string? Habitacion { get; set; }
-        public DateTime? FechaNac { get; set; }
-        public int? Fidelizacion { get; set; }
+        public DateTime FechaNac { get; set; }
+        public int? Fidelizacion { get; set; } = 1;
 
         public Huesped()
         {
@@ -21,7 +21,7 @@ namespace Dominio
             Apellido = apellido;
             Habitacion = habitacion;
             FechaNac = fechaNac;
-            Fidelizacion = 4;
+            Fidelizacion = 1;
         }
 
         public override void Validar()
@@ -71,16 +71,19 @@ namespace Dominio
             }
         }
 
-        public bool HuespedEsApto()
+        public int Edad()
         {
-            bool esApto = false;
+            int edad = DateTime.Now.Year - FechaNac.Year;
 
-
-
-            return esApto;
+            if (DateTime.Now.Month > FechaNac.Month)
+                edad--;
+            else if (DateTime.Now.Month == FechaNac.Month)
+            {
+                if (DateTime.Now.Day == FechaNac.Day)
+                    edad--;
+            }
+            return edad;
         }
-
-
 
         public override string ToString()
         {

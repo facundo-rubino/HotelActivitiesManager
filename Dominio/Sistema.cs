@@ -79,11 +79,12 @@ namespace Dominio
             Interna Interna10 = new Interna("Serenella", "Salón de baile", false, "Clase de baile latino", "Aprende los movimientos más sensuales y divertidos de la salsa y la bachata en nuestra clase de baile latino.", new DateTime(2024, 10, 12), 9, 30, 8);
             AgregarActividadInterna(Interna10);
 
-            //Testing Interna
-
+            #region TestingInterna
             //Testeo Validar Nombre vacío
             //Interna InternaTesting = new Interna("Felipe", "LugarInterno10", false, "", "Descripción interna 10", new DateTime(2024, 10, 12), 9, 30, 8);
             //AgregarActividadInterna(InternaTesting);
+            #endregion
+
         }
 
         private void PrecargarDatosTercerizadas()
@@ -175,6 +176,8 @@ namespace Dominio
             Tercerizada Tercerizada15 = new Tercerizada(Proveedor10, false, new DateTime(2024, 03, 12), "Noche de Stand up", "Ríete a carcajadas en nuestra noche de comedia, donde talentosos comediantes te harán pasar un rato inolvidable con sus actuaciones.", new DateTime(2024, 03, 12), 12, 10, 2);
             AgregarActividadTercerizada(Tercerizada15);
 
+            #region TestingProveedor
+
             //Testing Proveedor
 
             //Testeo Validar Nombre vacío
@@ -216,6 +219,8 @@ namespace Dominio
             //AgregarActividadTercerizada(TercerizadaTesting);
 
 
+            #endregion
+
         }
 
         private void PrecargarHuespedes()
@@ -223,7 +228,7 @@ namespace Dominio
             Huesped Huesped1 = new Huesped(new Documento(1, "51243902"), "Facundo", "Rubino", "24", new DateTime(2000, 04, 21), "facundorubino21@gmail.com", "password");
             AgregarHuesped(Huesped1);
 
-            //Testeo Huesped
+            #region TestingHuesped
 
             //Testeo mail erroneo
             //Huesped HuespedTesting = new Huesped(new Documento(1, "51243902"), "Facundo", "Rubino", "24", new DateTime(2000, 04, 21), "facundorubino21@", "password");
@@ -253,12 +258,17 @@ namespace Dominio
             //Huesped HuespedTesting = new Huesped(new Documento(1, "51243902"), "Facundo", "Rubino", "22", new DateTime(2000, 04, 21), "facundorubino21@123", "password");
             //AgregarHuesped(HuespedTesting);
 
+            #endregion
         }
 
         private void PrecargarOperadores()
         {
             Operador Operador1 = new Operador("admin@admin", "admin1234", "Facundo", "Rubino", new DateTime(2023, 02, 01));
             AgregarOperador(Operador1);
+
+            Operador Operador2 = new Operador("admin@ort", "admin1234", "Luis", "Dentone", new DateTime(2020, 02, 01));
+            AgregarOperador(Operador2);
+
         }
 
 
@@ -479,6 +489,25 @@ namespace Dominio
             return aux;
         }
 
+        public void CrearAgenda(Huesped huesped, Actividad actividad)
+        {
+            string estado = "PENDIENTE_PAGO";
+            decimal costoAgenda = actividad.CalcularCosto(huesped.Fidelizacion);
+            if (costoAgenda == 0)
+                estado = "CONFIRMADA";
+
+            Agenda agenda = new Agenda(actividad, huesped, estado, costoAgenda, DateTime.Now);
+            AgregarAgenda(agenda);
+
+        }
+
+        public void AgregarAgenda(Agenda agenda)
+        {
+            if (agenda == null) throw new Exception("La agenda no es válida");
+
+            agenda.Validar();
+            Agendas.Add(agenda);
+        }
 
 
     }

@@ -11,7 +11,7 @@ namespace Dominio
         {
         }
 
-        public Tercerizada(Proveedor proveedor, bool confirmada, DateTime fechaConfirmacion, string nombre, string descripcion, DateTime fecha, int edadMinima, int costo, int cantMax) : base(nombre, descripcion, fecha, edadMinima, costo, cantMax)
+        public Tercerizada(Proveedor proveedor, bool confirmada, DateTime fechaConfirmacion, string nombre, string descripcion, DateTime fecha, int edadMinima, decimal costo, int cupos) : base(nombre, descripcion, fecha, edadMinima, costo, cupos)
         {
             Proveedor = proveedor;
             Confirmada = confirmada;
@@ -35,6 +35,15 @@ namespace Dominio
             respuesta += $"Confirmada: {actividadConfirmada} \n";
             respuesta += $"Fecha de confirmación: {FechaConfirmacion} \n";
             return respuesta;
+        }
+
+        public override decimal CalcularCosto(int? fidelizacion)
+        {
+            decimal costoTercerizada = Costo;
+
+            if (Confirmada) costoTercerizada -= (decimal)Proveedor.Descuento;
+
+            return costoTercerizada;
         }
     }
 }
