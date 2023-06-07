@@ -18,6 +18,7 @@
     <None Remove="Views\Agenda\" />
     <None Remove="Views\Home\" />
     <None Remove="Views\Proveedor\" />
+    <None Remove="Views\Login\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
@@ -25,6 +26,7 @@
     <Folder Include="Views\Agenda\" />
     <Folder Include="Views\Home\" />
     <Folder Include="Views\Proveedor\" />
+    <Folder Include="Views\Login\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\img\" />

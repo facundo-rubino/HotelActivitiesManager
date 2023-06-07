@@ -89,14 +89,14 @@ namespace Dominio
 
         private void PrecargarDatosTercerizadas()
         {
-            Proveedor Proveedor1 = new Proveedor("DreamWorks S.R.L.", "23048549", "Suarez 3380 Apto 304", 1);
+            Proveedor Proveedor1 = new Proveedor("DreamWorks S.R.L.", "23048549", "Suarez 3380 Apto 304", 10);
             ValidarProveedorRepetido(Proveedor1);
             Proveedor1.Validar();
 
             Tercerizada Tercerizada1 = new Tercerizada(Proveedor1, true, new DateTime(2024, 01, 12), "Torneo de tenis", "Demuestra tus habilidades en la cancha de tenis en nuestro torneo amistoso organizado para huéspedes.", new DateTime(2024, 01, 12), 10, 0, 10);
             AgregarActividadTercerizada(Tercerizada1);
 
-            Proveedor Proveedor2 = new Proveedor("Estela Umpierrez S.A.", "33459678", "Lima 2456", 7);
+            Proveedor Proveedor2 = new Proveedor("Estela Umpierrez S.A.", "33459678", "Lima 2456", 20);
             ValidarProveedorRepetido(Proveedor2);
             Proveedor2.Validar();
 
@@ -105,14 +105,14 @@ namespace Dominio
             AgregarActividadTercerizada(Tercerizada2);
 
 
-            Proveedor Proveedor3 = new Proveedor("TravelFun", "29152020", "Misiones 1140", 9);
+            Proveedor Proveedor3 = new Proveedor("TravelFun", "29152020", "Misiones 1140", 25);
             ValidarProveedorRepetido(Proveedor3);
             Proveedor3.Validar();
 
             Tercerizada Tercerizada3 = new Tercerizada(Proveedor1, false, new DateTime(2024, 03, 12), "Clase de pintura", "Libera tu creatividad y descubre el artista que llevas dentro en nuestra clase de pintura dirigida.", DateTime.Today, 12, 0, 20);
             AgregarActividadTercerizada(Tercerizada3);
 
-            Proveedor Proveedor4 = new Proveedor("Rekreation S.A.", "29162019", "Bacacay 1211", 11);
+            Proveedor Proveedor4 = new Proveedor("Rekreation S.A.", "29162019", "Bacacay 1211", 20);
             ValidarProveedorRepetido(Proveedor4);
             Proveedor4.Validar();
 
@@ -126,35 +126,35 @@ namespace Dominio
             Tercerizada Tercerizada5 = new Tercerizada(Proveedor2, true, new DateTime(2024, 05, 12), "Torneo de Basquetbol", "Torneo de basquetbol 3x3 para poder competir con tus amigos o conocer gente nueva", DateTime.Today, 8, 0, 15);
             AgregarActividadTercerizada(Tercerizada5);
 
-            Proveedor Proveedor6 = new Proveedor("Electric Blue", "26018945", "Cooper 678", 5);
+            Proveedor Proveedor6 = new Proveedor("Electric Blue", "26018945", "Cooper 678", 35);
             ValidarProveedorRepetido(Proveedor6);
             Proveedor6.Validar();
 
             Tercerizada Tercerizada6 = new Tercerizada(Proveedor5, true, new DateTime(2024, 06, 12), "Clase de meditación", "Aprende a calmar tu mente y encontrar la paz interior en nuestra clase guiada de meditación.", new DateTime(2024, 06, 12), 8, 0, 10);
             AgregarActividadTercerizada(Tercerizada6);
 
-            Proveedor Proveedor7 = new Proveedor("Lúdica S.A.", "26142967", "Dublin 560", 4);
+            Proveedor Proveedor7 = new Proveedor("Lúdica S.A.", "26142967", "Dublin 560", 50);
             ValidarProveedorRepetido(Proveedor7);
             Proveedor7.Validar();
 
             Tercerizada Tercerizada7 = new Tercerizada(Proveedor3, false, new DateTime(2024, 07, 12), "Paseo en velero", "Disfruta de la brisa marina y las vistas panorámicas en un relajante paseo en velero por la costa.", DateTime.Today, 18, 33, 5);
             AgregarActividadTercerizada(Tercerizada7);
 
-            Proveedor Proveedor8 = new Proveedor("Gimenez S.R.L.", "29001010", "Andes 1190", 7);
+            Proveedor Proveedor8 = new Proveedor("Gimenez S.R.L.", "29001010", "Andes 1190", 10);
             ValidarProveedorRepetido(Proveedor8);
             Proveedor8.Validar();
 
             Tercerizada Tercerizada8 = new Tercerizada(Proveedor5, true, new DateTime(2024, 06, 12), "Tour de observación de aves", "Descubre la diversidad de aves locales en un apasionante tour de observación con un guía experto.", new DateTime(2024, 08, 12), 12, 65, 10);
             AgregarActividadTercerizada(Tercerizada8);
 
-            Proveedor Proveedor9 = new Proveedor("Salt Lake", "22041120", "Agraciada 2512 Apto. 1", 8);
+            Proveedor Proveedor9 = new Proveedor("Salt Lake", "22041120", "Agraciada 2512 Apto. 1", 15);
             ValidarProveedorRepetido(Proveedor9);
             Proveedor9.Validar();
 
             Tercerizada Tercerizada9 = new Tercerizada(Proveedor9, true, new DateTime(2024, 09, 12), "Noche de karaoke", "Muestra tu talento vocal y diviértete con amigos en nuestra noche de karaoke llena de risas y música.", DateTime.Today, 18, 0, 15);
             AgregarActividadTercerizada(Tercerizada9);
 
-            Proveedor Proveedor10 = new Proveedor("Norberto Molina", "22001189", "Michigan 2100", 9);
+            Proveedor Proveedor10 = new Proveedor("Norberto Molina", "22001189", "Michigan 2100", 15);
             ValidarProveedorRepetido(Proveedor10);
             Proveedor10.Validar();
 
@@ -268,9 +268,7 @@ namespace Dominio
 
             Operador Operador2 = new Operador("admin@ort", "admin1234", "Luis", "Dentone", new DateTime(2020, 02, 01));
             AgregarOperador(Operador2);
-
         }
-
 
         public void AgregarActividadInterna(Interna interna)
         {
@@ -354,14 +352,14 @@ namespace Dominio
             }
         }
 
-        public Proveedor? ObtenerProveedorPorNombre(string nombre)
+        public Proveedor? ObtenerProveedorPorNombre(string numero)
         {
             foreach (Actividad item in Actividades)
             {
                 if (item is Tercerizada)
                 {
                     Tercerizada unaTercerizada = item as Tercerizada;
-                    if (unaTercerizada.Proveedor.Nombre == nombre)
+                    if (unaTercerizada.Proveedor.Numero == numero)
                     {
                         return unaTercerizada.Proveedor;
                     }
@@ -370,17 +368,17 @@ namespace Dominio
             return null;
         }
 
-        public void ModificarPromocionProveedor(string nombre, int promocion)
+        public void ModificarPromocionProveedor(string numero, decimal descuento)
         {
-            if ((promocion < 0 || promocion > 100)) throw new Exception("La promoción ofrecida por el proveedor puede ser de 0 a 100");
+            if (descuento < 0 || descuento > 100) throw new Exception("La promoción ofrecida por el proveedor puede ser de 0 a 100");
 
-            if (string.IsNullOrEmpty(nombre)) throw new Exception($"El nombre no es válido");
+            if (string.IsNullOrEmpty(numero)) throw new Exception($"El numero no es válido");
 
-            Proveedor unProveedor = ObtenerProveedorPorNombre(nombre);
+            Proveedor unProveedor = ObtenerProveedorPorNombre(numero);
 
-            if (unProveedor == null) throw new Exception($"No se encontro el proveedor de nombre: {nombre}");
+            if (unProveedor == null) throw new Exception($"No se encontro el proveedor de número: {numero}");
 
-            unProveedor.Descuento = promocion;
+            unProveedor.Descuento = descuento;
         }
 
         public IEnumerable<Proveedor> ListaProveedoresOrdenada()
