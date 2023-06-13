@@ -1,6 +1,8 @@
 ﻿@using Dominio;
 
+
 <h1>Listado de proveedores</h1>
+
 
 <table class="table table-striped">
     <thead>
@@ -18,8 +20,10 @@
                 <th>@item.Nombre</th>
                 <td>@item.Numero</td>
                 <td>@item.Direccion</td>
-                <td>@item.Descuento% <i class="bi bi-pencil-square" style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#descuentoModal" onclick=guardoNumero(@item.Numero)></i></td>
+                <td data-td-id="@item.Numero">@item.Descuento% <i class="bi bi-pencil-square" onclick="guardoNumero(@item.Numero)" style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#descuentoModal"></i></td>
             </tr>
+
+
         }
     </tbody>
 </table>
@@ -28,15 +32,14 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="descuentoModalLabel">Cambiar descuento del proveedor</h1>
+                <h1 class="modal-title fs-5" id="descuentoModalLabel">Cambiar descuento</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body ">
-                <form method="post" action="/proveedor/DescuentoXNumero">
-                    <input type="text" name="numero" hidden id="numeroProveedor" />
-                    <input type="text" name="descuento" value="" />
-                    <button type="submit" class="btn btn-success" id="submitButton">Actualizar</button>
-                </form>
+                <input type="text" id="descuentoIngresado" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="submitButton">Actualizar</button>
             </div>
         </div>
     </div>

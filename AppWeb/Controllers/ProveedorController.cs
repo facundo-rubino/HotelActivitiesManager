@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Dominio;
 using Microsoft.AspNetCore.Mvc;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -26,22 +27,10 @@ namespace AppWeb.Controllers
         {
 
             _sistema.ModificarPromocionProveedor(numero, descuento);
+            ViewBag.Proveedores = _sistema.ListaProveedoresOrdenada();
 
-            return Json(new { numero });
+            return View("index");
         }
-
-        public ActionResult actualizacionTabla(string identificador)
-        {
-            // Retrieve the data for the specified uniqueIdentifier
-            // and return a partial view with the data
-
-            ViewBag.Id = identificador;
-
-            return PartialView("actualizacionTabla");
-        }
-
-
-
     }
 }
 
