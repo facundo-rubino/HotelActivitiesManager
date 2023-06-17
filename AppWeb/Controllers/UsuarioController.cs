@@ -22,18 +22,25 @@ namespace AppWeb.Controllers
         [HttpPost]
         public IActionResult Login(string email, string pass)
         {
-            Usuario usuarioLogueado = _sistema.ObtenerUsuarioPorMail(email);
-            string rol = _sistema.ObtenerRolUsuario(email);
+            try
+            {
+                Usuario usuarioLogueado = _sistema.ObtenerUsuario(email, pass);
+                string rol = _sistema.ObtenerRolUsuario(email, pass);
 
-            HttpContext.Session.SetString("email", email);
-            HttpContext.Session.SetString("rol", rol);
+                HttpContext.Session.SetString("email", email);
+                HttpContext.Session.SetString("rol", rol);
 
-            if (rol == "huesped")
-                return Redirect("/Actividad/Index");
-            else if (rol == "operador")
-                return Redirect("/Proveedor/Index");
+                if (rol == "huesped")
+                    return Redirect("/Actividad/Index");
+                else if (rol == "operador")
+                    return Redirect("/Proveedor/Index");
+            }
+            catch (Exception e)
+            {
+                ViewBag.error = e.Message;
+            }
+            return View("login");
 
-            return RedirectToAction("login");
         }
 
         public IActionResult LogOut()

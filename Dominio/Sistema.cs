@@ -388,6 +388,9 @@ namespace Dominio
 
             if (string.IsNullOrEmpty(numero)) throw new Exception($"El numero no es válido");
 
+            if (descuento == null) throw new Exception($"El descuento no es válido");
+
+
             Proveedor unProveedor = ObtenerProveedorPorNumero(numero);
 
             if (unProveedor == null) throw new Exception($"No se encontro el proveedor de número: {numero}");
@@ -521,19 +524,26 @@ namespace Dominio
             Agendas.Add(agenda);
         }
 
-        public Usuario ObtenerUsuarioPorMail(string email)
+        public Usuario ObtenerUsuario(string email, string pass)
         {
             foreach (Usuario item in Usuarios)
             {
-                if (item.Email == email) return item;
+                if (item.Email == email)
+                {
+                    if (item.Contrasenia == pass)
+                        return item;
+                    else
+                        throw new Exception("Contraseña incorrecta");
+                }
             }
             throw new Exception($"Usuario no encontrado para el email: {email}");
         }
 
-        public string ObtenerRolUsuario(string email)
+
+        public string ObtenerRolUsuario(string email, string pass)
         {
             string rol = "";
-            Usuario usuarioLogueado = ObtenerUsuarioPorMail(email);
+            Usuario usuarioLogueado = ObtenerUsuario(email, pass);
 
             if (usuarioLogueado is Huesped) rol = "huesped";
             if (usuarioLogueado is Operador) rol = "operador";
