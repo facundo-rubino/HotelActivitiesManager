@@ -218,7 +218,7 @@ namespace AppConsola
                 DateTime fechaNacimiento = DateTime.Parse(fechaCruda);
                 Console.Clear();
 
-                Huesped nuevoHuesped = new Huesped(new Documento(tipoDocumento, numDocumento), nombre, apellido, habitacion, fechaNacimiento, email, contrasenia);
+                Huesped nuevoHuesped = new Huesped(new Documento(tipoDocumento, numDocumento, TipoDocumento), nombre, apellido, habitacion, fechaNacimiento, email, contrasenia);
 
                 _sistema.AgregarHuesped(nuevoHuesped);
 

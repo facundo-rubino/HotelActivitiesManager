@@ -14,7 +14,6 @@ namespace AppWeb.Controllers
 
         private Sistema _sistema = Sistema.Instancia;
 
-
         // GET: /<controller>/
         public IActionResult Index()
         {

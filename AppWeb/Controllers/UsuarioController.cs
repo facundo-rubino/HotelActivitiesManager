@@ -22,8 +22,9 @@ namespace AppWeb.Controllers
         [HttpPost]
         public IActionResult Login(string email, string pass)
         {
-
+            Usuario usuarioLogueado = _sistema.ObtenerUsuarioPorMail(email);
             string rol = _sistema.ObtenerRolUsuario(email);
+
             HttpContext.Session.SetString("email", email);
             HttpContext.Session.SetString("rol", rol);
 
@@ -39,6 +40,36 @@ namespace AppWeb.Controllers
         {
             HttpContext.Session.Clear();
             return RedirectToAction("login");
+        }
+
+        [HttpGet]
+        public IActionResult CreateHuesped()
+        {
+            ViewBag.TiposDocumento = _sistema.TiposDeDocumento;
+            return View(new Huesped());
+        }
+
+        [HttpPost]
+        public IActionResult CreateHuesped(Huesped huesped, int tipoDocumento)
+        {
+            try
+            {
+                // alta en sistema
+                _sistema.AgregarHuesped(huesped);
+                // return RedirectToAction("MostrarUsuario", new { mensaje = "Registrado correctamente" });
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+                ViewBag.error = e.Message;
+            }
+            return View("index");
+        }
+
+        [HttpGet]
+        public IActionResult MostrarUsuario()
+        {
+            return View("MuestroUsuario");
         }
     }
 }

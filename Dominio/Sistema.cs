@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.VisualBasic;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using static Dominio.Documento;
 
 namespace Dominio
 {
@@ -18,6 +19,8 @@ namespace Dominio
         public List<Actividad> Actividades { get; } = new List<Actividad>();
         public List<Usuario> Usuarios { get; } = new List<Usuario>();
         public List<Agenda> Agendas { get; } = new List<Agenda>();
+        public List<TipoDocumento> TiposDeDocumento { get; } = new List<TipoDocumento>();
+
 
         //singleton
         private static Sistema _instancia = null;
@@ -43,6 +46,7 @@ namespace Dominio
         {
             PrecargarDatosInternas();
             PrecargarDatosTercerizadas();
+            PrecargarTiposDeDocumento();
             PrecargarHuespedes();
             PrecargarOperadores();
         }
@@ -55,28 +59,28 @@ namespace Dominio
             Interna Interna2 = new Interna("Facundo", "Área de recepción", true, "Excursión en bicicleta por la ciudad", "Explora los lugares más pintorescos de la ciudad en una emocionante excursión en bicicleta guiada.", new DateTime(2024, 02, 12), 11, 0, 6);
             AgregarActividadInterna(Interna2);
 
-            Interna Interna3 = new Interna("Marcelo", "Cocina gourmet", false, "Taller de cocina local", "Descubre los secretos de la cocina local mientras aprendes a preparar platos tradicionales con nuestros talentosos chefs.", new DateTime(2024, 03, 12), 12, 60, 1);
+            Interna Interna3 = new Interna("Marcelo", "Cocina gourmet", false, "Taller de cocina local", "Descubre los secretos de la cocina local mientras aprendes a preparar platos tradicionales con nuestros talentosos chefs.", new DateTime(2024, 03, 12), 12, 60, 10);
             AgregarActividadInterna(Interna3);
 
             Interna Interna4 = new Interna("Tatiana", " Salón de entretenimiento", true, "Noche de música en vivo", "Disfruta de una noche de música en vivo en nuestro acogedor salón mientras te relajas con una copa de vino.", new DateTime(2024, 04, 12), 12, 35, 2);
             AgregarActividadInterna(Interna4);
 
-            Interna Interna5 = new Interna("Federico", "Barra de cócteles", false, "Clase de coctelería", "Aprende a mezclar y preparar los cócteles más deliciosos en nuestra clase interactiva de coctelería.", new DateTime(2024, 05, 12), 9, 25, 10);
+            Interna Interna5 = new Interna("Federico", "Barra de cócteles", false, "Clase de coctelería", "Aprende a mezclar y preparar los cócteles más deliciosos en nuestra clase interactiva de coctelería.", new DateTime(2024, 05, 12), 9, 25, 0);
             AgregarActividadInterna(Interna5);
 
-            Interna Interna6 = new Interna("María José", "Sala de catas", true, "Tour de cata de vinos", "Déjate seducir por los sabores y aromas de los vinos de la región en nuestro exclusivo tour de cata de vinos.", new DateTime(2024, 06, 12), 10, 20, 5);
+            Interna Interna6 = new Interna("María José", "Sala de catas", true, "Tour de cata de vinos", "Déjate seducir por los sabores y aromas de los vinos de la región en nuestro exclusivo tour de cata de vinos.", new DateTime(2024, 06, 12), 10, 20, 10);
             AgregarActividadInterna(Interna6);
 
             Interna Interna7 = new Interna("Gabriel", "Playa privada", false, "Clase de surf", "Atrévete a desafiar las olas y aprende a surfear con la ayuda de nuestros experimentados instructores.", new DateTime(2024, 07, 12), 8, 11, 6);
             AgregarActividadInterna(Interna7);
 
-            Interna Interna8 = new Interna("Santiago", "Jardín central", true, "Noche de cine al aire libre", "Disfruta de una película bajo las estrellas en nuestro jardín, mientras te relajas en una cómoda hamaca.", new DateTime(2024, 08, 12), 6, 0, 5);
+            Interna Interna8 = new Interna("Santiago", "Jardín central", true, "Noche de cine al aire libre", "Disfruta de una película bajo las estrellas en nuestro jardín, mientras te relajas en una cómoda hamaca.", new DateTime(2024, 08, 12), 6, 0, 0);
             AgregarActividadInterna(Interna8);
 
             Interna Interna9 = new Interna("Jorge", "Senderos cercanos", false, "Caminata por la naturaleza", "Explora los senderos naturales cercanos al hotel y admira la belleza de la flora y fauna local.", new DateTime(2024, 09, 12), 6, 0, 5);
             AgregarActividadInterna(Interna9);
 
-            Interna Interna10 = new Interna("Serenella", "Salón de baile", false, "Clase de baile latino", "Aprende los movimientos más sensuales y divertidos de la salsa y la bachata en nuestra clase de baile latino.", new DateTime(2024, 10, 12), 9, 30, 8);
+            Interna Interna10 = new Interna("Serenella", "Salón de baile", false, "Clase de baile latino", "Aprende los movimientos más sensuales y divertidos de la salsa y la bachata en nuestra clase de baile latino.", new DateTime(2024, 10, 12), 9, 30, 0);
             AgregarActividadInterna(Interna10);
 
             #region TestingInterna
@@ -123,7 +127,7 @@ namespace Dominio
             ValidarProveedorRepetido(Proveedor5);
             Proveedor5.Validar();
 
-            Tercerizada Tercerizada5 = new Tercerizada(Proveedor2, true, new DateTime(2024, 05, 12), "Torneo de Basquetbol", "Torneo de basquetbol 3x3 para poder competir con tus amigos o conocer gente nueva", DateTime.Today, 8, 0, 15);
+            Tercerizada Tercerizada5 = new Tercerizada(Proveedor2, true, new DateTime(2024, 05, 11), "Torneo de Basquetbol", "Torneo de basquetbol 3x3 para poder competir con tus amigos o conocer gente nueva", DateTime.Today, 8, 0, 15);
             AgregarActividadTercerizada(Tercerizada5);
 
             Proveedor Proveedor6 = new Proveedor("Electric Blue", "26018945", "Cooper 678", 35);
@@ -137,7 +141,7 @@ namespace Dominio
             ValidarProveedorRepetido(Proveedor7);
             Proveedor7.Validar();
 
-            Tercerizada Tercerizada7 = new Tercerizada(Proveedor3, false, new DateTime(2024, 07, 12), "Paseo en velero", "Disfruta de la brisa marina y las vistas panorámicas en un relajante paseo en velero por la costa.", DateTime.Today, 18, 33, 5);
+            Tercerizada Tercerizada7 = new Tercerizada(Proveedor3, false, new DateTime(2024, 07, 12), "Paseo en velero", "Disfruta de la brisa marina y las vistas panorámicas en un relajante paseo en velero por la costa.", DateTime.Today, 18, 33, 0);
             AgregarActividadTercerizada(Tercerizada7);
 
             Proveedor Proveedor8 = new Proveedor("Gimenez S.R.L.", "29001010", "Andes 1190", 10);
@@ -158,7 +162,7 @@ namespace Dominio
             ValidarProveedorRepetido(Proveedor10);
             Proveedor10.Validar();
 
-            Tercerizada Tercerizada10 = new Tercerizada(Proveedor4, true, new DateTime(2024, 10, 12), "Clase de Pilates", "Fortalece tu cuerpo y mejora tu flexibilidad en nuestra clase de Pilates, impartida por un instructor certificado", new DateTime(2024, 10, 12), 18, 45, 15);
+            Tercerizada Tercerizada10 = new Tercerizada(Proveedor4, true, new DateTime(2024, 10, 12), "Clase de Pilates", "Fortalece tu cuerpo y mejora tu flexibilidad en nuestra clase de Pilates, impartida por un instructor certificado", new DateTime(2024, 10, 12), 18, 45, 0);
             AgregarActividadTercerizada(Tercerizada10);
 
             Tercerizada Tercerizada11 = new Tercerizada(Proveedor6, false, new DateTime(2024, 11, 12), "Excursión a una cascada", "Embárcate en una emocionante excursión a una hermosa cascada escondida en plena naturaleza.", new DateTime(2024, 11, 12), 10, 55, 10);
@@ -173,7 +177,7 @@ namespace Dominio
             Tercerizada Tercerizada14 = new Tercerizada(Proveedor9, false, new DateTime(2024, 02, 12), "Excursión en kayak", "Descubre la belleza de la costa mientras remas en kayak a lo largo de la costa marítima. ", new DateTime(2024, 02, 12), 8, 65, 5);
             AgregarActividadTercerizada(Tercerizada14);
 
-            Tercerizada Tercerizada15 = new Tercerizada(Proveedor10, false, new DateTime(2024, 03, 12), "Noche de Stand up", "Ríete a carcajadas en nuestra noche de comedia, donde talentosos comediantes te harán pasar un rato inolvidable con sus actuaciones.", new DateTime(2024, 03, 12), 12, 10, 2);
+            Tercerizada Tercerizada15 = new Tercerizada(Proveedor10, false, new DateTime(2024, 03, 12), "Noche de Stand up", "Ríete a carcajadas en nuestra noche de comedia, donde talentosos comediantes te harán pasar un rato inolvidable con sus actuaciones.", new DateTime(2024, 03, 12), 12, 10, 0);
             AgregarActividadTercerizada(Tercerizada15);
 
             #region TestingProveedor
@@ -223,9 +227,19 @@ namespace Dominio
 
         }
 
+        private void PrecargarTiposDeDocumento()
+        {
+            TipoDocumento CEDULA = new TipoDocumento("Cédula");
+            TiposDeDocumento.Add(CEDULA);
+            TipoDocumento PASAPORTE = new TipoDocumento("Pasaporte");
+            TiposDeDocumento.Add(PASAPORTE);
+            TipoDocumento OTROS = new TipoDocumento("Otros");
+            TiposDeDocumento.Add(OTROS);
+        }
+
         private void PrecargarHuespedes()
         {
-            Huesped Huesped1 = new Huesped(new Documento(1, "51243902"), "Facundo", "Rubino", "24", new DateTime(2000, 04, 21), "facundorubino21@gmail.com", "password");
+            Huesped Huesped1 = new Huesped(new Documento(1, "51243902"), "Facundo", "Rubino", new DateTime(2000, 04, 21), "facundorubino21@gmail.com", "password");
             AgregarHuesped(Huesped1);
 
             #region TestingHuesped
@@ -526,6 +540,8 @@ namespace Dominio
 
             return rol;
         }
+
+
     }
 }
 

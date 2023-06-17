@@ -19,8 +19,10 @@
             <div class="card-body mx-2 my-2 p-3">
                 <h5 class="card-title">@item.Nombre</h5>
                 <p class="card-text">@item.Descripcion</p>
-
-                <a href="#" class="btn btn-success">Agendar</a>
+                @if (@Context.Session.GetString("email") != null)
+                {
+                    <a href="#" class="btn btn-success">Agendar</a>
+                }
             </div>
         </div>
     }

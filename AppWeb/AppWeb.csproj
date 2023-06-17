@@ -19,6 +19,7 @@
     <None Remove="Views\Home\" />
     <None Remove="Views\Proveedor\" />
     <None Remove="Views\Usuario\" />
+    <None Remove="Filtros\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
@@ -27,6 +28,7 @@
     <Folder Include="Views\Home\" />
     <Folder Include="Views\Proveedor\" />
     <Folder Include="Views\Usuario\" />
+    <Folder Include="Filtros\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\img\" />

@@ -28,6 +28,7 @@ namespace Dominio
         {
             return other != null && TipoDocumento == other.TipoDocumento && NumDocumento == other.NumDocumento;
         }
+
     }
 }
 

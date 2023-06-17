@@ -1,0 +1,38 @@
+﻿@using Dominio
+@model Usuario
+
+<form method="post">
+    REGISTRO
+    <div class="mb-3">
+        <label for="InputEmail" class="form-label">Ingrese email</label>
+        <input required type="email" name="Email" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="Email...">
+        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    </div>
+    <div class="mb-3">
+        <label for="InputPass1" class="form-label">Contraseña</label>
+        <input required type="password" name="Contrasenia" class="form-control" id="InputPass1" placeholder="Contraseña...">
+    </div>
+    <div class="mb-3">
+        <label for="InputNumDocumento" class="form-label">Numero de documento</label>
+        <input required type="text" name="NumDocumento" class="form-control" id="InputNumDocumento">
+    </div>
+    <select required name="tipoDocumento">
+        @foreach (TipoDocumento tipo in ViewBag.TiposDocumento)
+        {
+            <option value="@tipo.Id">@tipo.Tipo</option>
+        }
+    </select>
+    <div class="mb-3">
+        <label for="InputNombre" class="form-label">Nombre</label>
+        <input required type="text" name="Nombre" class="form-control" id="InputNombre">
+    </div>
+    <div class="mb-3">
+        <label for="InputApellido" class="form-label">Apellido</label>
+        <input required type="text" name="Apellido" class="form-control" id="InputApellido">
+    </div>
+    <div class="mb-3">
+        <label for="InputFechaNac" class="form-label">Fecha de nacimiento</label>
+        <input required type="date" name="FechaNac" class="form-control" id="InputFechaNac">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

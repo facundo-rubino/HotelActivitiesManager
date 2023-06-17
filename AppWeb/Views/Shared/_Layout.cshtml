@@ -13,33 +13,51 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Milotel</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Actividad" asp-action="Index">Milotel</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse d-sm-inline-flex">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Actividad" asp-action="Index">Actividades</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Agenda" asp-action="Index">Agenda</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Proveedor" asp-action="Index">Proveedores</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Usuario" asp-action="Index"><i class="bi bi-person-circle"></i></a>
-                        </li>
+                        @if (@Context.Session.GetString("email") != null)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Actividad" asp-action="Index">Actividades</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Agenda" asp-action="Index">Agenda</a>
+                            </li>
+                            @if (@Context.Session.GetString("rol") == "operador")
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Proveedor" asp-action="Index">Proveedores</a>
+                                </li>
+                            }
 
-                        <li class="nav-item">
-                            <button onclick="temaOscuro()" class="btn rounded-fill"><i id="theme-icon" class="bi bi-moon"></i></button>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Usuario" asp-action="LogOut"><i class="bi bi-box-arrow-left"></i></a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Usuario" asp-action="MostrarUsuario"><i class="bi bi-person-circle"></i></a>
+                            </li>
 
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Usuario" asp-action="LogOut"><i class="bi bi-box-arrow-left"></i></a>
+                            </li>
+
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Usuario" asp-action="Login"><i class="bi bi-person-circle"></i></a>
+                            </li>
+                        }
+
+
+
+
+
+                        @*<li class="nav-item">
+                                <button onclick="temaOscuro()" class="btn rounded-fill"><i id="theme-icon" class="bi bi-moon"></i></button>
+                            </li>*@
 
                     </ul>
                 </div>

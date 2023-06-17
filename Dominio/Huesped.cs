@@ -7,19 +7,20 @@ namespace Dominio
         public Documento? Documento { get; set; }
         public string? Nombre { get; set; }
         public string? Apellido { get; set; }
-        public string? Habitacion { get; set; }
+        public int? Habitacion { get; }
+        public static int UltHabitacion { get; set; } = 1;
         public DateTime FechaNac { get; set; }
         public int? Fidelizacion { get; set; } = 1;
 
         public Huesped()
         {
         }
-        public Huesped(Documento documento, string nombre, string apellido, string habitacion, DateTime fechaNac, string email, string contrasenia) : base(email, contrasenia)
+        public Huesped(Documento documento, string nombre, string apellido, DateTime fechaNac, string email, string contrasenia) : base(email, contrasenia)
         {
             Documento = documento;
             Nombre = nombre;
             Apellido = apellido;
-            Habitacion = habitacion;
+            Habitacion = UltHabitacion++;
             FechaNac = fechaNac;
             Fidelizacion = 1;
         }
@@ -35,7 +36,7 @@ namespace Dominio
 
         private void HabitacionValida()
         {
-            if (!Utilidades.StringValido(Habitacion)) throw new Exception("La habitación no puede ser vacía");
+            if (Habitacion == null) throw new Exception("La habitación no puede ser vacía");
         }
 
         private void FidelizacionValida()
