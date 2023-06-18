@@ -8,20 +8,19 @@ namespace Dominio
         public string? Nombre { get; set; }
         public string? Apellido { get; set; }
         public int? Habitacion { get; }
-        public static int UltHabitacion { get; set; } = 1;
         public DateTime FechaNac { get; set; }
         public int? Fidelizacion { get; set; } = 1;
 
         public Huesped()
         {
         }
-        public Huesped(Documento documento, string nombre, string apellido, DateTime fechaNac, string email, string contrasenia) : base(email, contrasenia)
+        public Huesped(Documento documento, string nombre, string apellido, DateTime fechaNac, int habitacion, string email, string contrasenia) : base(email, contrasenia)
         {
             Documento = documento;
             Nombre = nombre;
             Apellido = apellido;
-            Habitacion = UltHabitacion++;
             FechaNac = fechaNac;
+            Habitacion = habitacion;
             Fidelizacion = 1;
         }
 

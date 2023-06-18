@@ -34,7 +34,7 @@ public class Program
 
         app.MapControllerRoute(
             name: "default",
-            pattern: "{controller=Actividad}/{action=Index}/{id?}");
+            pattern: "{controller=Actividad}/{action=ActividadesPorFecha}/{id?}");
 
         app.Run();
     }

@@ -20,3 +20,13 @@ html {
 body {
     margin-bottom: 60px;
 }
+
+.disabled-btn {
+    background-color: gray;
+    cursor: not-allowed;
+    color: white;
+}
+
+    .disabled-btn:hover {
+        color: white;
+    }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Dominio;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -30,8 +31,14 @@ namespace AppWeb.Controllers
                 HttpContext.Session.SetString("email", email);
                 HttpContext.Session.SetString("rol", rol);
 
+
                 if (rol == "huesped")
-                    return Redirect("/Actividad/Index");
+                {
+                    Huesped huespedLogueado = usuarioLogueado as Huesped;
+
+                    HttpContext.Session.SetInt32("edad", huespedLogueado.Edad());
+                    return Redirect("/Actividad/ActividadesPorFecha");
+                }
                 else if (rol == "operador")
                     return Redirect("/Proveedor/Index");
             }
@@ -67,16 +74,16 @@ namespace AppWeb.Controllers
             }
             catch (Exception e)
             {
-                throw new Exception(e.Message);
                 ViewBag.error = e.Message;
+                ViewBag.TiposDocumento = _sistema.TiposDeDocumento;
             }
-            return View("index");
+            return View(huesped);
         }
 
         [HttpGet]
         public IActionResult MostrarUsuario()
         {
-            return View("MuestroUsuario");
+            return View("MostrarUsuario");
         }
     }
 }

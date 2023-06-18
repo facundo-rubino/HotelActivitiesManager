@@ -1,29 +1,69 @@
 ﻿@using Dominio;
-
-<h1>Listado de Actividades del día de hoy</h1>
-
-<form action="Actividad/ActividadesPorFecha">
-    <input type="date" name="fecha" />
-    <button type="submit" />
-</form>
+@*@model List<Actividad>*@
 
 
-<div class="d-flex flex-wrap ">
+@if (@ViewBag.error == null)
+{
 
-    @foreach (Actividad item in ViewBag.Actividad)
+    @if (@ViewBag.Fecha == DateTime.Today)
     {
-        var imageUrl = $"~/img/{item.Id}.jpg";
-
-        <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src=@Url.Content(imageUrl) alt="@item.Nombre">
-            <div class="card-body mx-2 my-2 p-3">
-                <h5 class="card-title">@item.Nombre</h5>
-                <p class="card-text">@item.Descripcion</p>
-                @if (@Context.Session.GetString("email") != null)
-                {
-                    <a href="#" class="btn btn-success">Agendar</a>
-                }
-            </div>
-        </div>
+        <h1>
+            Listado de actividades para hoy
+        </h1>
     }
-</div>
+    else
+    {
+        <h1>
+            Listado de actividades para la fecha: @ViewBag.Fecha.ToString("dd/MM/yyyy")
+        </h1>
+    }
+
+
+
+    <form method="post">
+        <input type="date" name="Fecha" />
+        <button type="submit">Buscar</button>
+    </form>
+
+    <div class="d-flex flex-wrap ">
+
+        @foreach (Actividad item in ViewBag.Actividad)
+        {
+            var imageUrl = $"~/img/{item.Id}.jpg";
+
+            <div class="card m-2" style="width: 18rem;">
+                <img class="card-img-top" src=@Url.Content(imageUrl) alt="@item.Nombre">
+                <div class="card-body mx-2 my-2 p-3">
+                    <h5 class="card-title">@item.Nombre</h5>
+                    <p class="card-text">@item.Descripcion</p>
+                    <i class="bi bi-currency-dollar"></i><p>@item.Costo</p>
+                    <i class="bi bi-calendar"></i><p>@item.Cupos</p>
+                    <i class="bi bi-person-slash"></i><p>@item.EdadMinima</p>
+                    @if (@Context.Session.GetString("email") != null)
+                    {
+                        @if (@Context.Session.GetInt32("edad") >= item.EdadMinima && item.Costo > 0)
+                        {
+                            <a class="btn btn-success">Agendar</a>
+
+                        }
+                        else
+                        {
+                            <a class="btn disabled-btn" disabled>Agendar</a>
+                        }
+                    }
+                </div>
+            </div>
+        }
+    </div>
+}
+else
+
+{
+
+    // <script>alertify.error('@ViewBag.error')</script>
+    <script>alert('@ViewBag.error')</script>
+
+}
+
+
+

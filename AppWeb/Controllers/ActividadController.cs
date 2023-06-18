@@ -14,17 +14,32 @@ namespace AppWeb.Controllers
 
         private Sistema _sistema = Sistema.Instancia;
 
-        // GET: /<controller>/
-        public IActionResult Index()
+        [HttpGet]
+        public IActionResult ActividadesPorFecha()
         {
-            ViewBag.Actividad = _sistema.ListaActividadesDelDia();
-            return View();
+            ViewBag.Actividad = _sistema.ListaActividadesPorFecha(DateTime.Today);
+            ViewBag.Fecha = DateTime.Today;
+            return View("index");
         }
 
+        [HttpPost]
         public IActionResult ActividadesPorFecha(DateTime fecha)
         {
-            ViewBag.Actividad = _sistema.ListaActividadesPorFecha(fecha);
+            try
+            {
+                ViewBag.Actividad = _sistema.ListaActividadesPorFecha(fecha);
+                ViewBag.Fecha = fecha;
+                return View("index");
+            }
+            catch (Exception e)
+            {
+                ViewBag.error = e.Message;
+                return RedirectToAction("ActividadesPorFecha");
+
+            }
+
             return View("index");
+
         }
     }
 }

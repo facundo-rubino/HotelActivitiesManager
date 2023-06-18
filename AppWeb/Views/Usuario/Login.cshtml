@@ -1,10 +1,9 @@
 ﻿@using Dominio
+@model Usuario
 
 @if (@ViewBag.error != null)
 {
-
     <script>alertify.error('@ViewBag.error')</script>
-
 }
 
 <form method="post" action="Login">
@@ -12,3 +11,7 @@
     <input type="password" name="pass" placeholder="Ingrese contraseña" />
     <button type="submit">Login</button>
 </form>
+
+<a class="link-secondary" href="/Usuario/CreateHuesped">No tenés usuario? Registrate</a>
+
+
