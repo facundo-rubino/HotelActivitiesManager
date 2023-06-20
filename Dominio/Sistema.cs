@@ -277,10 +277,10 @@ namespace Dominio
 
         private void PrecargarOperadores()
         {
-            Operador Operador1 = new Operador("admin@admin", "admin1234", "Facundo", "Rubino", new DateTime(2023, 02, 01));
+            Operador Operador1 = new Operador("admin@admin", "password", "Facundo", "Rubino", new DateTime(2023, 02, 01));
             AgregarOperador(Operador1);
 
-            Operador Operador2 = new Operador("admin@ort", "admin1234", "Luis", "Dentone", new DateTime(2020, 02, 01));
+            Operador Operador2 = new Operador("admin@ort", "password", "Luis", "Dentone", new DateTime(2020, 02, 01));
             AgregarOperador(Operador2);
         }
 
@@ -384,18 +384,17 @@ namespace Dominio
 
         public void ModificarPromocionProveedor(string numero, decimal descuento)
         {
-            if (descuento < 0 || descuento > 100) throw new Exception("La promoción ofrecida por el proveedor puede ser de 0 a 100");
-
-            if (string.IsNullOrEmpty(numero)) throw new Exception($"El numero no es válido");
-
-            if (descuento == null) throw new Exception($"El descuento no es válido");
-
-
             Proveedor unProveedor = ObtenerProveedorPorNumero(numero);
 
-            if (unProveedor == null) throw new Exception($"No se encontro el proveedor de número: {numero}");
+            if (unProveedor == null)
+                throw new Exception($"No se encontro el proveedor de número: {numero}");
 
-            unProveedor.Descuento = descuento;
+            if (unProveedor.ValidarDescuentoIngresado(descuento))
+            {
+                unProveedor.Descuento = descuento;
+            }
+            else
+                throw new Exception("Descuento inválido");
         }
 
         public IEnumerable<Proveedor> ListaProveedoresOrdenada()
@@ -574,7 +573,7 @@ namespace Dominio
             Agendas.Add(agenda);
         }
 
-        public List<Agenda> ObtenerListadoDeAgendas()
+        public IEnumerable<Agenda> ListadoDeAgendas()
         {
             List<Agenda> aux = new List<Agenda>();
 
@@ -582,9 +581,23 @@ namespace Dominio
             {
                 aux.Add(item);
             }
-
+            aux.Sort();
             return aux;
         }
+
+        public IEnumerable<Agenda> ListadoDeAgendasPorHuesped(string email)
+        {
+            List<Agenda> aux = new List<Agenda>();
+
+            foreach (Agenda item in Agendas)
+            {
+                if (item.Huesped.Email == email)
+                    aux.Add(item);
+            }
+            aux.Sort();
+            return aux;
+        }
+
 
         public Usuario ObtenerUsuario(string email, string pass)
         {

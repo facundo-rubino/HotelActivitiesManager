@@ -1,7 +1,9 @@
 ﻿using System;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+
 namespace Dominio
 {
-    public class Agenda
+    public class Agenda : IComparable<Agenda>
     {
         public int? Id { get; }
         public static int? UltimoId { get; set; } = 1;
@@ -72,13 +74,12 @@ namespace Dominio
             return estado;
         }
 
-        //public int CompareTo(Agenda? other)
-        //{
-        //    if (other == null)
-        //        return 0;
-        //    return other.FechaCreacion - FechaCreacion;
-
-        //}
+        public int CompareTo(Agenda? other)
+        {
+            if (other == null)
+                return 0;
+            return Actividad.Fecha.CompareTo(other.Actividad.Fecha);
+        }
 
         public override string ToString()
         {

@@ -1,9 +1,11 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Dominio;
 using Microsoft.AspNetCore.Mvc;
+using WebApp.Filtros;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -14,29 +16,15 @@ namespace AppWeb.Controllers
 
         private Sistema _sistema = Sistema.Instancia;
 
+        [Logueado]
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult Index(string mensaje)
         {
-            ViewBag.Agendas = _sistema.ObtenerListadoDeAgendas();
+            ViewBag.Mensaje = mensaje;
+            ViewBag.Agendas = _sistema.ListadoDeAgendasPorHuesped(HttpContext.Session.GetString("email"));
+
             return View();
         }
-
-        //[HttpPost]
-        //public IActionResult Index()
-        //{
-        //    try
-        //    {
-        //        ViewBag.Agendas = _sistema.ObtenerListadoDeAgendas();
-        //        return View("index");
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        ViewBag.error = e.Message;
-        //    }
-
-
-        //    return View("index");
-        //}
     }
 }
 

@@ -43,8 +43,15 @@ namespace Dominio
 
         private void ValidarPromocion()
         {
-            if (Descuento < 0 || Descuento > 100) throw new Exception("La promoción ofrecida por el proveedor debe ser entre 0 y 100");
+            if (Descuento < 0 || Descuento > 100 || Descuento == null) throw new Exception("La promoción ofrecida es inválida");
         }
+        public bool ValidarDescuentoIngresado(decimal descuentoIngresado)
+        {
+            if (descuentoIngresado < 0 || descuentoIngresado > 100 || descuentoIngresado == null)
+                return false;
+            return true;
+        }
+
 
         public bool Equals(Proveedor? other)
         {

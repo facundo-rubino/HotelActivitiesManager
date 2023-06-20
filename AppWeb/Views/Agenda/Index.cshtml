@@ -6,23 +6,40 @@
 
     <h1>Listado de Agendas</h1>
 
+    @if (@ViewBag.Mensaje != null)
+    {
+
+        <script>alertify.success('@ViewBag.Mensaje')</script>
+
+    }
+
     <table class="table table-striped">
         <thead>
             <tr>
                 <th scope="col">Nombre</th>
-                <th scope="col">Costo</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Actividad</th>
                 <th scope="col">Fecha</th>
+                <th scope="col">Costo</th>
                 <th scope="col">Estado</th>
+                <th scope="col">Proveedor</th>
             </tr>
         </thead>
         <tbody>
             @foreach (Agenda item in ViewBag.Agendas)
             {
                 <tr>
-                    <th>@item.Actividad.Nombre</th>
+                    <td>@item.Huesped.Nombre</td>
+                    <td>@item.Huesped.Apellido</td>
+                    <td>@item.Actividad.Nombre</td>
+                    <td>@item.Actividad.Fecha.ToString("d")</td>
                     <td>@item.CostoFinal</td>
-                    <td>@item.FechaCreacion.ToString("d")</td>
                     <td>@item.Estado</td>
+                    <td>@item.Actividad.</td>
+
+
+
+
                 </tr>
             }
         </tbody>

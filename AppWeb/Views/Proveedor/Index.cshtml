@@ -2,6 +2,18 @@
 
 <h1>Listado de proveedores</h1>
 
+@if (@ViewBag.error != null)
+{
+    <script>alertify.error('@ViewBag.error')</script>
+}
+
+@if (@ViewBag.Mensaje != null)
+{
+
+    <script>alertify.success('@ViewBag.Mensaje')</script>
+
+}
+
 <table class="table table-striped">
     <thead>
         <tr>
