@@ -1,5 +1,4 @@
 ﻿@using Dominio;
-@*@model List<Actividad>*@
 
 
 @if (@ViewBag.error == null)
@@ -17,8 +16,6 @@
             Listado de actividades para la fecha: @ViewBag.Fecha.ToString("dd/MM/yyyy")
         </h1>
     }
-
-
 
     <form method="post">
         <input type="date" name="Fecha" />
@@ -39,16 +36,19 @@
                     <i class="bi bi-currency-dollar"></i><p>@item.Costo</p>
                     <i class="bi bi-calendar"></i><p>@item.Cupos</p>
                     <i class="bi bi-person-slash"></i><p>@item.EdadMinima</p>
-                    @if (@Context.Session.GetString("email") != null)
+
+                    @if (@Context.Session.GetString("rol") == "huesped")
                     {
                         @if (@Context.Session.GetInt32("edad") >= item.EdadMinima && item.Costo > 0)
                         {
-                            <a class="btn btn-success">Agendar</a>
-
+                            <form method="post" action="CrearAgenda">
+                                <input type="text" name="Id" value="@item.Id" hidden />
+                                <button type="submit" class="btn btn-success">Agendar</button>
+                            </form>
                         }
                         else
                         {
-                            <a class="btn disabled-btn" disabled>Agendar</a>
+                            <button class="btn disabled-btn" disabled>Agendar</button>
                         }
                     }
                 </div>

@@ -1,7 +1,38 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@using Dominio;
+
+
+@if (@ViewBag.Agendas != null)
+{
+
+    <h1>Listado de Agendas</h1>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Costo</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Agenda item in ViewBag.Agendas)
+            {
+                <tr>
+                    <th>@item.Actividad.Nombre</th>
+                    <td>@item.CostoFinal</td>
+                    <td>@item.FechaCreacion.ToString("d")</td>
+                    <td>@item.Estado</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No hay agendas registradas</p>
 }
 
-agenda
+@*<script src="~/js/proveedor.js"></script>*@
+
+

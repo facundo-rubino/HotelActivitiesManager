@@ -11,11 +11,32 @@ namespace AppWeb.Controllers
 {
     public class AgendaController : Controller
     {
-        // GET: /<controller>/
+
+        private Sistema _sistema = Sistema.Instancia;
+
+        [HttpGet]
         public IActionResult Index()
         {
+            ViewBag.Agendas = _sistema.ObtenerListadoDeAgendas();
             return View();
         }
+
+        //[HttpPost]
+        //public IActionResult Index()
+        //{
+        //    try
+        //    {
+        //        ViewBag.Agendas = _sistema.ObtenerListadoDeAgendas();
+        //        return View("index");
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        ViewBag.error = e.Message;
+        //    }
+
+
+        //    return View("index");
+        //}
     }
 }
 

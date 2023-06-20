@@ -450,9 +450,7 @@ namespace Dominio
             foreach (Actividad item in Actividades)
             {
                 if (item.Fecha == fecha)
-                {
                     aux.Add(item);
-                }
             }
 
             if (aux.Count > 0)
@@ -466,6 +464,40 @@ namespace Dominio
             }
 
         }
+
+        public IEnumerable<Actividad> ListaFiltradaDeActividadesAgendadas(DateTime fecha, string email)
+        {
+            List<Actividad> aux = new List<Actividad>();
+
+            foreach (Actividad item in Actividades)
+            {
+                if (item.Fecha == fecha && !ActividadAgendadaPorHuesped(item, email))
+                    aux.Add(item);
+            }
+
+            if (aux.Count > 0)
+            {
+                aux.Sort();
+                return aux;
+            }
+            else
+            {
+                throw new Exception($"No hay actividades para la fecha: {fecha}");
+            }
+
+        }
+
+        public bool ActividadAgendadaPorHuesped(Actividad actividad, string email)
+        {
+            foreach (Agenda item in Agendas)
+            {
+                if (item.Huesped.Email == email && item.Actividad.Id == actividad.Id)
+                    return true;
+            }
+            return false;
+        }
+
+
 
         public IEnumerable<Agenda> ListaActividadesPorProveedor(int tipoDocumento, string numDocumento)
         {
@@ -497,14 +529,39 @@ namespace Dominio
             return aux;
         }
 
-        public void CrearAgenda(Huesped huesped, Actividad actividad)
+        public Actividad BuscarActividad(int id)
         {
+            foreach (Actividad item in Actividades)
+            {
+                if (item.Id == id) return item;
+            }
+            return null;
+        }
+
+        public Huesped BuscarHuesped(string email)
+        {
+            foreach (Usuario item in Usuarios)
+            {
+                if (item is Huesped)
+                {
+                    if (item.Email == email) return item as Huesped;
+                }
+            }
+            return null;
+        }
+
+        public void CrearAgenda(string huespedEmail, int actividadId)
+        {
+
+            Actividad actividadElegida = BuscarActividad(actividadId);
+            Huesped huespedEncontrado = BuscarHuesped(huespedEmail);
+
             string estado = "PENDIENTE_PAGO";
-            decimal costoAgenda = actividad.CalcularCosto(huesped.Fidelizacion);
+            decimal costoAgenda = actividadElegida.CalcularCosto(huespedEncontrado.Fidelizacion);
             if (costoAgenda == 0)
                 estado = "CONFIRMADA";
 
-            Agenda agenda = new Agenda(actividad, huesped, estado, costoAgenda, DateTime.Now);
+            Agenda agenda = new Agenda(actividadElegida, huespedEncontrado, estado, costoAgenda, DateTime.Now);
             AgregarAgenda(agenda);
 
         }
@@ -515,6 +572,18 @@ namespace Dominio
 
             agenda.Validar();
             Agendas.Add(agenda);
+        }
+
+        public List<Agenda> ObtenerListadoDeAgendas()
+        {
+            List<Agenda> aux = new List<Agenda>();
+
+            foreach (Agenda item in Agendas)
+            {
+                aux.Add(item);
+            }
+
+            return aux;
         }
 
         public Usuario ObtenerUsuario(string email, string pass)

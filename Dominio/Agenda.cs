@@ -9,7 +9,7 @@ namespace Dominio
         public Huesped Huesped { get; set; }
         public string? Estado { get; set; }
         public decimal? CostoFinal { get; set; }
-        public DateTime? FechaCreacion { get; set; }
+        public DateTime FechaCreacion { get; set; }
 
         public Agenda()
         {
@@ -24,13 +24,6 @@ namespace Dominio
             CostoFinal = costo;
             FechaCreacion = fecha;
         }
-
-        //public bool AgendaTieneHuesped(Documento documentoIngresado)
-        //{
-        //    bool tiene = false;
-        //    if (Huesped.Documento == documentoIngresado) tiene = true;
-        //    return tiene;
-        //}
 
         public void Validar()
         {
@@ -78,6 +71,14 @@ namespace Dominio
 
             return estado;
         }
+
+        //public int CompareTo(Agenda? other)
+        //{
+        //    if (other == null)
+        //        return 0;
+        //    return other.FechaCreacion - FechaCreacion;
+
+        //}
 
         public override string ToString()
         {

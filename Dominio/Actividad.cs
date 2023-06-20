@@ -62,7 +62,7 @@ namespace Dominio
 
         public bool Equals(Actividad? other)
         {
-            return other != null && Nombre == other.Nombre;
+            return other != null && Id == other.Id;
         }
 
         public abstract decimal CalcularCosto(int? fidelizacion);

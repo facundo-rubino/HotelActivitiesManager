@@ -27,13 +27,14 @@
                 </button>
                 <div class="collapse navbar-collapse d-sm-inline-flex">
                     <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Actividad" asp-action="ActividadesPorFecha">Actividades</a>
+                        </li>
                         @if (@Context.Session.GetString("email") != null)
                         {
+
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Actividad" asp-action="Index">Actividades</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Agenda" asp-action="Index">Agenda</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Agenda" asp-action="Index">Agendas</a>
                             </li>
                             @if (@Context.Session.GetString("rol") == "operador")
                             {

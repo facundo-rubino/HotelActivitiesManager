@@ -85,6 +85,11 @@ namespace Dominio
             return edad;
         }
 
+        public bool Equals(Huesped? other)
+        {
+            return other != null && Email == other.Email;
+        }
+
         public override string ToString()
         {
             string respuesta = "";
