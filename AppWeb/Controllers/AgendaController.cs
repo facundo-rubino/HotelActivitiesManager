@@ -19,12 +19,11 @@ namespace AppWeb.Controllers
 
         private Sistema _sistema = Sistema.Instancia;
 
-
-
         [HttpGet]
-        public IActionResult AgendasPorFecha(string error)
+        public IActionResult AgendasPorFecha(string error, string mensaje)
         {
             ViewBag.Error = error;
+            ViewBag.Mensaje = mensaje;
             ViewBag.Huespedes = _sistema.HuespedConAgendas();
 
             try
