@@ -70,7 +70,7 @@ namespace AppWeb.Controllers
 
             _sistema.CrearAgenda(emailHuesped, Id);
 
-            return RedirectToAction("Index", "Agenda", new { mensaje = "Agenda exitosa" });
+            return RedirectToAction("AgendasPorFecha", "Agenda", new { mensaje = "Agenda exitosa" });
         }
 
 

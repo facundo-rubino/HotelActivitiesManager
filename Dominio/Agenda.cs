@@ -74,11 +74,30 @@ namespace Dominio
             return estado;
         }
 
+
+
         public int CompareTo(Agenda? other)
         {
             if (other == null)
-                return 0;
-            return Actividad.Fecha.CompareTo(other.Actividad.Fecha);
+            {
+                return 1;
+            }
+
+            int orden = Actividad.Fecha.CompareTo(other.Actividad.Fecha);
+
+            if (orden == 0)
+            {
+                orden = Actividad.Nombre.CompareTo(other.Actividad.Nombre);
+            }
+            return orden;
+        }
+
+        public bool AgendaTieneHuesped(string email)
+        {
+            if (email == Huesped.Email)
+                return true;
+
+            return false;
         }
 
         public override string ToString()

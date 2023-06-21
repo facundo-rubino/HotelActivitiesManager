@@ -514,17 +514,30 @@ namespace Dominio
             return aux;
         }
 
-        public IEnumerable<Agenda> AgendasPorFecha(DateTime fechaUno, DateTime fechaDos)
+        //public IEnumerable<Agenda> AgendasPorFecha(DateTime fechaUno, DateTime fechaDos)
+        //{
+        //    List<Agenda> aux = new List<Agenda>();
+
+        //    foreach (Agenda item in Agendas)
+        //    {
+        //        if (item.AgendaEntreFechas(fechaUno, fechaDos))
+        //        {
+        //            aux.Add(item);
+        //        }
+        //    }
+        //    return aux;
+        //}
+
+        public IEnumerable<Agenda> AgendasPorFecha(DateTime fecha)
         {
             List<Agenda> aux = new List<Agenda>();
 
             foreach (Agenda item in Agendas)
             {
-                if (item.AgendaEntreFechas(fechaUno, fechaDos))
-                {
+                if (item.Actividad.Fecha == fecha)
                     aux.Add(item);
-                }
             }
+            aux.Sort();
             return aux;
         }
 
@@ -637,7 +650,17 @@ namespace Dominio
             return rol;
         }
 
+        public IEnumerable<Huesped> HuespedConAgendas()
+        {
+            List<Huesped> aux = new List<Huesped>();
 
+            foreach (Agenda item in Agendas)
+            {
+                if (!aux.Contains(item.Huesped))
+                    aux.Add(item.Huesped);
+            }
+            return aux;
+        }
     }
 }
 

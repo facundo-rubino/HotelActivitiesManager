@@ -5,7 +5,7 @@ namespace Dominio
 {
     public abstract class Usuario : IValidable, IEquatable<Usuario>
     {
-        public string? Email { get; set; }
+        public string Email { get; set; }
         public string? Contrasenia { get; set; }
 
         public Usuario()

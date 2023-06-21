@@ -32,7 +32,7 @@
                         {
 
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Agenda" asp-action="Index">Agendas</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Agenda" asp-action="AgendasPorFecha">Agendas</a>
                             </li>
                             @if (@Context.Session.GetString("rol") == "operador")
                             {
@@ -60,7 +60,6 @@
                         @*<li class="nav-item">
                                 <button onclick="temaOscuro()" class="btn rounded-fill"><i id="theme-icon" class="bi bi-moon"></i></button>
                             </li>*@
-
                     </ul>
                 </div>
             </div>

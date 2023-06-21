@@ -8,6 +8,29 @@
     <script>alertify.success('@ViewBag.Mensaje')</script>
 }
 
+@if (Context.Session.GetString("rol") == "operador")
+{
+    <form method="post">
+        <input type="date" name="Fecha" />
+        <button type="submit">Buscar</button>
+    </form>
+
+
+    <form method="post">
+        <select name="emailUsuario">
+            @foreach (Huesped huesped in ViewBag.Huespedes)
+            {
+                <option value="@huesped.Email">@huesped.Nombre @huesped.Apellido</option>
+            }
+        </select>
+
+        <button type="submit">Filtrar</button>
+
+
+    </form>
+}
+
+
 @if (@ViewBag.Agendas.Count > 0)
 {
     <h1>Listado de Agendas</h1>
@@ -22,6 +45,10 @@
                 <th scope="col">Estado</th>
                 <th scope="col">Lugar</th>
                 <th scope="col">Proveedor</th>
+                @if (Context.Session.GetString("rol") == "operador")
+                {
+                    <th scope="col">Confirmar</th>
+                }
             </tr>
         </thead>
         <tbody>
@@ -46,6 +73,19 @@
                     {
                         <td>@UnaT.Proveedor.Nombre</td>
                     }
+                    else
+                    {
+                        <td>N/D</td>
+
+                    }
+                    @if (Context.Session.GetString("rol") == "operador")
+                    {
+                        <th scope="col">
+                            <i class="bi bi-check text-success"></i>
+                            <i class="bi bi-x text-danger"></i>
+                        </th>
+
+                    }
                 </tr>
             }
         </tbody>
@@ -53,7 +93,10 @@
 }
 else
 {
-    <p> @Context.Session.GetString("nombre"), no has realizado agendas aún </p>
+    @if (Context.Session.GetString("rol") == "huesped")
+    {
+        <p> @Context.Session.GetString("nombre"), no has realizado agendas aún </p>
+    }
 }
 
 
