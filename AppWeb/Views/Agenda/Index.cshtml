@@ -63,7 +63,14 @@
                     <td>@item.Huesped.Apellido</td>
                     <td>@item.Actividad.Nombre</td>
                     <td>@item.Actividad.Fecha.ToString("d")</td>
-                    <td>@item.CostoFinal</td>
+                    @if (@item.CostoFinal != 0)
+                    {
+                        <td>$@item.CostoFinal</td>
+                    }
+                    else
+                    {
+                        <td>Gratuita</td>
+                    }
                     <td>@item.Estado</td>
                     @if (@item.Actividad is Interna UnaI)
                     {

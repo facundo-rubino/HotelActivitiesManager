@@ -32,25 +32,24 @@ namespace Dominio
 
         public override decimal CalcularCosto(int? fidelizacion)
         {
-            decimal costoInterna;
+            decimal costoTotal = Costo;
 
             switch (fidelizacion)
             {
                 case 2:
-                    costoInterna = Costo -= (Costo * 10) / 100;
+                    costoTotal -= (costoTotal * 10) / 100;
                     break;
                 case 3:
-                    costoInterna = Costo -= (Costo * 15) / 100;
+                    costoTotal -= (costoTotal * 15) / 100;
                     break;
                 case 4:
-                    costoInterna = Costo -= (Costo * 20) / 100;
+                    costoTotal -= (costoTotal * 20) / 100;
                     break;
                 default:
-                    costoInterna = Costo;
+                    costoTotal = Costo;
                     break;
             }
-
-            return costoInterna;
+            return costoTotal;
         }
     }
 

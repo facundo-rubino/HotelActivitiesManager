@@ -3,10 +3,10 @@ namespace Dominio
 {
     public class Proveedor : IValidable, IComparable<Proveedor>, IEquatable<Proveedor>
     {
-        public string? Nombre { get; set; }
+        public string Nombre { get; set; }
         public string? Numero { get; set; }
         public string? Direccion { get; set; }
-        public decimal? Descuento { get; set; }
+        public decimal Descuento { get; set; }
 
         public Proveedor()
         {

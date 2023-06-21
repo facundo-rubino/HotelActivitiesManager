@@ -34,6 +34,18 @@ else
             <img class="card-img-top" src=@Url.Content(imageUrl) alt="@item.Nombre">
             <div class="card-body mx-2 my-2 p-3">
                 <h5 class="card-title">@item.Nombre</h5>
+                @if (item is Tercerizada)
+                {
+                    Tercerizada unaT = item as Tercerizada;
+                    <p>Actividad provicionada por @unaT.Proveedor.Nombre</p>
+                }
+                else
+                {
+                    <p>Actividad provicionada por Milotel</p>
+                }
+
+
+                <h5 class="lead text-xs"></h5>
                 <p class="card-text">@item.Descripcion</p>
                 <div class="row mt-1">
                     <div class="col text-center">

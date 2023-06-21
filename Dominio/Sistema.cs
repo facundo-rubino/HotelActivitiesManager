@@ -517,20 +517,6 @@ namespace Dominio
             return aux;
         }
 
-        //public IEnumerable<Agenda> AgendasPorFecha(DateTime fechaUno, DateTime fechaDos)
-        //{
-        //    List<Agenda> aux = new List<Agenda>();
-
-        //    foreach (Agenda item in Agendas)
-        //    {
-        //        if (item.AgendaEntreFechas(fechaUno, fechaDos))
-        //        {
-        //            aux.Add(item);
-        //        }
-        //    }
-        //    return aux;
-        //}
-
         public IEnumerable<Agenda> AgendasPorFecha(DateTime fecha)
         {
             List<Agenda> aux = new List<Agenda>();

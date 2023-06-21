@@ -3,7 +3,7 @@ namespace Dominio
 {
     public class Tercerizada : Actividad
     {
-        public Proveedor? Proveedor { get; set; }
+        public Proveedor Proveedor { get; set; }
         public bool Confirmada { get; set; }
         public DateTime? FechaConfirmacion { get; set; }
 
@@ -18,17 +18,25 @@ namespace Dominio
             FechaConfirmacion = fechaConfirmacion;
         }
 
+        public override decimal CalcularCosto(int? fidelizacion)
+        {
+            decimal costoTotal = Costo;
+
+            if (Confirmada)
+            {
+                costoTotal -= (costoTotal * Proveedor.Descuento) / 100;
+
+            }
+            return costoTotal;
+        }
+
         public override string ToString()
         {
             string actividadConfirmada;
             if (Confirmada)
-            {
                 actividadConfirmada = "Si";
-            }
             else
-            {
                 actividadConfirmada = "No";
-            }
 
             string respuesta = base.ToString();
             respuesta += $"Proveedor: {Proveedor} \n";
@@ -37,14 +45,7 @@ namespace Dominio
             return respuesta;
         }
 
-        public override decimal CalcularCosto(int? fidelizacion)
-        {
-            decimal costoTercerizada = Costo;
 
-            if (Confirmada) costoTercerizada -= (decimal)Proveedor.Descuento;
-
-            return costoTercerizada;
-        }
     }
 }
 
