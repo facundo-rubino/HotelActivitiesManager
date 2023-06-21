@@ -41,7 +41,7 @@ else
 
                 @if (@Context.Session.GetString("rol") == "huesped")
                 {
-                    @if (@Context.Session.GetInt32("edad") >= item.EdadMinima && item.Costo > 0)
+                    @if (@Context.Session.GetInt32("edad") >= item.EdadMinima && item.Cupos > 0)
                     {
                         <form method="post" action="CrearAgenda">
                             <input type="text" name="Id" value="@item.Id" hidden />

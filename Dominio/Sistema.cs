@@ -239,8 +239,11 @@ namespace Dominio
 
         private void PrecargarHuespedes()
         {
-            Huesped Huesped1 = new Huesped(new Documento(1, "51243902"), "Santiago", "Rubino", new DateTime(2005, 04, 21), 22, "user@user", "password");
+            Huesped Huesped1 = new Huesped(new Documento(1, "51243902"), "Santiago", "Rubino", new DateTime(2011, 04, 21), 22, "user@user", "password");
             AgregarHuesped(Huesped1);
+
+            Huesped Huesped2 = new Huesped(new Documento(2, "123"), "Luis", "Dentone", new DateTime(1995, 04, 21), 22, "luis@luis", "password");
+            AgregarHuesped(Huesped2);
 
             #region TestingHuesped
 
@@ -537,8 +540,16 @@ namespace Dominio
                 if (item.Actividad.Fecha == fecha)
                     aux.Add(item);
             }
-            aux.Sort();
-            return aux;
+
+            if (aux.Count > 0)
+            {
+                aux.Sort();
+                return aux;
+            }
+            else
+            {
+                throw new Exception($"No hay agendas para la fecha: {fecha}");
+            }
         }
 
         public Actividad BuscarActividad(int id)
@@ -659,6 +670,19 @@ namespace Dominio
                 if (!aux.Contains(item.Huesped))
                     aux.Add(item.Huesped);
             }
+            return aux;
+        }
+
+        public IEnumerable<Agenda> AgendasPorHuesped(string email)
+        {
+            List<Agenda> aux = new List<Agenda>();
+
+            foreach (Agenda item in Agendas)
+            {
+                if (item.Huesped.Email == email)
+                    aux.Add(item);
+            }
+            aux.Sort();
             return aux;
         }
     }

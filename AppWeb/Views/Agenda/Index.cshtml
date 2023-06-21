@@ -8,6 +8,12 @@
     <script>alertify.success('@ViewBag.Mensaje')</script>
 }
 
+@if (@ViewBag.error != null)
+{
+
+    <script>alertify.error('@ViewBag.error')</script>
+}
+
 @if (Context.Session.GetString("rol") == "operador")
 {
     <form method="post">
@@ -16,22 +22,20 @@
     </form>
 
 
-    <form method="post">
-        <select name="emailUsuario">
+    <form method="post" action="AgendasPorHuesped">
+        <select name="Email">
+            @*<option>Seleccione huesped</option>*@
             @foreach (Huesped huesped in ViewBag.Huespedes)
             {
                 <option value="@huesped.Email">@huesped.Nombre @huesped.Apellido</option>
             }
         </select>
-
         <button type="submit">Filtrar</button>
-
-
     </form>
 }
 
 
-@if (@ViewBag.Agendas.Count > 0)
+@if (@ViewBag.Agendas != null)
 {
     <h1>Listado de Agendas</h1>
     <table class="table table-striped">
@@ -96,6 +100,10 @@ else
     @if (Context.Session.GetString("rol") == "huesped")
     {
         <p> @Context.Session.GetString("nombre"), no has realizado agendas aún </p>
+    }
+    else
+    {
+        <p> No hay agendas realizadas </p>
     }
 }
 

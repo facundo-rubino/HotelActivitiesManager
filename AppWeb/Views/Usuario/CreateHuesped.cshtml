@@ -21,6 +21,7 @@
         <input required type="text" name="NumDocumento" class="form-control" id="InputNumDocumento" placeholder="Ingrese su número de documento...">
     </div>
     <select required name="tipoDocumento">
+        @*<option>Seleccione tipo</option>*@
         @foreach (TipoDocumento tipo in ViewBag.TiposDocumento)
         {
             <option value="@tipo.Id">@tipo.Tipo</option>

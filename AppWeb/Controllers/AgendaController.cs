@@ -19,20 +19,28 @@ namespace AppWeb.Controllers
 
         private Sistema _sistema = Sistema.Instancia;
 
-        [HttpGet]
 
-        public IActionResult AgendasPorFecha(string mensaje)
+
+        [HttpGet]
+        public IActionResult AgendasPorFecha(string error)
         {
-            ViewBag.Mensaje = mensaje;
+            ViewBag.Error = error;
             ViewBag.Huespedes = _sistema.HuespedConAgendas();
 
+            try
+            {
+                if (HttpContext.Session.GetString("rol") == "huesped")
+                    ViewBag.Agendas = _sistema.ListadoDeAgendasPorHuesped(HttpContext.Session.GetString("email"));
+                else
+                    ViewBag.Agendas = _sistema.AgendasPorFecha(DateTime.Today);
 
-            if (HttpContext.Session.GetString("rol") == "huesped")
-                ViewBag.Agendas = _sistema.ListadoDeAgendasPorHuesped(HttpContext.Session.GetString("email"));
-            else
-                ViewBag.Agendas = _sistema.AgendasPorFecha(DateTime.Today);
-
-            return View("index");
+                return View("index");
+            }
+            catch (Exception e)
+            {
+                ViewBag.error = e.Message;
+                return View("index");
+            }
         }
 
         [SoloOperador]
@@ -49,13 +57,33 @@ namespace AppWeb.Controllers
             catch (Exception e)
             {
                 ViewBag.error = e.Message;
-                return RedirectToAction("ActividadesPorFecha", new { error = $"No hay agendas para la fecha: {fecha.ToString("d")} " });
+                return RedirectToAction("AgendasPorFecha", new { error = $"No hay agendas para la fecha: {fecha.ToString("d")} " });
 
             }
+        }
 
+        [SoloOperador]
+        [HttpPost]
+        public IActionResult AgendasPorHuesped(string email)
+        {
+            try
+            {
+                ViewBag.Agendas = _sistema.AgendasPorHuesped(email);
+                ViewBag.Huespedes = _sistema.HuespedConAgendas();
+
+                return View("index");
+            }
+            catch (Exception e)
+            {
+                ViewBag.error = e.Message;
+                ViewBag.Huespedes = _sistema.HuespedConAgendas();
+                return RedirectToAction("AgendasPorFecha");
+            }
+        }
+
+        public IActionResult ConfirmarAgenda()
+        {
             return View("index");
-
-
         }
 
     }
