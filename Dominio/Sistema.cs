@@ -585,6 +585,17 @@ namespace Dominio
             return aux;
         }
 
+        public Usuario ObtenerUsuario(string email)
+        {
+            foreach (Usuario item in Usuarios)
+            {
+                if (item.Email == email)
+                    return item;
+            }
+
+            throw new Exception("Usuario no encontrado");
+        }
+
         public IEnumerable<Agenda> ListadoDeAgendasPorHuesped(string email)
         {
             List<Agenda> aux = new List<Agenda>();
@@ -599,7 +610,7 @@ namespace Dominio
         }
 
 
-        public Usuario ObtenerUsuario(string email, string pass)
+        public Usuario LoginUsuario(string email, string pass)
         {
             foreach (Usuario item in Usuarios)
             {
@@ -618,7 +629,7 @@ namespace Dominio
         public string ObtenerRolUsuario(string email, string pass)
         {
             string rol = "";
-            Usuario usuarioLogueado = ObtenerUsuario(email, pass);
+            Usuario usuarioLogueado = LoginUsuario(email, pass);
 
             if (usuarioLogueado is Huesped) rol = "huesped";
             if (usuarioLogueado is Operador) rol = "operador";

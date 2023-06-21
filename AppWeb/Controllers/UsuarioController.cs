@@ -27,7 +27,7 @@ namespace AppWeb.Controllers
         {
             try
             {
-                Usuario usuarioLogueado = _sistema.ObtenerUsuario(email, pass);
+                Usuario usuarioLogueado = _sistema.LoginUsuario(email, pass);
                 string rol = _sistema.ObtenerRolUsuario(email, pass);
 
                 HttpContext.Session.SetString("email", email);
@@ -90,6 +90,9 @@ namespace AppWeb.Controllers
         [Logueado]
         public IActionResult MostrarUsuario()
         {
+            ViewBag.Usuario = _sistema.ObtenerUsuario(HttpContext.Session.GetString("email"));
+
+
             return View("MostrarUsuario");
         }
     }
