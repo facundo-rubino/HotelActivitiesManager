@@ -1,69 +1,64 @@
 ﻿@using Dominio;
 
 
-@if (@ViewBag.error == null)
+@if (@ViewBag.error != null)
 {
+    <script>alertify.error('@ViewBag.error')</script>
+}
 
-    @if (@ViewBag.Fecha == DateTime.Today)
-    {
-        <h1>
-            Listado de actividades para hoy
-        </h1>
-    }
-    else
-    {
-        <h1>
-            Listado de actividades para la fecha: @ViewBag.Fecha.ToString("dd/MM/yyyy")
-        </h1>
-    }
-
-    <form method="post">
-        <input type="date" name="Fecha" />
-        <button type="submit">Buscar</button>
-    </form>
-
-    <div class="d-flex flex-wrap ">
-
-        @foreach (Actividad item in ViewBag.Actividad)
-        {
-            var imageUrl = $"~/img/{item.Id}.jpg";
-
-            <div class="card m-2" style="width: 18rem;">
-                <img class="card-img-top" src=@Url.Content(imageUrl) alt="@item.Nombre">
-                <div class="card-body mx-2 my-2 p-3">
-                    <h5 class="card-title">@item.Nombre</h5>
-                    <p class="card-text">@item.Descripcion</p>
-                    <i class="bi bi-currency-dollar"></i><p>@item.Costo</p>
-                    <i class="bi bi-calendar"></i><p>@item.Cupos</p>
-                    <i class="bi bi-person-slash"></i><p>@item.EdadMinima</p>
-
-                    @if (@Context.Session.GetString("rol") == "huesped")
-                    {
-                        @if (@Context.Session.GetInt32("edad") >= item.EdadMinima && item.Costo > 0)
-                        {
-                            <form method="post" action="CrearAgenda">
-                                <input type="text" name="Id" value="@item.Id" hidden />
-                                <button type="submit" class="btn btn-success">Agendar</button>
-                            </form>
-                        }
-                        else
-                        {
-                            <button class="btn disabled-btn" disabled>Agendar</button>
-                        }
-                    }
-                </div>
-            </div>
-        }
-    </div>
+@if (@ViewBag.Fecha == DateTime.Today)
+{
+    <h1>
+        Listado de actividades para hoy
+    </h1>
 }
 else
-
 {
-
-    // <script>alertify.error('@ViewBag.error')</script>
-    <script>alert('@ViewBag.error')</script>
-
+    <h1>
+        Listado de actividades para la fecha: @ViewBag.Fecha.ToString("dd/MM/yyyy")
+    </h1>
 }
+
+<form method="post">
+    <input type="date" name="Fecha" />
+    <button type="submit">Buscar</button>
+</form>
+
+<div class="d-flex flex-wrap ">
+
+    @foreach (Actividad item in ViewBag.Actividad)
+    {
+        var imageUrl = $"~/img/{item.Id}.jpg";
+
+        <div class="card m-2" style="width: 18rem;">
+            <img class="card-img-top" src=@Url.Content(imageUrl) alt="@item.Nombre">
+            <div class="card-body mx-2 my-2 p-3">
+                <h5 class="card-title">@item.Nombre</h5>
+                <p class="card-text">@item.Descripcion</p>
+                <i class="bi bi-currency-dollar"></i><p>@item.Costo</p>
+                <i class="bi bi-calendar"></i><p>@item.Cupos</p>
+                <i class="bi bi-person-slash"></i><p>@item.EdadMinima</p>
+
+                @if (@Context.Session.GetString("rol") == "huesped")
+                {
+                    @if (@Context.Session.GetInt32("edad") >= item.EdadMinima && item.Costo > 0)
+                    {
+                        <form method="post" action="CrearAgenda">
+                            <input type="text" name="Id" value="@item.Id" hidden />
+                            <button type="submit" class="btn btn-success">Agendar</button>
+                        </form>
+                    }
+                    else
+                    {
+                        <button class="btn disabled-btn" disabled>Agendar</button>
+                    }
+                }
+            </div>
+        </div>
+    }
+</div>
+
+
 
 
 

@@ -1,18 +1,16 @@
 ﻿@using Dominio;
 
 
-@if (@ViewBag.Agendas != null)
+
+@if (@ViewBag.Mensaje != null)
 {
 
+    <script>alertify.success('@ViewBag.Mensaje')</script>
+}
+
+@if (@ViewBag.Agendas.Count > 0)
+{
     <h1>Listado de Agendas</h1>
-
-    @if (@ViewBag.Mensaje != null)
-    {
-
-        <script>alertify.success('@ViewBag.Mensaje')</script>
-
-    }
-
     <table class="table table-striped">
         <thead>
             <tr>
@@ -22,6 +20,7 @@
                 <th scope="col">Fecha</th>
                 <th scope="col">Costo</th>
                 <th scope="col">Estado</th>
+                <th scope="col">Lugar</th>
                 <th scope="col">Proveedor</th>
             </tr>
         </thead>
@@ -35,11 +34,18 @@
                     <td>@item.Actividad.Fecha.ToString("d")</td>
                     <td>@item.CostoFinal</td>
                     <td>@item.Estado</td>
-                    <td>@item.Actividad.</td>
-
-
-
-
+                    @if (@item.Actividad is Interna UnaI)
+                    {
+                        <td>@UnaI.Lugar</td>
+                    }
+                    else
+                    {
+                        <td>N/D</td>
+                    }
+                    @if (@item.Actividad is Tercerizada UnaT)
+                    {
+                        <td>@UnaT.Proveedor.Nombre</td>
+                    }
                 </tr>
             }
         </tbody>
@@ -47,9 +53,7 @@
 }
 else
 {
-    <p>No hay agendas registradas</p>
+    <p> @Context.Session.GetString("nombre"), no has realizado agendas aún </p>
 }
-
-@*<script src="~/js/proveedor.js"></script>*@
 
 

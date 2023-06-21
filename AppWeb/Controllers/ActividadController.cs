@@ -16,9 +16,9 @@ namespace AppWeb.Controllers
         private Sistema _sistema = Sistema.Instancia;
 
         [HttpGet]
-        public IActionResult ActividadesPorFecha()
+        public IActionResult ActividadesPorFecha(string error)
         {
-
+            ViewBag.Error = error;
 
             if (HttpContext.Session.GetString("email") != null)
             {
@@ -30,7 +30,6 @@ namespace AppWeb.Controllers
                 ViewBag.Actividad = _sistema.ListaActividadesPorFecha(DateTime.Today);
                 ViewBag.Fecha = DateTime.Today;
             }
-
             return View("index");
         }
 
@@ -55,11 +54,11 @@ namespace AppWeb.Controllers
             catch (Exception e)
             {
                 ViewBag.error = e.Message;
-                return RedirectToAction("ActividadesPorFecha");
+                return RedirectToAction("ActividadesPorFecha", new { error = $"No hay actividades para la fecha: {fecha.ToString("d")} " });
 
             }
 
-            return View("index");
+            //   return View("index");
 
         }
 

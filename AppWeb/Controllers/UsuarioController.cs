@@ -16,8 +16,9 @@ namespace AppWeb.Controllers
         private Sistema _sistema = Sistema.Instancia;
 
         [HttpGet]
-        public IActionResult Login()
+        public IActionResult Login(string mensaje)
         {
+            ViewBag.Mensaje = mensaje;
             return View();
         }
 
@@ -38,6 +39,8 @@ namespace AppWeb.Controllers
                     Huesped huespedLogueado = usuarioLogueado as Huesped;
 
                     HttpContext.Session.SetInt32("edad", huespedLogueado.Edad());
+                    HttpContext.Session.SetString("nombre", huespedLogueado.Nombre);
+
                     return Redirect("/Actividad/ActividadesPorFecha");
                 }
                 else if (rol == "operador")
@@ -65,13 +68,15 @@ namespace AppWeb.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateHuesped(Huesped huesped, int tipoDocumento)
+        public IActionResult CreateHuesped(Huesped huesped, int tipoDocumento, string numDocumento)
         {
             try
             {
-                // alta en sistema
-                _sistema.AgregarHuesped(huesped);
-                // return RedirectToAction("MostrarUsuario", new { mensaje = "Registrado correctamente" });
+                Huesped huespedCreado = huesped;
+                huespedCreado.Documento = new Documento(tipoDocumento, numDocumento);
+
+                _sistema.AgregarHuesped(huespedCreado);
+                return RedirectToAction("Login", new { mensaje = "Registrado correctamente" });
             }
             catch (Exception e)
             {

@@ -7,7 +7,7 @@ namespace Dominio
         public Documento? Documento { get; set; }
         public string? Nombre { get; set; }
         public string? Apellido { get; set; }
-        public int? Habitacion { get; }
+        public int? Habitacion { get; set; }
         public DateTime FechaNac { get; set; }
         public int? Fidelizacion { get; set; } = 1;
 

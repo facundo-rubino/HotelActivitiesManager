@@ -30,3 +30,8 @@ body {
     .disabled-btn:hover {
         color: white;
     }
+
+
+.alertify .ajs-modal {
+    width: 1000px;
+}
