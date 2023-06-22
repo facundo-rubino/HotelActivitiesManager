@@ -363,7 +363,7 @@ namespace Dominio
                     Huesped unHuesped = item as Huesped;
                     if (unHuesped.Documento.NumDocumento == huespedIngresado.Documento.NumDocumento && unHuesped.Documento.TipoDocumento == huespedIngresado.Documento.TipoDocumento)
                     {
-                        throw new Exception($"Ya existe la cédula con el número {huespedIngresado.Documento.NumDocumento}");
+                        throw new Exception($"Ya existe un documento de tipo {unHuesped.AsignarTipoDocumento(unHuesped.Documento.TipoDocumento)} con número {huespedIngresado.Documento.NumDocumento}");
                     }
                 }
             }

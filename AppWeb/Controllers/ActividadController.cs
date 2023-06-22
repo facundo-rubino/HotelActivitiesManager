@@ -6,13 +6,10 @@ using Microsoft.AspNetCore.Mvc;
 using Dominio;
 using Microsoft.AspNetCore.Http;
 
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace AppWeb.Controllers
 {
     public class ActividadController : Controller
     {
-
         private Sistema _sistema = Sistema.Instancia;
 
         [HttpGet]
@@ -57,9 +54,6 @@ namespace AppWeb.Controllers
                 return RedirectToAction("ActividadesPorFecha", new { error = $"No hay actividades para la fecha: {fecha.ToString("d")} " });
 
             }
-
-            //   return View("index");
-
         }
 
         [HttpPost]

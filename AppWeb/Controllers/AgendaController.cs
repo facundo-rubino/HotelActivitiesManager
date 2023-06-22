@@ -7,8 +7,6 @@ using Dominio;
 using Microsoft.AspNetCore.Mvc;
 using WebApp.Filtros;
 
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace AppWeb.Controllers
 {
 
@@ -16,7 +14,6 @@ namespace AppWeb.Controllers
 
     public class AgendaController : Controller
     {
-
         private Sistema _sistema = Sistema.Instancia;
 
         [HttpGet]
@@ -83,7 +80,6 @@ namespace AppWeb.Controllers
         public IActionResult CambiarEstado(int Id)
         {
             _sistema.CambiarEstadoAgenda(Id);
-
             return RedirectToAction("AgendasPorFecha", new { mensaje = "Estado cambiado exitosamente" });
         }
 

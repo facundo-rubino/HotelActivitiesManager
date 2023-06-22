@@ -8,15 +8,12 @@ using Microsoft.AspNetCore.Mvc;
 using WebApp.Filtros;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace AppWeb.Controllers
 {
     [Logueado]
     [SoloOperador]
     public class ProveedorController : Controller
     {
-
         private Sistema _sistema = Sistema.Instancia;
 
         [HttpGet]

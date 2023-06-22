@@ -14,12 +14,16 @@
     <script src="~/js/alertify.js" asp-append-version="true"></script>
     <script src="https://kit.fontawesome.com/dce91611d1.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    @*//<link rel="stylesheet" href="~/css/sign-in.css" asp-append-version="true" />*@
+
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Milotel</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    <img src="~/img/logo.png" width="55" height="55" alt="home logo" />
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -68,9 +72,9 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer text-muted text-center">
         <div class="container">
-            &copy; 2023 - AppWeb - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            Facundo Rubino - Programación 2 ORT
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

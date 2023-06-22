@@ -53,7 +53,7 @@ namespace Dominio
             if (!Utilidades.StringValido(Apellido)) throw new Exception("El apellido no puede ser vacío");
         }
 
-        private string AsignarTipoDocumento(int tipoIngresado)
+        public string AsignarTipoDocumento(int tipoIngresado)
         {
             switch (tipoIngresado)
             {
@@ -61,10 +61,10 @@ namespace Dominio
                     return "CI";
                     break;
                 case 2:
-                    return "PASAPORTE";
+                    return "pasaporte";
                     break;
                 case 3:
-                    return "OTROS";
+                    return "otros";
                     break;
                 default:
                     throw new Exception("Tipo de documento no válido");

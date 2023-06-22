@@ -74,8 +74,6 @@ namespace Dominio
             return estado;
         }
 
-
-
         public int CompareTo(Agenda? other)
         {
             if (other == null)

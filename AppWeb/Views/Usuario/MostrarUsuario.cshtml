@@ -1,12 +1,33 @@
 ﻿@using Dominio
 
 
+<div class="d-flex align-items-center justify-content-center mt-10" style="height:auto;">
+    <div class="card text-center">
+        <div class="card-header">
+            @ViewBag.Usuario.Nombre @ViewBag.Usuario.Apellido
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">@ViewBag.Usuario.Email</h5>
 
-<p>@ViewBag.Usuario</p>
+            @if (@ViewBag.Usuario is Huesped)
+            {
+                Huesped huesped = @ViewBag.Usuario as Huesped;
+                <p class="card-text"></p>
+                <p class="card-text">Edad: @huesped.Edad()</p>
+                <p class="card-text">Fidelización: @huesped.Fidelizacion</p>
+                <p class="card-text">@huesped.AsignarTipoDocumento(huesped.Documento.TipoDocumento): @huesped.Documento.NumDocumento</p>
+            }
+            else if (@ViewBag.Usuario is Operador)
+            {
+                Operador operador = @ViewBag.Usuario as Operador;
+
+                <p class="card-text">Fecha de ingreso: @operador.FechaIngreso.ToString("d")</p>
+
+            }
+
+        </div>
+
+    </div>
+</div>
 
 
-@*@if (@ViewBag.Usuario is Operador)
-    {
-
-        <p>@ViewBag.Usuario</p>
-    }*@
