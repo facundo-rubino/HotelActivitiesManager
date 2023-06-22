@@ -1,16 +1,12 @@
 ﻿@using Dominio;
 
-
-
 @if (@ViewBag.Mensaje != null)
 {
-
     <script>alertify.success('@ViewBag.Mensaje')</script>
 }
 
 @if (@ViewBag.error != null)
 {
-
     <script>alertify.error('@ViewBag.error')</script>
 }
 
@@ -21,10 +17,8 @@
         <button type="submit">Buscar</button>
     </form>
 
-
     <form method="post" action="AgendasPorHuesped">
         <select name="Email">
-            @*<option>Seleccione huesped</option>*@
             @foreach (Huesped huesped in ViewBag.Huespedes)
             {
                 <option value="@huesped.Email">@huesped.Nombre @huesped.Apellido</option>
@@ -33,7 +27,6 @@
         <button type="submit">Filtrar</button>
     </form>
 }
-
 
 @if (@ViewBag.Agendas != null)
 {
@@ -51,7 +44,7 @@
                 <th scope="col">Proveedor</th>
                 @if (Context.Session.GetString("rol") == "operador")
                 {
-                    <th scope="col">Confirmar</th>
+                    <th class="text-center" scope="col">Cambiar estado</th>
                 }
             </tr>
         </thead>
@@ -87,15 +80,31 @@
                     else
                     {
                         <td>N/D</td>
-
                     }
                     @if (Context.Session.GetString("rol") == "operador")
                     {
-                        <th scope="col">
-                            <i class="bi bi-check text-success"></i>
-                            <i class="bi bi-x text-danger"></i>
-                        </th>
-
+                        @if (item.Estado == "PENDIENTE_PAGO")
+                        {
+                            <td class="text-center">
+                                <form method="post" action="CambiarEstado">
+                                    <input type="text" name="Id" value="@item.Id" hidden />
+                                    <button type="submit" class="btn btn-link" style="outline: none; box-shadow: none;">
+                                        <span class="bi bi-check-circle-fill text-success" style="cursor: pointer"></span>
+                                    </button>
+                                </form>
+                            </td>
+                        }
+                        else
+                        {
+                            <td class="text-center">
+                                <form method="post" action="CambiarEstado">
+                                    <input type="text" name="Id" value="@item.Id" hidden />
+                                    <button type="submit" class="btn btn-link" style="outline: none; box-shadow: none;">
+                                        <span class=" bi bi-x-circle-fill text-danger" style="cursor: pointer"></span>
+                                    </button>
+                                </form>
+                            </td>
+                        }
                     }
                 </tr>
             }

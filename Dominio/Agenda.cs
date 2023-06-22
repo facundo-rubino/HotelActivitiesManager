@@ -9,7 +9,7 @@ namespace Dominio
         public static int? UltimoId { get; set; } = 1;
         public Actividad Actividad { get; set; }
         public Huesped Huesped { get; set; }
-        public string? Estado { get; set; }
+        public string Estado { get; set; }
         public decimal? CostoFinal { get; set; }
         public DateTime FechaCreacion { get; set; }
 

@@ -671,6 +671,27 @@ namespace Dominio
             aux.Sort();
             return aux;
         }
+
+        public Agenda ObtenerAgenda(int id)
+        {
+            foreach (Agenda item in Agendas)
+            {
+                if (item.Id == id)
+                    return item;
+            }
+            throw new Exception("Agenda no encontrada");
+        }
+
+        public void CambiarEstadoAgenda(int id)
+        {
+            Agenda agenda = ObtenerAgenda(id);
+            if (agenda.Estado == "CONFIRMADA")
+                agenda.Estado = "PENDIENTE_PAGO";
+            else
+                agenda.Estado = "CONFIRMADA";
+        }
+
+
     }
 }
 

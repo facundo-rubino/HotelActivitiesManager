@@ -80,9 +80,11 @@ namespace AppWeb.Controllers
             }
         }
 
-        public IActionResult ConfirmarAgenda()
+        public IActionResult CambiarEstado(int Id)
         {
-            return View("index");
+            _sistema.CambiarEstadoAgenda(Id);
+
+            return RedirectToAction("AgendasPorFecha", new { mensaje = "Estado cambiado exitosamente" });
         }
 
     }
